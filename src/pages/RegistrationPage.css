@@ -1,19 +1,18 @@
 .image-container {
     display: flex;
     width: 100%;
-    height: 92vh;
+    height: 100vh;
     justify-content: center;
     background-size: cover;
     position: relative;
     z-index: 1;
-
 }
 
 .image-container::after {
     content: "";
     position: absolute;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background: linear-gradient(300deg, #000000 8.0%, rgba(0, 0, 0, 0) 30.0%),
     linear-gradient(60deg, #000000 8.0%, rgba(0, 0, 0, 0) 30.0%),
     linear-gradient(0deg, #000000 2.0%, rgba(0, 0, 0, 0) 30.0%),
@@ -23,12 +22,13 @@
     z-index: -1;
 }
 
-.registration-container {
-    height: 75vh;
+.registration-form-container {
     width: 60vh;
-    background-color: #0F172A;
+    min-height: 50vh;
+    background-color: var(--secondary-blue);
     border-radius: 3vh;
-    margin-top: 6vh;
+    margin-top: 3vh;
+    margin-bottom: 10vh;
     padding: 1vh;
 }
 
@@ -36,15 +36,16 @@
     font-size: 40px;
     padding-top: 2vh;
     text-align: center;
-    color: #FFFCF9;
-    font-family: 'Poppins', sans-serif;
+    color: var(--secondary-white);
+    font-family: var(--custom-font);
 }
 
 .description {
     font-size: 16px;
     padding-bottom: 2vh;
     text-align: center;
-    color: #FFFCF9;
+    color: var(--secondary-white);
+    font-family: var(--custom-font);
 }
 
 form {
@@ -60,27 +61,28 @@ form {
 label {
     margin-top: 1vh;
     margin-bottom: 1vh;
-    color: #FFFCF9;
-    font-family: 'Poppins', sans-serif;
+    color: var(--secondary-white);
+    font-family: var(--custom-font);
     font-size: 20px;
 }
 
 .registration-input {
-    font-family: 'Poppins', sans-serif;
-    color: #FFFCF9;
+    font-family: var(--custom-font);
+    color: var(--secondary-white);
     padding: 1vh;
-    border: 1px solid #FFFCF9;
+    border: 1px solid var(--secondary-white);
     border-radius: 1vh;
     background-color: rgba(0, 0, 0, 0.2);
     width: 35vh;
 }
 
 .button-accept {
-    margin: 8vh;
-    background-color: #63D471;
-    color: #FFFCF9;
+    margin-top: 8vh;
+    margin-bottom: 1vh;
+    background-color: var(--secondary-green);
+    color: var(--secondary-white);
     font-size: 20px;
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--custom-font);
     cursor: pointer;
     border-radius: 3vh;
     width: 35vh;
@@ -88,25 +90,23 @@ label {
 }
 
 .button-accept:hover {
-    background-color: #45a049;
+    background-color: var(--secondary-green-hover);
 }
 
 .disclaimer {
     font-size: 16px;
-    padding-bottom: 2vh;
+    margin: 1vh;
     text-align: center;
-    color: #FFFCF9;
-    font-family: 'Poppins', sans-serif;
+    color: var(--secondary-white);
+    font-family: var(--custom-font);
 }
 
 .link {
     font-size: 16px;
-    padding-bottom: 2vh;
-    text-align: center;
-    font-family: 'Poppins', sans-serif;
-    color: #63D471
+    font-family: var(--custom-font);
+    color: var(--secondary-green);
 }
 
 .link:hover {
-    color: #63D471
+    color: var(--secondary-green);
 }

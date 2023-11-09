@@ -10,6 +10,7 @@ const RegistrationPage = () => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
     const [backgroundImage, setBackgroundImage] = useState('');
 
     const handleUsernameChange = (event) => {
@@ -24,8 +25,20 @@ const RegistrationPage = () => {
         setPassword(event.target.value);
     };
 
+    const handleConfirmPasswordChange = (event) => {
+        setConfirmPassword(event.target.value);
+    };
+
+
     const handleSubmit = async (event) => {
         event.preventDefault();
+
+        if (password !== confirmPassword) {
+            toast.error('Passwords do not match. Please try again.', {
+                position: toast.POSITION.TOP_CENTER,
+            });
+            return;
+        }
 
         try {
             const response = await postRegistration(username, email, password);
@@ -77,7 +90,7 @@ const RegistrationPage = () => {
 
     return (
         <div className="image-container" style={{backgroundImage: `url(${backgroundImage})`}}>
-            <div className="registration-container">
+            <div className="registration-form-container">
                 <h1 className="head">Sign up</h1>
                 <h2 className="description">Sign up to manage your account</h2>
                 <form onSubmit={handleSubmit}>
@@ -112,6 +125,17 @@ const RegistrationPage = () => {
                             id="password"
                             value={password}
                             onChange={handlePasswordChange}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="confirm-password">Confirm Password</label>
+                        <br/>
+                        <input
+                            className="registration-input"
+                            type="password"
+                            id="confirm-password"
+                            value={confirmPassword}
+                            onChange={handleConfirmPasswordChange}
                         />
                     </div>
                     <button className="button-accept" type="submit">
