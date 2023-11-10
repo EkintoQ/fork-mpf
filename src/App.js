@@ -4,10 +4,10 @@ import Layout from './components/Layout';
 import {Navigate, Route, Routes} from 'react-router-dom';
 import Home from './pages/Home';
 import {FilmPage} from './pages/FilmPage';
-import RegistrationPage from './pages/RegistrationPage/registrationPage';
+import RegistrationPage from './pages/registrationPage/RegistrationPage';
 import SettingsPage from "./pages/SettingsPage";
 import FilmsBrowsingPage from "./pages/FilmsBrowsingPage";
-import LoginPage from "./pages/LoginPage";
+import LoginPage from "./pages/loginPage/LoginPage";
 import LostPasswordPage from "./pages/LostPasswordPage"
 import {createContext, useEffect, useState} from "react";
 import {checkAuth, getUsernameByAuth} from "./api/server/UserAPI";
