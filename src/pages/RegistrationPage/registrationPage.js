@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import './RegistrationPage.css';
-import {postRegistration} from '../api/server/AuthenticationAPI';
-import {getRandomMovieImage} from '../api/tmdb/MovieAPI';
+import './registrationPage.css';
+import {postRegistration} from '../../api/server/AuthenticationAPI';
+import {getRandomMovieImage} from '../../api/tmdb/MovieAPI';
 import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {Link} from "react-router-dom";
 
-const RegistrationPage = () => {
+const registrationPage = () => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -144,4 +144,4 @@ const RegistrationPage = () => {
     );
 };
 
-export default RegistrationPage;
+export default registrationPage;
