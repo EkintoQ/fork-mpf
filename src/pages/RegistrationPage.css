@@ -3,6 +3,7 @@
     width: 100%;
     height: 100vh;
     justify-content: center;
+    align-items: center;
     background-size: cover;
     position: relative;
     z-index: 1;
@@ -23,13 +24,16 @@
 }
 
 .registration-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 60vh;
     min-height: 50vh;
     background-color: var(--secondary-blue);
     border-radius: 3vh;
-    margin-top: 3vh;
-    margin-bottom: 10vh;
-    padding: 1vh;
+    margin: auto;
+    padding-top: 3vh;
+    padding-bottom: 5vh;
 }
 
 .head {
@@ -54,6 +58,8 @@ form {
     align-items: center;
 }
 .form-group{
+    display: flex;
+    flex-direction: column;
     text-align: left;
     margin: 1vh;
 }
@@ -76,8 +82,8 @@ label {
     width: 35vh;
 }
 
-.button-accept {
-    margin-top: 8vh;
+.submit-btn {
+    margin-top: 6vh;
     margin-bottom: 1vh;
     background-color: var(--secondary-green);
     color: var(--secondary-white);
@@ -89,11 +95,11 @@ label {
     height: 5vh;
 }
 
-.button-accept:hover {
+.submit-btn:hover {
     background-color: var(--secondary-green-hover);
 }
 
-.disclaimer {
+.signup-msg {
     font-size: 16px;
     margin: 1vh;
     text-align: center;
