@@ -1,16 +1,18 @@
 import React, {useEffect, useState} from 'react';
 import './NewPasswordPage.css';
 import {useLocation} from 'react-router-dom';
-import {postResetPassword} from "../api/server/LostPassAPI";
-import {getRandomMovie} from "../api/tmdb/MovieAPI";
+import {postResetPassword} from "../../api/server/LostPassAPI";
+import {getRandomMovieImage} from "../../api/tmdb/MovieAPI";
 import queryString from "query-string";
 import {toast, ToastContainer} from "react-toastify";
+import {Spinner} from "react-bootstrap";
 
 const LostPasswordPage = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const location = useLocation();
     const [backgroundImage, setBackgroundImage] = useState('');
+    const [loading, setLoading] = useState(false);
 
 
     const handlePasswordChange = (event) => {
@@ -23,6 +25,8 @@ const LostPasswordPage = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        setLoading(true);
+
 
         try {
             if (password !== confirmPassword) {
@@ -41,53 +45,47 @@ const LostPasswordPage = () => {
             });
             console.error('Error occurred while resetting password:', error);
         }
-    };
-
-    const getRandomMovieImage = async () => {
-        try {
-            const response = await getRandomMovie();
-            setBackgroundImage(`https://image.tmdb.org/t/p/original${response.backdrop_path}`);
-        } catch (error) {
-            console.log(error);
+        finally {
+            setLoading(false);
         }
     };
 
     useEffect(() => {
-        getRandomMovieImage().then();
+        getRandomMovieImage().then((response) => {
+            setBackgroundImage(response);
+        });
     }, []);
 
     return (
-        <div
-            className="image-newpass-container"
-            style={{backgroundImage: `url(${backgroundImage})`}}
-        >
+        <div className="image-container" style={{backgroundImage: `url(${backgroundImage})`}}>
             <div className="newpass-container">
-                <h1 className="head-newpass">Reset Password</h1>
+                <h1 className="head">Reset password</h1>
+                <h2 className="description">Create a new password</h2>
                 <form onSubmit={handleSubmit}>
-                    <div className="form-group-newpass">
-                        <label htmlFor="password">New Password</label>
-                        <br/>
+                    <div className="form-group">
+                        <label htmlFor="password">New password</label>
                         <input
                             className="newpass-password-input"
                             type="password"
                             id="password"
                             value={password}
+                            placeholder="Enter your password"
                             onChange={handlePasswordChange}
                         />
                     </div>
-                    <div className="form-group-newpass">
-                        <label htmlFor="confirmPassword">Confirm Password</label>
-                        <br/>
+                    <div className="form-group">
+                        <label htmlFor="confirmPassword">Confirm password</label>
                         <input
                             className="newpass-password-input"
                             type="password"
                             id="confirmPassword"
                             value={confirmPassword}
+                            placeholder="Confirm your password"
                             onChange={handleConfirmPasswordChange}
                         />
                     </div>
-                    <button className="newpass-password-button" type="submit">
-                        Reset Password
+                    <button className="submit-btn" type="submit" disabled={loading}>
+                        {loading ? <Spinner></Spinner>: 'Join Us'}
                     </button>
                 </form>
             </div>

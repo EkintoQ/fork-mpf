@@ -14,8 +14,8 @@ import {checkAuth, getUsernameByAuth} from "./api/server/UserAPI";
 import UserPage from "./pages/UserPage";
 import UserWatchedPage from "./pages/UserWatchedPage";
 import UserFavoritePage from "./pages/UserFavoritePage";
-import NewPasswordPage from "./pages/NewPasswordPage";
-import ActivateUserPage from "./pages/ActivateUserPage";
+import NewPasswordPage from "./pages/newPasswordPage/NewPasswordPage";
+import ActivateUserPage from "./pages/activateUserPage/ActivateUserPage";
 import AboutUsPage from "./pages/aboutUsPage/AboutUsPage";
 
 
