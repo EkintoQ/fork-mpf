@@ -16,7 +16,7 @@ import UserWatchedPage from "./pages/UserWatchedPage";
 import UserFavoritePage from "./pages/UserFavoritePage";
 import NewPasswordPage from "./pages/NewPasswordPage";
 import ActivateUserPage from "./pages/ActivateUserPage";
-import AboutUsPage from "./pages/AboutUsPage";
+import AboutUsPage from "./pages/aboutUsPage/AboutUsPage";
 
 
 import {ToastContainer} from "react-bootstrap";
