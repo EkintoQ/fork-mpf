@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Layout from './components/Layout';
 import {Navigate, Route, Routes} from 'react-router-dom';
 import Home from './pages/Home';
-import {FilmPage} from './pages/FilmPage';
+import {FilmPage} from './pages/filmPage/FilmPage';
 import RegistrationPage from './pages/registrationPage/RegistrationPage';
 import SettingsPage from "./pages/SettingsPage";
 import FilmsBrowsingPage from "./pages/FilmsBrowsingPage";
