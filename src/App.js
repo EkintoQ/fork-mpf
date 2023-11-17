@@ -6,7 +6,7 @@ import Home from './pages/Home';
 import {FilmPage} from './pages/filmPage/FilmPage';
 import RegistrationPage from './pages/registrationPage/RegistrationPage';
 import SettingsPage from "./pages/SettingsPage";
-import FilmsBrowsingPage from "./pages/FilmsBrowsingPage";
+import FilmsBrowsingPage from "./pages/filmsBrowsingPage/FilmsBrowsingPage";
 import LoginPage from "./pages/loginPage/LoginPage";
 import LostPasswordPage from "./pages/lostPasswordPage/LostPasswordPage"
 import {createContext, useEffect, useState} from "react";

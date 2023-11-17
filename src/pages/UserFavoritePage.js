@@ -2,7 +2,7 @@ import {useParams} from "react-router-dom";
 import {getUser} from "../api/server/UserAPI";
 import {useContext, useEffect, useState} from "react";
 import {getMovieDetails} from "../api/tmdb/MovieAPI";
-import styles from './FilmsBrowsingPage.module.css';
+import styles from './filmsBrowsingPage/FilmsBrowsingPage.module.css';
 import MoviePoster from "../components/poster/MoviePoster";
 import WatchMovieButton from "../components/buttons/WatchMovieButton";
 import FavoriteMovieButton from "../components/buttons/FavoriteMovieButton";
