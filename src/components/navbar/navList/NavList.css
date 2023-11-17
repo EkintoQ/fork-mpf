@@ -1,19 +1,19 @@
-.Navlist{
-    margin: 0 0;
+.NavList{
+    margin: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     column-gap: 3vh;
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--custom-font);
 }
 
 .NavListLink{
-    color: var(--primary-yellow);
-    font-size: 16px;
+    color: var(--primary-red);
+    font-size: 18px;
     transition: opacity 0.3s ease;
 }
 
 .NavListLink:hover{
-    color: var(--primary-yellow);
+    color: var(--primary-red);
     opacity: 0.8;
 }

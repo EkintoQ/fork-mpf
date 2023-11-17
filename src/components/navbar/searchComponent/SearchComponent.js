@@ -1,6 +1,6 @@
 import './SearchComponent.css'
 import {useState} from "react";
-import DropdownSearchComponent from "./DropdownSearchComponent";
+import DropdownSearchComponent from "../dropDownSearchComponent/DropdownSearchComponent";
 
 const SearchComponent = () => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
