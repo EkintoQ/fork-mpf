@@ -1,17 +1,21 @@
 import React, {useEffect, useState} from 'react';
 import './ActivateUserPage.css';
 import {useLocation} from 'react-router-dom';
-import {getRandomMovie} from "../api/tmdb/MovieAPI";
+import {getRandomMovieImage} from "../../api/tmdb/MovieAPI";
 import {toast, ToastContainer} from "react-toastify";
-import {postActivateUser} from "../api/server/AuthenticationAPI";
+import {postActivateUser} from "../../api/server/AuthenticationAPI";
 import queryString from "query-string";
+import {Spinner} from "react-bootstrap";
 
 const LostPasswordPage = () => {
     const location = useLocation();
     const [backgroundImage, setBackgroundImage] = useState('');
+    const [loading, setLoading] = useState(false);
+
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        setLoading(true);
 
         try {
             //activation of user
@@ -27,31 +31,25 @@ const LostPasswordPage = () => {
             });
             console.error('Error occurred while activating user:', error);
         }
-    };
-
-    const getRandomMovieImage = async () => {
-        try {
-            const response = await getRandomMovie();
-            setBackgroundImage(`https://image.tmdb.org/t/p/original${response.backdrop_path}`);
-        } catch (error) {
-            console.log(error);
+        finally {
+            setLoading(false);
         }
     };
 
     useEffect(() => {
-        getRandomMovieImage().then();
+        getRandomMovieImage().then((response) => {
+            setBackgroundImage(response);
+        });
     }, []);
 
     return (
-        <div
-            className="image-activate-container"
-            style={{backgroundImage: `url(${backgroundImage})`}}
-        >
-            <div className="activate-container">
-                <h1 className="head-activate">User Activation</h1>
+        <div className="image-container" style={{backgroundImage: `url(${backgroundImage})`}}>
+            <div className="activate-form-container">
+                <h1 className="head">User activation</h1>
+                <h2 className="description">Activate your account to start using it</h2>
                 <form onSubmit={handleSubmit}>
-                    <button className="activate-button" type="submit">
-                        Activate
+                    <button className="submit-btn" type="submit" disabled={loading}>
+                        {loading ? <Spinner></Spinner>: 'Activate'}
                     </button>
                 </form>
             </div>
