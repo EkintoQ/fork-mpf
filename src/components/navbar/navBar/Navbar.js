@@ -1,10 +1,10 @@
 import './Navbar.css'
-import Navlist from "./Navlist";
-import LogoBar from "./LogoBar";
+import Navlist from "../Navlist";
+import LogoBar from "../logoBar/LogoBar";
 import {useContext} from "react";
-import {AuthContext, UsernameContext} from "../../App";
-import Userbar from "./Userbar";
-import NavBrandComponent from "./NavBrandComponent";
+import {AuthContext, UsernameContext} from "../../../App";
+import Userbar from "../Userbar";
+import NavBrandComponent from "../NavBrandComponent";
 
 const Navbar = () => {
     const isLoggedIn = useContext(AuthContext);
