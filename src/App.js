@@ -8,7 +8,7 @@ import RegistrationPage from './pages/registrationPage/RegistrationPage';
 import SettingsPage from "./pages/SettingsPage";
 import FilmsBrowsingPage from "./pages/FilmsBrowsingPage";
 import LoginPage from "./pages/loginPage/LoginPage";
-import LostPasswordPage from "./pages/LostPasswordPage"
+import LostPasswordPage from "./pages/lostPasswordPage/LostPasswordPage"
 import {createContext, useEffect, useState} from "react";
 import {checkAuth, getUsernameByAuth} from "./api/server/UserAPI";
 import UserPage from "./pages/UserPage";

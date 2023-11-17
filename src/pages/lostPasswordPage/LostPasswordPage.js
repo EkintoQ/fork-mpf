@@ -1,13 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import './LostPasswordPage.css';
-import {getRandomMovie} from "../api/tmdb/MovieAPI";
-import {postLostPasswordSetMail} from "../api/server/LostPassAPI";
+import {getRandomMovieImage} from "../../api/tmdb/MovieAPI";
+import {postLostPasswordSetMail} from "../../api/server/LostPassAPI";
 import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import {Spinner} from "react-bootstrap";
 
 const LostPasswordPage = () => {
     const [email, setEmail] = useState('');
     const [backgroundImage, setBackgroundImage] = useState('');
+    const [loading, setLoading] = useState(false);
 
 
     const handleEmailChange = (event) => {
@@ -16,10 +18,7 @@ const LostPasswordPage = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-
-        const params = {
-            email: email
-        }
+        setLoading(true);
 
         try {
             const response = await postLostPasswordSetMail(email);
@@ -40,42 +39,36 @@ const LostPasswordPage = () => {
         } catch (error) {
             console.error('Error occurred while sending password reset email:', error);
         }
-    };
-
-    const getRandomMovieImage = async () => {
-        try {
-            const response = await getRandomMovie();
-            setBackgroundImage(`https://image.tmdb.org/t/p/original${response.backdrop_path}`);
-        } catch (error) {
-            console.log(error);
+        finally {
+            setLoading(false);
         }
     };
 
     useEffect(() => {
-        getRandomMovieImage().then();
+        getRandomMovieImage().then((response) => {
+            setBackgroundImage(response);
+        });
     }, []);
 
     return (
-        <div
-            className="image-lost-container"
-            style={{backgroundImage: `url(${backgroundImage})`}}
-        >
+        <div className="image-lost-container" style={{backgroundImage: `url(${backgroundImage})`}}>
             <div className="lost-password-container">
-                <h1 className="head-lost">LOST PASSWORD</h1>
+                <h1 className="head">Lost password?</h1>
+                <h2 className="description">We will send you an email to help with that</h2>
                 <form onSubmit={handleSubmit}>
-                    <div className="form-group-lost">
-                        <label htmlFor="email">Provide your email</label>
-                        <br/>
+                    <div className="form-group">
+                        <label htmlFor="email">Email</label>
                         <input
                             className="lost-password-input"
                             type="email"
                             id="email"
+                            placeholder="Enter your email"
                             value={email}
                             onChange={handleEmailChange}
                         />
                     </div>
-                    <button className="lost-password-button" type="submit">
-                        Reset Password
+                    <button className="submit-btn" type="submit" disabled={loading}>
+                        {loading ? <Spinner></Spinner>: 'Reset password'}
                     </button>
                 </form>
             </div>
