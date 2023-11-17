@@ -51,7 +51,7 @@ const LostPasswordPage = () => {
     }, []);
 
     return (
-        <div className="image-lost-container" style={{backgroundImage: `url(${backgroundImage})`}}>
+        <div className="image-container" style={{backgroundImage: `url(${backgroundImage})`}}>
             <div className="lost-password-container">
                 <h1 className="head">Lost password?</h1>
                 <h2 className="description">We will send you an email to help with that</h2>
