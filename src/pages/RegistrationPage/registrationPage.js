@@ -1,15 +1,16 @@
 import React, {useEffect, useState} from 'react';
-import './RegistrationPage.css';
-import {postRegistration} from '../api/server/AuthenticationAPI';
-import {getRandomMovie} from '../api/tmdb/MovieAPI';
+import './registrationPage.css';
+import {postRegistration} from '../../api/server/AuthenticationAPI';
+import {getRandomMovieImage} from '../../api/tmdb/MovieAPI';
 import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {Link} from "react-router-dom";
 
-const RegistrationPage = () => {
+const registrationPage = () => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
     const [backgroundImage, setBackgroundImage] = useState('');
 
     const handleUsernameChange = (event) => {
@@ -24,8 +25,20 @@ const RegistrationPage = () => {
         setPassword(event.target.value);
     };
 
+    const handleConfirmPasswordChange = (event) => {
+        setConfirmPassword(event.target.value);
+    };
+
+
     const handleSubmit = async (event) => {
         event.preventDefault();
+
+        if (password !== confirmPassword) {
+            toast.error('Passwords do not match. Please try again.', {
+                position: toast.POSITION.TOP_CENTER,
+            });
+            return;
+        }
 
         try {
             const response = await postRegistration(username, email, password);
@@ -36,6 +49,7 @@ const RegistrationPage = () => {
                 setUsername('');
                 setEmail('');
                 setPassword('');
+                setConfirmPassword('');
             }
         } catch (error) {
             if (error.response && error.response.status === 403) {
@@ -61,70 +75,73 @@ const RegistrationPage = () => {
         }
     };
 
-    const getRandomMovieImage = async () => {
-        try {
-            const response = await getRandomMovie();
-            setBackgroundImage(`https://image.tmdb.org/t/p/original${response.backdrop_path}`);
-        } catch (error) {
-            toast.error(error, {position: toast.POSITION.TOP_CENTER});
-            console.log(error);
-        }
-    };
-
     useEffect(() => {
-        getRandomMovieImage().then();
+        getRandomMovieImage().then((response) => {
+            setBackgroundImage(response);
+        });
     }, []);
 
     return (
         <div className="image-container" style={{backgroundImage: `url(${backgroundImage})`}}>
-            <div className="registration-container">
+            <div className="registration-form-container">
                 <h1 className="head">Sign up</h1>
                 <h2 className="description">Sign up to manage your account</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
                         <label htmlFor="username">Username</label>
-                        <br/>
                         <input
                             className="registration-input"
                             type="text"
                             id="username"
+                            placeholder="Enter your username"
                             value={username}
                             onChange={handleUsernameChange}
                         />
                     </div>
                     <div className="form-group">
                         <label htmlFor="email">Email</label>
-                        <br/>
                         <input
                             className="registration-input"
                             type="email"
                             id="email"
+                            placeholder="Enter your email"
                             value={email}
                             onChange={handleEmailChange}
                         />
                     </div>
                     <div className="form-group">
                         <label htmlFor="password">Password</label>
-                        <br/>
                         <input
                             className="registration-input"
                             type="password"
                             id="password"
+                            placeholder="Enter your password"
                             value={password}
                             onChange={handlePasswordChange}
                         />
                     </div>
-                    <button className="button-accept" type="submit">
+                    <div className="form-group">
+                        <label htmlFor="confirm-password">Confirm Password</label>
+                        <input
+                            className="registration-input"
+                            type="password"
+                            id="confirm-password"
+                            placeholder="Confirm your password"
+                            value={confirmPassword}
+                            onChange={handleConfirmPasswordChange}
+                        />
+                    </div>
+                    <button className="submit-btn" type="submit" >
                         Join Us
                     </button>
+                    <div className="signup-msg">Already have an account?
+                        <Link to="/login" className="link"> Sign in</Link>
+                    </div>
                 </form>
-                <p className="disclaimer">Already have an account?
-                    <Link to="/login" className="link"> Sign in</Link>
-                </p>
             </div>
             <ToastContainer/>
         </div>
     );
 };
 
-export default RegistrationPage;
+export default registrationPage;
