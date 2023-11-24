@@ -5,12 +5,14 @@ import {Link} from "react-router-dom";
 import {getRandomMovieImage} from "../../api/tmdb/MovieAPI";
 import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import {Spinner} from "react-bootstrap";
 
 
 const LoginPage = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [backgroundImage, setBackgroundImage] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const handleEmailChange = (event) => {
         setEmail(event.target.value);
@@ -22,6 +24,7 @@ const LoginPage = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        setLoading(true);
 
         try {
             const response = await postLogin(email, password);
@@ -39,7 +42,9 @@ const LoginPage = () => {
         } catch (error) {
             console.log(error);
         }
-
+        finally {
+            setLoading(false);
+        }
     };
 
     useEffect(() => {
@@ -80,8 +85,8 @@ const LoginPage = () => {
                     <div className="link-recovery-container">
                         <Link to="/forgotPassword" className="link-recovery">Forgot your password?</Link>
                     </div>
-                    <button className="submit-btn" type="submit">
-                        Sign in
+                    <button className="submit-btn" type="submit" disabled={loading}>
+                        {loading ? <Spinner></Spinner>: 'Sign in'}
                     </button>
                     <div className="signup-msg">Don't have an account?
                         <Link to="/registration" className="link"> Sign up</Link>

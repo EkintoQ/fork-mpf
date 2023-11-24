@@ -5,6 +5,7 @@ import {getRandomMovieImage} from '../../api/tmdb/MovieAPI';
 import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {Link} from "react-router-dom";
+import {Spinner} from "react-bootstrap";
 
 const RegistrationPage = () => {
     const [username, setUsername] = useState('');
@@ -12,6 +13,7 @@ const RegistrationPage = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [backgroundImage, setBackgroundImage] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const handleUsernameChange = (event) => {
         setUsername(event.target.value);
@@ -32,6 +34,7 @@ const RegistrationPage = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        setLoading(true);
 
         if (password !== confirmPassword) {
             toast.error('Passwords do not match. Please try again.', {
@@ -72,6 +75,9 @@ const RegistrationPage = () => {
                 });
             }
             console.log(error);
+        }
+        finally {
+            setLoading(false);
         }
     };
 
@@ -131,8 +137,8 @@ const RegistrationPage = () => {
                             onChange={handleConfirmPasswordChange}
                         />
                     </div>
-                    <button className="submit-btn" type="submit" >
-                        Join Us
+                    <button className="submit-btn" type="submit" disabled={loading}>
+                        {loading ? <Spinner></Spinner>: 'Join Us'}
                     </button>
                     <div className="signup-msg">Already have an account?
                         <Link to="/login" className="link"> Sign in</Link>
