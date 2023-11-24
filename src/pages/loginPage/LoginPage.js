@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import './LoginPage.css';
-import {postLogin} from "../api/server/AuthenticationAPI";
+import {postLogin} from "../../api/server/AuthenticationAPI";
 import {Link} from "react-router-dom";
-import {getRandomMovie} from "../api/tmdb/MovieAPI";
+import {getRandomMovieImage} from "../../api/tmdb/MovieAPI";
 import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -42,53 +42,50 @@ const LoginPage = () => {
 
     };
 
-    const getRandomMovieImage = async () => {
-        try {
-            const response = await getRandomMovie();
-            setBackgroundImage(`https://image.tmdb.org/t/p/original${response.backdrop_path}`);
-        } catch (error) {
-            console.log(error);
-        }
-    };
-
     useEffect(() => {
-        getRandomMovieImage().then();
+        getRandomMovieImage().then((response) => {
+            setBackgroundImage(response);
+        });
     }, []);
 
 
     return (
-        <div
-            className="image-login-container"
-            style={{backgroundImage: `url(${backgroundImage})`}}
-        >
-            <div className="login-container"
-            >
-                <h1 className="head-login">SIGN IN</h1>
+        <div className="image-container" style={{backgroundImage: `url(${backgroundImage})`}}>
+            <div className="login-form-container">
+                <h1 className="head">Sign in</h1>
+                <h2 className="description">Sign in to continue</h2>
                 <form onSubmit={handleSubmit}>
-                    <div className="form-group-login">
+                    <div className="form-group">
                         <label htmlFor="email">Email</label>
-                        <br/>
                         <input
-                            className="registration-input-login"
+                            className="login-input"
                             type="email"
                             id="email"
+                            placeholder="Enter your email"
                             value={email}
                             onChange={handleEmailChange}
                         />
                     </div>
-                    <div className="form-group-login">
+                    <div className="form-group">
                         <label htmlFor="password">Password</label>
-                        <br/>
                         <input
-                            className="registration-input-login"
+                            className="login-input"
                             type="password"
                             id="password"
+                            placeholder="Enter your password"
                             value={password}
                             onChange={handlePasswordChange}
                         />
                     </div>
-                    <button className="button-login_sign_in" type="submit">Sign in</button>
-                    <Link to="/forgotPassword" className="link-primary">Forgot password</Link>
+                    <div className="link-recovery-container">
+                        <Link to="/forgotPassword" className="link-recovery">Forgot your password?</Link>
+                    </div>
+                    <button className="submit-btn" type="submit">
+                        Sign in
+                    </button>
+                    <div className="signup-msg">Don't have an account?
+                        <Link to="/registration" className="link"> Sign up</Link>
+                    </div>
                 </form>
             </div>
             <ToastContainer/>

@@ -1,0 +1,132 @@
+.image-container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    position: relative;
+    z-index: 1;
+}
+
+.image-container::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(300deg, #000000 8.0%, rgba(0, 0, 0, 0) 30.0%),
+    linear-gradient(60deg, #000000 8.0%, rgba(0, 0, 0, 0) 30.0%),
+    linear-gradient(0deg, #000000 2.0%, rgba(0, 0, 0, 0) 30.0%),
+    linear-gradient(90deg, #000000 0%, rgba(0, 0, 0, 0) 32.0%),
+    linear-gradient(270deg, #000000 0%, rgba(0, 0, 0, 0) 32.0%);
+    backdrop-filter: blur(8px);
+    z-index: -1;
+}
+
+.login-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60vh;
+    min-height: 50vh;
+    background-color: var(--secondary-blue);
+    border-radius: 3vh;
+    margin: auto;
+    padding-top: 3vh;
+    padding-bottom: 5vh;
+}
+
+.head {
+    font-size: 40px;
+    padding-top: 2vh;
+    text-align: center;
+    color: var(--secondary-white);
+    font-family: var(--custom-font);
+}
+
+.description {
+    font-size: 16px;
+    padding-bottom: 2vh;
+    text-align: center;
+    color: var(--secondary-white);
+    font-family: var(--custom-font);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.form-group{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin: 1vh;
+}
+
+label {
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    color: var(--secondary-white);
+    font-family: var(--custom-font);
+    font-size: 20px;
+}
+
+.login-input {
+    font-family: var(--custom-font);
+    color: var(--secondary-white);
+    padding: 1vh;
+    border: 1px solid var(--secondary-white);
+    border-radius: 1vh;
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 35vh;
+}
+
+.link-recovery-container{
+    margin-top: 1vh;
+    width: 35vh;
+    text-align: end;
+}
+
+.link-recovery{
+    font-family: var(--custom-font);
+    color: var(--secondary-white);
+}
+
+.link-recovery:hover{
+    color: var(--secondary-red);
+}
+
+.submit-btn {
+    margin-bottom: 1vh;
+    background-color: var(--secondary-green);
+    color: var(--secondary-white);
+    font-size: 20px;
+    font-family: var(--custom-font);
+    cursor: pointer;
+    border-radius: 3vh;
+    width: 35vh;
+    height: 5vh;
+}
+
+.submit-btn:hover {
+    background-color: var(--secondary-green-hover);
+}
+
+.signup-msg {
+    font-size: 16px;
+    margin: 1vh;
+    text-align: center;
+    color: var(--secondary-white);
+    font-family: var(--custom-font);
+}
+
+.link {
+    font-size: 16px;
+    font-family: var(--custom-font);
+    color: var(--secondary-green);
+}
+
+.link:hover {
+    color: var(--secondary-green);
+}
