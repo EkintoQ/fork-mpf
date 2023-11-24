@@ -3,19 +3,19 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Layout from './components/Layout';
 import {Navigate, Route, Routes} from 'react-router-dom';
 import Home from './pages/Home';
-import {FilmPage} from './pages/FilmPage';
+import {FilmPage} from './pages/filmPage/FilmPage';
 import RegistrationPage from './pages/registrationPage/RegistrationPage';
 import SettingsPage from "./pages/SettingsPage";
-import FilmsBrowsingPage from "./pages/FilmsBrowsingPage";
+import FilmsBrowsingPage from "./pages/filmsBrowsingPage/FilmsBrowsingPage";
 import LoginPage from "./pages/loginPage/LoginPage";
-import LostPasswordPage from "./pages/LostPasswordPage"
+import LostPasswordPage from "./pages/lostPasswordPage/LostPasswordPage"
 import {createContext, useEffect, useState} from "react";
 import {checkAuth, getUsernameByAuth} from "./api/server/UserAPI";
 import UserPage from "./pages/UserPage";
 import UserWatchedPage from "./pages/UserWatchedPage";
 import UserFavoritePage from "./pages/UserFavoritePage";
-import NewPasswordPage from "./pages/NewPasswordPage";
-import ActivateUserPage from "./pages/ActivateUserPage";
+import NewPasswordPage from "./pages/newPasswordPage/NewPasswordPage";
+import ActivateUserPage from "./pages/activateUserPage/ActivateUserPage";
 import AboutUsPage from "./pages/aboutUsPage/AboutUsPage";
 
 

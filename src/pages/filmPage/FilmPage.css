@@ -1,22 +1,25 @@
 .film-info-container{
-    padding-left: 12%;
-    padding-right: 12%;
-    color: whitesmoke;
+    margin-left: 12%;
+    margin-right: 12%;
+    margin-top: 1vh;
+    color: var(--secondary-white);
+    font-family: var(--custom-font);
     display: flex;
     flex-direction: column;
+    justify-content: center;
     z-index: 1;
 }
 
 .film-header {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
     background-size: cover;
-    height: 60vh;
     position: relative;
-    filter: blur(10px);
-    z-index: 0;
-}
-
-.movie-like-container{
     z-index: 1;
+    height: 60vh;
+    filter: blur(10px);
 }
 
 .film-header::after {
@@ -31,30 +34,44 @@
     linear-gradient(0deg, #000000 0%, rgba(0, 0, 0, 0) 40.0%);
     z-index: 1;
 }
+
 .film-media-container {
     display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 10vh;
     overflow: hidden;
-    column-gap: 5px;
     margin-top: -40vh;
-    z-index: 2;
+    column-gap: 10vh;
 }
 
-.h1 {
-    font-size: 30px;
+.movie-like-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    column-gap: 3vh;
+    z-index: 1;
+}
+
+.like-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 3vh 1vh;
+    row-gap: 3vh;
+    background-color: var(--secondary-blue);
+    border-radius: 5vh;
 }
 
 .film-details {
-    margin-top: -10px;
-    margin-left: 10vh;
     font-size: 20px;
-    height: 60vh;
     width: 70vh;
     z-index: 1;
 }
 
 .player-wrapper {
-
     width: 80%;
     margin-left: auto;
     margin-right: auto;
@@ -70,9 +87,8 @@
     height: 70% !important;
 }
 
-
 .review-container {
-    margin-top: 40px;
+    margin-top: -3vh;
 }
 
 .single-review {

@@ -1,23 +1,26 @@
 import {Link, useNavigate, useParams} from 'react-router-dom'
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import './FilmsBrowsingPage.css'
-import WatchMovieButton from "../components/buttons/WatchMovieButton";
-import FavoriteMovieButton from "../components/buttons/FavoriteMovieButton";
+import WatchMovieButton from "../../components/buttons/WatchMovieButton";
+import FavoriteMovieButton from "../../components/buttons/FavoriteMovieButton";
 import styles from './FilmsBrowsingPage.module.css';
-import {getFavoriteMovie} from "../api/server/FavoriteMovieAPI";
-import {getMovies} from "../api/tmdb/PaginationMovieAPI";
-import Pagination from "../components/pagination/Pagination";
-import ToWatchMovieButton from "../components/buttons/ToWatchMovieButton";
-import MoviePoster from "../components/poster/MoviePoster";
+import {getFavoriteMovie} from "../../api/server/FavoriteMovieAPI";
+import {getMovies} from "../../api/tmdb/PaginationMovieAPI";
+import Pagination from "../../components/pagination/Pagination";
+import ToWatchMovieButton from "../../components/buttons/ToWatchMovieButton";
+import MoviePoster from "../../components/poster/MoviePoster";
+import {Spinner} from "react-bootstrap";
 
 const FilmsBrowsingPage = () => {
     const {currentPage} = useParams();
     const navigate = useNavigate();
 
     const [movies, setMovies] = useState([]);
-    const [totalPages, setTotalPages] = useState(6);
+    const [totalPages, setTotalPages] = useState(9999);
+    const [loading, setLoading] = useState(false);
 
     const getMovieList = async (page) => {
+        setLoading(true);
         try {
             const movieList = await getMovies(page)
             const moviesWithLike = await Promise.all(
@@ -32,6 +35,9 @@ const FilmsBrowsingPage = () => {
             setMovies(moviesWithLike);
         } catch (error) {
             console.log(error);
+        }
+        finally {
+            setLoading(false);
         }
     };
 
@@ -53,7 +59,7 @@ const FilmsBrowsingPage = () => {
 
     return (
         <div className="films-browser-container">
-            <h1 className="blue-text">Movie Browser</h1>
+            <h1 className="header">Movie Browser</h1>
             <div className="films-browser-list">
                 {movies.map(movie => (
                     <div className="film-browser-card" key={movie.id}>
@@ -77,19 +83,12 @@ const FilmsBrowsingPage = () => {
                                 />
                             </div>
                         </div>
-                        <div className="film-browser-info">
-                            <div className="film-browser-title">
-                                <Link to={`/film/${movie.id}`}>
-                                    <p className="yellow-text">{movie.title}</p>
-                                </Link>
-                                <div className="release-date-button">
-                                    <p style={{fontSize: '12px'}}>{movie.release_date.split('-')[0]}</p>
-                                    {movie.genres && movie.genres.length > 0 && (
-                                        <p style={{fontSize: '14px'}}>Genres: {movie.genres.map((genre) => genre.name).join(", ")}</p>
-                                    )}
-
-                                </div>
-
+                        <div className="films-browser-info">
+                            <Link to={`/film/${movie.id}`} className="films-browser-title">
+                                {movie.title}
+                            </Link>
+                            <div className="release-date">
+                                {movie.release_date.split('-')[0]}
                             </div>
                         </div>
                     </div>
