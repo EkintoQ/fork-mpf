@@ -1,14 +1,14 @@
-import './Navlist.css'
+import './NavList.css'
 import {Link} from "react-router-dom";
 import {useContext} from "react";
-import {AuthContext} from "../../App";
-import SearchComponent from "./SearchComponent";
+import {AuthContext} from "../../../App";
+import SearchComponent from "../searchComponent/SearchComponent";
 
-const Navlist = () => {
+const NavList = () => {
     const isLoggedIn = useContext(AuthContext);
 
     return (
-        <ul className="Navlist">
+        <ul className="NavList">
             <li><SearchComponent/></li>
             {!isLoggedIn
                 &&
@@ -24,4 +24,4 @@ const Navlist = () => {
     )
 }
 
-export default Navlist;
+export default NavList;

@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
-import styles from './DropdownSearchComponent.module.css';
-import { getMovieSearch } from '../../api/tmdb/MovieAPI';
+import styles from './DropdownSearchComponent.css';
+import { getMovieSearch } from '../../../api/tmdb/MovieAPI';
 import {Link} from "react-router-dom";
 
 const DropdownSearchComponent = ({ query }) => {
@@ -28,8 +28,8 @@ const DropdownSearchComponent = ({ query }) => {
     }, [searchResults]);
 
     return (
-        <div className={styles.DropdownSearchComponent}>
-            <ul ref={resultsRef} className={styles.SearchResults}>
+        <div className="DropdownSearchComponent">
+            <ul ref={resultsRef} className="SearchResults">
                 {searchResults.map((result, index) => (
                     <Link to={`/film/${result.id}`}>
                         <li key={index}>

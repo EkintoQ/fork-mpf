@@ -1,12 +1,16 @@
 .Navbar{
-    padding: 1.5vh 15%;
-    background-color: #171718;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5vh;
+    background-color: var(--primary-black);
     z-index: 1;
 }
 
 .NavRow {
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
 }
 
@@ -24,7 +28,6 @@
 }
 
 .LeftContainer {
-    margin-right: auto;
     display: flex;
     justify-content: center;
     align-items: center;

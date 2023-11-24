@@ -1,5 +1,5 @@
 import React from 'react';
-import './LogoBar.css';
+import '../logoBar/LogoBar.css';
 import {Link} from "react-router-dom";
 import "./NavBrandComponent.css";
 

@@ -1,0 +1,21 @@
+.Search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 30vh;
+}
+
+.Round {
+    width: 100%;
+    border-radius: 10px;
+    padding: 5px 15px 5px 30px;
+    background-color: var(--secondary-white);
+    font-family: var(--custom-font);
+}
+
+.Submit {
+    position: absolute;
+    left: 1vh;
+    width: 2vh;
+}

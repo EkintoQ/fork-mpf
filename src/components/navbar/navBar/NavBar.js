@@ -1,12 +1,12 @@
-import './Navbar.css'
-import Navlist from "./Navlist";
-import LogoBar from "./LogoBar";
+import './NavBar.css'
+import NavList from "../navList/NavList";
+import LogoBar from "../logoBar/LogoBar";
 import {useContext} from "react";
-import {AuthContext, UsernameContext} from "../../App";
-import Userbar from "./Userbar";
-import NavBrandComponent from "./NavBrandComponent";
+import {AuthContext, UsernameContext} from "../../../App";
+import Userbar from "../Userbar";
+import NavBrandComponent from "../navBrand/NavBrandComponent";
 
-const Navbar = () => {
+const NavBar = () => {
     const isLoggedIn = useContext(AuthContext);
     const username = useContext(UsernameContext);
     return (
@@ -16,7 +16,7 @@ const Navbar = () => {
                     <LogoBar/>
                     <NavBrandComponent/>
                 </div>
-                <Navlist/>
+                <NavList/>
                 <div className="RightContainer">
                     {isLoggedIn
                         &&
@@ -32,4 +32,4 @@ const Navbar = () => {
     )
 }
 
-export default Navbar;
+export default NavBar;
