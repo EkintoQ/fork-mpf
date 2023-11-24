@@ -1,0 +1,22 @@
+.about-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--secondary-blue);
+    border-radius: 3vh;
+    margin: 10vh;
+}
+
+.about-head{
+    font-family: var(--custom-font);
+    padding-top: 3vh;
+    color: var(--secondary-white);
+}
+
+.about-text{
+    padding: 10vh;
+    font-size: 20px;
+    font-family: var(--custom-font);
+    color: var(--secondary-white);
+}
