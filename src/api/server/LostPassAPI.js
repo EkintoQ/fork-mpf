@@ -1,6 +1,7 @@
 import axios from "axios";
 import queryString from "query-string";
 
+const BASE_URL = process.env.REACT_APP_BASE_URL
 
 // setMail
 export const postLostPasswordSetMail = async (email) => {
@@ -11,7 +12,7 @@ export const postLostPasswordSetMail = async (email) => {
 
     try {
         const response = await axios.post(
-            `http://localhost:8080/lostpassword/setEmail`,
+            `${BASE_URL}/lostpassword/setEmail`,
             queryString.stringify(params),
             {withCredentials: true},
         );
@@ -33,7 +34,7 @@ export const postResetPassword = async (token, password0, password1) => {
 
     try {
         const response = await axios.post(
-            `http://localhost:8080/lostpassword/reset`,
+            `${BASE_URL}/lostpassword/reset`,
             queryString.stringify(params),
             {withCredentials: true},
         );

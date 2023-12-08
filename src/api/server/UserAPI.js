@@ -1,6 +1,6 @@
 import axios from "axios";
 
-
+const BASE_URL = process.env.REACT_APP_BASE_URL
 // getUserByUsername
 export const getUser = async (username) => {
 
@@ -10,7 +10,7 @@ export const getUser = async (username) => {
 
     try {
         const response = await axios.get(
-            `http://localhost:8080/user/${username}`,
+            `${BASE_URL}/user/${username}`,
             options
         );
         return response.data;
@@ -29,7 +29,7 @@ export const getUsernameByAuth = async () => {
 
     try {
         const response = await axios.get(
-            `http://localhost:8080/user/getUsernameAut`,
+            `${BASE_URL}/user/getUsernameAut`,
             options
         );
         return response.data;
@@ -47,7 +47,7 @@ export const checkAuth = async () => {
 
     try {
         const response = await axios.get(
-            `http://localhost:8080/user/getAut`,
+            `${BASE_URL}/user/getAut`,
             options
         );
         return true;

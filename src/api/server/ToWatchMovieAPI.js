@@ -1,7 +1,7 @@
 import axios from "axios";
 import queryString from "query-string";
 
-
+const BASE_URL = process.env.REACT_APP_BASE_URL
 // allUserToWatchMovies
 export const getAllToWatch = async () => {
 
@@ -11,7 +11,7 @@ export const getAllToWatch = async () => {
 
     try {
         const response = await axios.get(
-            `http://localhost:8080/movies/towatch/all`,
+            `${BASE_URL}/movies/towatch/all`,
             options
         );
         return response.data;
@@ -29,7 +29,7 @@ export const getAllCountToWatch = async (idMovie) => {
 
     try {
         const response = await axios.get(
-            `http://localhost:8080/movies/towatch/all?id=${idMovie}`,
+            `${BASE_URL}/movies/towatch/all?id=${idMovie}`,
             options
         );
         return response.data;
@@ -47,7 +47,7 @@ export const getToWatch = async (idMovie) => {
 
     try {
         const response = await axios.get(
-            `http://localhost:8080/movies/towatch/get?id=${idMovie}`,
+            `${BASE_URL}/movies/towatch/get?id=${idMovie}`,
             options
         );
         return response.data;
@@ -65,7 +65,7 @@ export const postToWatchMovie = async (idMovie) => {
 
     try {
         const response = await axios.post(
-            `http://localhost:8080/movies/towatch/set`,
+            `${BASE_URL}/movies/towatch/set`,
             queryString.stringify(params),
             { withCredentials: true },
         );

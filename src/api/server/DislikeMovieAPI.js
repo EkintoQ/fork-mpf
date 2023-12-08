@@ -1,8 +1,8 @@
 import axios from "axios";
 import queryString from "query-string";
 
+const BASE_URL = process.env.REACT_APP_BASE_URL
 
-// Set or delete a movie from the disliked list
 export const postDislikedMovie = async (idMovie) => {
 
     const params = {
@@ -11,7 +11,7 @@ export const postDislikedMovie = async (idMovie) => {
 
     try {
         const response = await axios.post(
-            `http://localhost:8080/movies/dislike/set`,
+            `${BASE_URL}/movies/dislike/set`,
             queryString.stringify(params),
             { withCredentials: true },
         );
@@ -30,7 +30,7 @@ export const getDislikedMovie = async (idMovie) => {
 
     try {
         const response = await axios.get(
-            `http://localhost:8080/movies/dislike/get?idMovie=${idMovie}`,
+            `${BASE_URL}/movies/dislike/get?idMovie=${idMovie}`,
             options
         );
         return response.data;
@@ -48,7 +48,7 @@ export const getDislikedCountMovie = async (idMovie) => {
 
     try {
         const response = await axios.get(
-            `http://localhost:8080/movies/dislike/count/dislike?id=${idMovie}`,
+            `${BASE_URL}/movies/dislike/count/dislike?id=${idMovie}`,
             options
         );
         return response.data;
@@ -66,7 +66,7 @@ export const getAllDislikedMovie = async () => {
 
     try {
         const response = await axios.get(
-            `http://localhost:8080/movies/dislike/all`,
+            `${BASE_URL}/movies/dislike/all`,
             options
         );
         return response.data;

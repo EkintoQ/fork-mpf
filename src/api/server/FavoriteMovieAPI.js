@@ -1,7 +1,7 @@
 import axios from "axios";
 import queryString from "query-string";
 
-
+const BASE_URL = process.env.REACT_APP_BASE_URL
 // Set or delete a movie from the favorite list
 export const postFavoriteMovie = async (idMovie) => {
 
@@ -11,7 +11,7 @@ export const postFavoriteMovie = async (idMovie) => {
 
     try {
         const response = await axios.post(
-            `http://localhost:8080/movies/favorite/set`,
+            `${BASE_URL}/movies/favorite/set`,
             queryString.stringify(params),
             { withCredentials: true },
         );
@@ -30,7 +30,7 @@ export const getFavoriteMovie = async (idMovie) => {
 
     try {
         const response = await axios.get(
-            `http://localhost:8080/movies/favorite/get?idMovie=${idMovie}`,
+            `${BASE_URL}/movies/favorite/get?idMovie=${idMovie}`,
             options
         );
         return response.data;
@@ -48,7 +48,7 @@ export const getFavoriteCountMovie = async (idMovie) => {
 
     try {
         const response = await axios.get(
-            `http://localhost:8080/movies/favorite/count/favorite?id=${idMovie}`,
+            `${BASE_URL}/movies/favorite/count/favorite?id=${idMovie}`,
             options
         );
         return response.data;
@@ -66,7 +66,7 @@ export const getAllFavoriteMovie = async () => {
 
     try {
         const response = await axios.get(
-            `http://localhost:8080/movies/favorite/all`,
+            `${BASE_URL}/movies/favorite/all`,
             options
         );
         return response.data;

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-
+const BASE_URL = process.env.REACT_APP_BASE_URL
 // getAllSearchedMovies
 export const getMovieInfoSearch = async (query) => {
 
@@ -10,7 +10,7 @@ export const getMovieInfoSearch = async (query) => {
 
     try {
         const response = await axios.get(
-            `http://localhost:8080/movies/search/${query}`,
+            `${BASE_URL}/movies/search/${query}`,
             options
         );
         return response.data;

@@ -1,5 +1,6 @@
 import axios from "axios";
 
+const TMDB_URL = process.env.REACT_APP_TMDB_URL
 export const getMovies = async (page) => {
 
     const options = {
@@ -12,7 +13,7 @@ export const getMovies = async (page) => {
 
     try {
         const response = await axios.get(
-            `https://api.themoviedb.org/3/movie/popular?page=${page}`,
+            `${TMDB_URL}/3/movie/popular?page=${page}`,
             options
         );
 

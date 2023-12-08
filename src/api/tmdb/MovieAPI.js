@@ -1,5 +1,7 @@
 import axios from "axios";
 
+
+const TMDB_URL = process.env.REACT_APP_TMDB_URL
 export const getMovieSearch = async (query) => {
 
     const options = {
@@ -12,7 +14,7 @@ export const getMovieSearch = async (query) => {
 
     try {
         const response = await axios.get(
-            `https://api.themoviedb.org/3/search/movie?query=${query}`,
+            `${TMDB_URL}/3/search/movie?query=${query}`,
             options
         );
         return response.data
@@ -33,7 +35,7 @@ export const getMovieDetails = async (id) => {
 
     try {
         const response = await axios.get(
-            `https://api.themoviedb.org/3/movie/${id}`,
+            `${TMDB_URL}/3/movie/${id}`,
             options
         );
         console.log(response)
@@ -55,7 +57,7 @@ export const getMovieBackDropImage = async (id) => {
 
     try {
         const response = await axios.get(
-            `https://api.themoviedb.org/3/movie/${id}/images`,
+            `${TMDB_URL}/3/movie/${id}/images`,
             options
         );
         return response.data.backdrops[0].file_path
@@ -76,7 +78,7 @@ export const getRandomMovie = async () => {
 
     try {
         const response = await axios.get(
-            'https://api.themoviedb.org/3/movie/popular',
+            `${TMDB_URL}/3/movie/popular`,
             options
         );
         const randomIndex = Math.floor(
@@ -100,7 +102,7 @@ export const getRandomMovieImage = async () => {
 
     try {
         const response = await axios.get(
-            'https://api.themoviedb.org/3/movie/popular',
+            `${TMDB_URL}/3/movie/popular`,
             options
         );
 
@@ -128,7 +130,7 @@ export const getMovieTrailer = async (id) => {
 
     try {
         const response = await axios.get(
-            `https://api.themoviedb.org/3/movie/${id}/videos`,
+            `${TMDB_URL}/3/movie/${id}/videos`,
             options
         );
 
@@ -159,7 +161,7 @@ export const getUpComingMovies = async () => {
 
     try {
         const response = await axios.get(
-            'https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1',
+            `${TMDB_URL}/3/movie/upcoming?language=en-US&page=1`,
             options
         );
         return response.data.results
