@@ -1,5 +1,7 @@
 import axios from "axios";
 import queryString from "query-string";
+import {API_BASE_URL_PROD} from './apiConfig';
+
 
 
 // Set or delete a movie from the disliked list
@@ -11,7 +13,7 @@ export const postDislikedMovie = async (idMovie) => {
 
     try {
         const response = await axios.post(
-            `http://localhost:8080/movies/dislike/set`,
+            `${API_BASE_URL_PROD}/movies/dislike/set`,
             queryString.stringify(params),
             { withCredentials: true },
         );
@@ -30,7 +32,7 @@ export const getDislikedMovie = async (idMovie) => {
 
     try {
         const response = await axios.get(
-            `http://localhost:8080/movies/dislike/get?idMovie=${idMovie}`,
+            `${API_BASE_URL_PROD}/movies/dislike/get?idMovie=${idMovie}`,
             options
         );
         return response.data;
@@ -48,7 +50,7 @@ export const getDislikedCountMovie = async (idMovie) => {
 
     try {
         const response = await axios.get(
-            `http://localhost:8080/movies/dislike/count/dislike?id=${idMovie}`,
+            `${API_BASE_URL_PROD}/movies/dislike/count/dislike?id=${idMovie}`,
             options
         );
         return response.data;
@@ -66,7 +68,7 @@ export const getAllDislikedMovie = async () => {
 
     try {
         const response = await axios.get(
-            `http://localhost:8080/movies/dislike/all`,
+            `${API_BASE_URL_PROD}/movies/dislike/all`,
             options
         );
         return response.data;

@@ -1,5 +1,6 @@
 import axios from "axios";
 import queryString from "query-string";
+import {API_BASE_URL_PROD} from './apiConfig';
 
 
 // allUserToWatchMovies
@@ -11,7 +12,7 @@ export const getAllToWatch = async () => {
 
     try {
         const response = await axios.get(
-            `http://localhost:8080/movies/towatch/all`,
+            `${API_BASE_URL_PROD}/movies/towatch/all`,
             options
         );
         return response.data;
@@ -29,7 +30,7 @@ export const getAllCountToWatch = async (idMovie) => {
 
     try {
         const response = await axios.get(
-            `http://localhost:8080/movies/towatch/all?id=${idMovie}`,
+            `${API_BASE_URL_PROD}/movies/towatch/all?id=${idMovie}`,
             options
         );
         return response.data;
@@ -47,7 +48,7 @@ export const getToWatch = async (idMovie) => {
 
     try {
         const response = await axios.get(
-            `http://localhost:8080/movies/towatch/get?id=${idMovie}`,
+            `${API_BASE_URL_PROD}/movies/towatch/get?id=${idMovie}`,
             options
         );
         return response.data;
@@ -65,7 +66,7 @@ export const postToWatchMovie = async (idMovie) => {
 
     try {
         const response = await axios.post(
-            `http://localhost:8080/movies/towatch/set`,
+            `${API_BASE_URL_PROD}/movies/towatch/set`,
             queryString.stringify(params),
             { withCredentials: true },
         );

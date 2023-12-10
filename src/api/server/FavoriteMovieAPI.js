@@ -1,5 +1,6 @@
 import axios from "axios";
 import queryString from "query-string";
+import {API_BASE_URL_PROD} from './apiConfig';
 
 
 // Set or delete a movie from the favorite list
@@ -11,7 +12,7 @@ export const postFavoriteMovie = async (idMovie) => {
 
     try {
         const response = await axios.post(
-            `http://localhost:8080/movies/favorite/set`,
+            `${API_BASE_URL_PROD}/movies/favorite/set`,
             queryString.stringify(params),
             { withCredentials: true },
         );
@@ -30,7 +31,7 @@ export const getFavoriteMovie = async (idMovie) => {
 
     try {
         const response = await axios.get(
-            `http://localhost:8080/movies/favorite/get?idMovie=${idMovie}`,
+            `${API_BASE_URL_PROD}/movies/favorite/get?idMovie=${idMovie}`,
             options
         );
         return response.data;
@@ -48,7 +49,7 @@ export const getFavoriteCountMovie = async (idMovie) => {
 
     try {
         const response = await axios.get(
-            `http://localhost:8080/movies/favorite/count/favorite?id=${idMovie}`,
+            `${API_BASE_URL_PROD}/movies/favorite/count/favorite?id=${idMovie}`,
             options
         );
         return response.data;
@@ -66,7 +67,7 @@ export const getAllFavoriteMovie = async () => {
 
     try {
         const response = await axios.get(
-            `http://localhost:8080/movies/favorite/all`,
+            `${API_BASE_URL_PROD}/movies/favorite/all`,
             options
         );
         return response.data;

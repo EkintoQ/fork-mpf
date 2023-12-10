@@ -1,5 +1,6 @@
 import axios from "axios";
 import queryString from "query-string";
+import {API_BASE_URL_PROD} from './apiConfig';
 
 // login
 export const postLogin = async (email, password) => {
@@ -11,7 +12,7 @@ export const postLogin = async (email, password) => {
 
     try {
         const response = await axios.post(
-            'http://localhost:8080/login',
+            `${API_BASE_URL_PROD}/login`,
             queryString.stringify(params),
             {withCredentials: true}
         );
@@ -40,7 +41,7 @@ export const postRegistration = async (username, email, password) => {
     }
 
     const response = await axios.post(
-        'http://localhost:8080/registration',
+        `${API_BASE_URL_PROD}/registration`,
         queryString.stringify(params));
     return response;
 
@@ -54,7 +55,7 @@ export const postActivateUser = async (token) => {
     }
     try {
         const response = await axios.post(
-            'http://localhost:8080/activate',
+            `${API_BASE_URL_PROD}/activate`,
             queryString.stringify(params));
         return response.data;
     } catch (error) {
@@ -72,7 +73,7 @@ export const postLogout = async () => {
 
     try {
         const response = await axios.post(
-            'http://localhost:8080/logout',
+            `${API_BASE_URL_PROD}/logout`,
             queryString.stringify(params),
             {withCredentials: true}
         );
