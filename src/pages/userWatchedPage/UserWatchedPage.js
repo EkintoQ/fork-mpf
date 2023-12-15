@@ -1,16 +1,16 @@
 import {useParams} from "react-router-dom";
-import {getUser} from "../api/server/UserAPI";
+import {getUser} from "../../api/server/UserAPI";
 import {useContext, useEffect, useState} from "react";
-import {getMovieDetails} from "../api/tmdb/MovieAPI";
-import styles from './filmsBrowsingPage/FilmsBrowsingPage.module.css';
-import MoviePoster from "../components/poster/MoviePoster";
-import WatchMovieButton from "../components/buttons/WatchMovieButton";
-import FavoriteMovieButton from "../components/buttons/FavoriteMovieButton";
-import ToWatchMovieButton from "../components/buttons/ToWatchMovieButton";
-import "./UserFavoritePage.css";
-import {UsernameContext} from "../App";
+import {getMovieDetails} from "../../api/tmdb/MovieAPI";
+import styles from '../filmsBrowsingPage/FilmsBrowsingPage.module.css';
+import MoviePoster from "../../components/poster/MoviePoster";
+import WatchMovieButton from "../../components/buttons/WatchMovieButton";
+import FavoriteMovieButton from "../../components/buttons/FavoriteMovieButton";
+import ToWatchMovieButton from "../../components/buttons/ToWatchMovieButton";
+import "../userFavoritePage/UserFavoritePage.css";
+import {UsernameContext} from "../../App";
 
-const UserToWatchPage = () => {
+const UserWatchedPage = () => {
     const myUsername = useContext(UsernameContext);
     const {username} = useParams()
 
@@ -21,10 +21,10 @@ const UserToWatchPage = () => {
         check = true
     }
 
-    const getUserToWatchList = async () => {
+    const getUserWatchedList = async () => {
         try {
             const response = await getUser(username);
-            const movieList = response.toWatchMovie;
+            const movieList = response.watchedMovie;
             console.log(movieList);
             const favoriteListData = await Promise.all(
                 movieList.map(async (movie) => {
@@ -42,7 +42,7 @@ const UserToWatchPage = () => {
     };
 
     useEffect(() => {
-        getUserToWatchList().then()
+        getUserWatchedList().then()
     }, [username])
 
     return (
@@ -83,4 +83,4 @@ const UserToWatchPage = () => {
         </div>
     );
 }
-export default UserToWatchPage;
+export default UserWatchedPage;

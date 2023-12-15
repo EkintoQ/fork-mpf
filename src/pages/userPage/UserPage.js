@@ -1,7 +1,7 @@
 import {Link, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
-import {getUser} from "../api/server/UserAPI";
-import {getRandomMovie} from "../api/tmdb/MovieAPI";
+import {getUser} from "../../api/server/UserAPI";
+import {getRandomMovie} from "../../api/tmdb/MovieAPI";
 import './UserPage.css';
 
 

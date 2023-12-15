@@ -32,9 +32,9 @@ const DislikedMovieButton = ({idMovie, className}) => {
 
     const getFavoriteImage = () => {
         if (favorite) {
-            return 'https://github.com/prymakD/MoviePocket/raw/86fc32b132680cdfd4cf3ab0d7ffbb7667e57cdf/src/main/frontend/src/images/dislike_blue.png';
+            return '/images/dislike_blue.png';
         } else {
-            return 'https://github.com/prymakD/MoviePocket/raw/86fc32b132680cdfd4cf3ab0d7ffbb7667e57cdf/src/main/frontend/src/images/dislike_logo.png';
+            return '/images/dislike_logo.png';
         }
     };
 

@@ -36,9 +36,9 @@ const ToWatchMovieButton = ({idMovie, className}) => {
 
     const getToWatchImage = () => {
         if (toWatch) {
-            return 'https://raw.githubusercontent.com/prymakD/MoviePocket/fc14c86fd3b9108e7bd7d9297c49d7341b48d3a6/src/main/frontend/src/images/backpackYellow.png';
+            return '/images/backpackYellow.png';
         } else {
-            return 'https://raw.githubusercontent.com/prymakD/MoviePocket/fc14c86fd3b9108e7bd7d9297c49d7341b48d3a6/src/main/frontend/src/images/backpackLogo.png';
+            return '/images/backpackLogo.png';
         }
     };
 

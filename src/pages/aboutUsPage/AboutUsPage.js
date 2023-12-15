@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {getRandomMovie} from "../../api/tmdb/MovieAPI";
-import '../SettingsPage.css';
+import '../settingsPage/SettingsPage.css';
 import './AboutUsPage.css';
 
 

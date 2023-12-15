@@ -7,10 +7,10 @@ import {
     postNewEmail,
     postNewPassword,
     postNewUsername
-} from "../api/server/SettingAPI";
-import {getRandomMovie} from "../api/tmdb/MovieAPI";
+} from "../../api/server/SettingAPI";
+import {getRandomMovie} from "../../api/tmdb/MovieAPI";
 import {toast, ToastContainer} from "react-toastify";
-import {postLogout} from "../api/server/AuthenticationAPI";
+import {postLogout} from "../../api/server/AuthenticationAPI";
 
 
 const SettingsPage = () => {
