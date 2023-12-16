@@ -1,14 +1,14 @@
 import {useParams} from "react-router-dom";
-import {getUser} from "../api/server/UserAPI";
+import {getUser} from "../../api/server/UserAPI";
 import {useContext, useEffect, useState} from "react";
-import {getMovieDetails} from "../api/tmdb/MovieAPI";
-import styles from './filmsBrowsingPage/FilmsBrowsingPage.module.css';
-import MoviePoster from "../components/poster/MoviePoster";
-import WatchMovieButton from "../components/buttons/WatchMovieButton";
-import FavoriteMovieButton from "../components/buttons/FavoriteMovieButton";
-import ToWatchMovieButton from "../components/buttons/ToWatchMovieButton";
+import {getMovieDetails} from "../../api/tmdb/MovieAPI";
+import styles from '../filmsBrowsingPage/FilmsBrowsingPage.module.css';
+import MoviePoster from "../../components/poster/MoviePoster";
+import WatchMovieButton from "../../components/buttons/WatchMovieButton";
+import FavoriteMovieButton from "../../components/buttons/FavoriteMovieButton";
+import ToWatchMovieButton from "../../components/buttons/ToWatchMovieButton";
 import "./UserFavoritePage.css";
-import {UsernameContext} from "../App";
+import {UsernameContext} from "../../App";
 
 const UserFavoritePage = () => {
     const myUsername = useContext(UsernameContext);
