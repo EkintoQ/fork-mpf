@@ -21,6 +21,8 @@ import AboutUsPage from "./pages/aboutUsPage/AboutUsPage";
 
 import {ToastContainer} from "react-bootstrap";
 import UserToWatchPage from "./pages/UserToWatchPage";
+import MovieBrowsingListPage from "./pages/movieBrowsingListPage/MovieBrowsingListPage";
+import {ActorPage} from "./pages/actorPage/ActorPage";
 
 export const AuthContext = createContext(null)
 export const UsernameContext = createContext(null)
@@ -51,6 +53,7 @@ const App = () => {
                     <Routes>
                         <Route path='/' element={<Layout isLogged={isLoggedIn}/>}>
                             <Route index element={<Home/>}></Route>
+                            <Route path='person/:id' element={<ActorPage/>}></Route>
                             {/* For not logged in */}
                             <Route
                                 path='/registration'

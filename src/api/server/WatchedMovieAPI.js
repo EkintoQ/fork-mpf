@@ -1,6 +1,7 @@
 import axios from 'axios';
 import queryString from "query-string";
 
+const BASE_URL = process.env.REACT_APP_BASE_URL
 // Set or delete a movie from watched list
 export const postWatchedMovie = async (idMovie) => {
 
@@ -10,7 +11,7 @@ export const postWatchedMovie = async (idMovie) => {
 
     try {
         const response = await axios.post(
-            'http://localhost:8080/movies/watched/set',
+            '${BASE_URL}/movies/watched/set',
             queryString.stringify(params),
             { withCredentials: true }
         );
@@ -29,7 +30,7 @@ export const getWatchedMovie = async (idMovie) => {
 
     try {
         const response = await axios.get(
-                `http://localhost:8080/movies/watched/get?idMovie=${idMovie}`,
+                `${BASE_URL}/movies/watched/get?idMovie=${idMovie}`,
             options
         );
         return response.data;
@@ -47,7 +48,7 @@ export const getWatchedCountMovie = async (idMovie) => {
 
     try {
         const response = await axios.get(
-            `http://localhost:8080/movies/watched/count/watched?id=${idMovie}`,
+            `${BASE_URL}/movies/watched/count/watched?id=${idMovie}`,
             options
         );
         return response.data;
@@ -65,7 +66,7 @@ export const getWatchedAllByUser = async () => {
 
     try {
         const response = await axios.get(
-            `http://localhost:8080/movies/watched/allByUser`,
+            `${BASE_URL}/movies/watched/allByUser`,
             options
         );
         return response.data;

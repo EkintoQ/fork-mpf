@@ -1,18 +1,15 @@
 import axios from "axios";
 import queryString from "query-string";
 
+const BASE_URL = process.env.REACT_APP_BASE_URL
+
+
 // login
-export const postLogin = async (email, password) => {
-
-    const params = {
-        username: email,
-        password: password,
-    };
-
+export const postLogin = async (userData) => {
     try {
         const response = await axios.post(
-            'http://localhost:8080/login',
-            queryString.stringify(params),
+            `${BASE_URL}/login`,
+            queryString.stringify(userData),
             {withCredentials: true}
         );
         const authToken = response.headers['set-cookie'];
@@ -31,31 +28,16 @@ export const postLogin = async (email, password) => {
 };
 
 // registration
-export const postRegistration = async (username, email, password) => {
-
-    const params = {
-        username: username,
-        email: email,
-        password: password,
-    }
-
-    const response = await axios.post(
-        'http://localhost:8080/registration',
-        queryString.stringify(params));
-    return response;
-
+export const postRegistration = async (userData) => {
+    return await axios.post(
+            `${BASE_URL}/registration`, queryString.stringify(userData))
 };
 
-// post activate
-export const postActivateUser = async (token) => {
-
-    const params = {
-        token: token
-    }
+// post_activate
+export const postActivateUser = async (userData) => {
     try {
         const response = await axios.post(
-            'http://localhost:8080/activate',
-            queryString.stringify(params));
+            `${BASE_URL}/activate`, queryString.stringify(userData));
         return response.data;
     } catch (error) {
         console.log(error);
@@ -63,7 +45,7 @@ export const postActivateUser = async (token) => {
 
 };
 
-// log out
+// log_out
 export const postLogout = async () => {
 
     const params = {
@@ -72,7 +54,7 @@ export const postLogout = async () => {
 
     try {
         const response = await axios.post(
-            'http://localhost:8080/logout',
+            `${BASE_URL}/logout`,
             queryString.stringify(params),
             {withCredentials: true}
         );

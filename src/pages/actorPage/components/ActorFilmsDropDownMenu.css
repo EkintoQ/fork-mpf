@@ -1,0 +1,21 @@
+.actor-dropdown-menu{
+    color: var(--secondary-white);
+    font-family: var(--custom-font);
+    display: flex;
+    column-gap: 1vh;
+    align-items: center;
+    margin: 1vh;
+    font-size: 20px;
+}
+
+.actor-role-select {
+    color: var(--secondary-yellow);
+    background-color: var(--secondary-black);
+
+}
+
+.actor-role-select:focus{
+    outline: none;
+    color: var(--secondary-yellow);
+    background-color: var(--secondary-black);
+}

@@ -18,8 +18,11 @@ const LostPasswordPage = () => {
         setLoading(true);
 
         try {
+            const params = {
+                token: queryString.parse(location.search).token
+            }
             //activation of user
-            const responseActivate = await postActivateUser(queryString.parse(location.search).token);
+            const responseActivate = await postActivateUser(params);
             toast.success('You were successfully activated', {
                 position: toast.POSITION.TOP_CENTER,
             });

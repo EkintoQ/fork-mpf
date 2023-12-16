@@ -26,29 +26,12 @@ const FilmPage = () => {
 
     const path = 'https://www.themoviedb.org/t/p/w220_and_h330_face';
 
-    const getMovie = async () => {
-        try {
-            const response = await getMovieDetails(id);
-            setMovie(response);
-        } catch (error) {
-            console.log(error);
-        }
-    };
 
     const getBack = async () => {
         try {
             const response = await getMovieBackDropImage(id);
             console.log(response);
             setBack(response);
-        } catch (error) {
-            console.log(error);
-        }
-    };
-
-    const getTrailer = async () => {
-        try {
-            const response = await getMovieTrailer(id);
-            setTrailer(response);
         } catch (error) {
             console.log(error);
         }
@@ -64,9 +47,9 @@ const FilmPage = () => {
     };
 
     useEffect(() => {
-        getMovie().then()
+        getMovieDetails(id).then(data => setMovie(data))
         getBack().then()
-        getTrailer().then()
+        getMovieTrailer(id).then(data => setTrailer(data))
         getReviews().then()
     }, []);
 

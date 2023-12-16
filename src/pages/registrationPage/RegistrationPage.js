@@ -44,7 +44,12 @@ const RegistrationPage = () => {
         }
 
         try {
-            const response = await postRegistration(username, email, password);
+            const params = {
+                username: username,
+                email: email,
+                password: password,
+            }
+            const response = await postRegistration(params);
             if (response.status === 201) {
                 toast.success('Registration successful! \n Please verify your email to activate your account. To do so go by the link that was sent to your email.', {
                     position: toast.POSITION.TOP_CENTER,
