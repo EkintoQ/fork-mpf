@@ -2,6 +2,7 @@ import axios from "axios";
 import queryString from "query-string";
 import {API_BASE_URL_PROD} from './apiConfig';
 
+const BASE_URL = process.env.REACT_APP_BASE_URL
 // getUserDto
 export const getUserDto = async () => {
 
@@ -11,7 +12,7 @@ export const getUserDto = async () => {
 
     try {
         const response = await axios.get(
-            `${API_BASE_URL_PROD}/user/edit/getUserDto`,
+            `${BASE_URL}/user/edit/getUserDto`,
             options
         );
         return response.data;
@@ -28,7 +29,7 @@ export const deleteUser = async (password) => {
 
     try {
         const response = await axios.post(
-            `${API_BASE_URL_PROD}/user/edit/delete`,
+            `${BASE_URL}/user/edit/delete`,
             queryString.stringify(params),
             { withCredentials: true },
         );
@@ -47,7 +48,7 @@ export const postNewBio = async (bio) => {
 
     try {
         const response = await axios.post(
-            `${API_BASE_URL_PROD}/user/edit/newBio`,
+            `${BASE_URL}/user/edit/newBio`,
             queryString.stringify(params),
             { withCredentials: true },
         );
@@ -67,7 +68,7 @@ export const postNewEmail = async (email) => {
 
     try {
         const response = await axios.post(
-            `${API_BASE_URL_PROD}/user/edit/newEmail`,
+            `${BASE_URL}/user/edit/newEmail`,
             queryString.stringify(params),
             { withCredentials: true },
         );
@@ -89,7 +90,7 @@ export const postNewPassword = async (password0, password1, passwordOld) => {
 
     try {
         const response = await axios.post(
-            `${API_BASE_URL_PROD}/user/edit/newPas`,
+            `${BASE_URL}/user/edit/newPas`,
             queryString.stringify(params),
             { withCredentials: true },
         );
@@ -109,7 +110,7 @@ export const postNewUsername = async (username) => {
 
     try {
         const response = await axios.post(
-            `${API_BASE_URL_PROD}/user/edit/newUsername`,
+            `${BASE_URL}wwww/user/edit/newUsername`,
             queryString.stringify(params),
             { withCredentials: true },
         );

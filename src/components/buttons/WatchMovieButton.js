@@ -48,13 +48,13 @@ const WatchMovieButton = ({ idMovie, className }) => {
 
     const getWatchedImage = () => {
         if (isHovered && watched && !isClicked) {
-            return 'https://raw.githubusercontent.com/prymakD/MoviePocket/949a92f2aa9d518691eab7f1cad71b60654de0e6/src/main/frontend/src/images/eyeRed.png';
+            return '/images/eyeRed.png';
         } else if (isHovered && watched && isClicked) {
-            return 'https://raw.githubusercontent.com/prymakD/MoviePocket/949a92f2aa9d518691eab7f1cad71b60654de0e6/src/main/frontend/src/images/eyeGreen.png';
+            return '/images/eyeGreen.png';
         } else if (watched) {
-            return 'https://raw.githubusercontent.com/prymakD/MoviePocket/949a92f2aa9d518691eab7f1cad71b60654de0e6/src/main/frontend/src/images/eyeGreen.png';
+            return '/images/eyeGreen.png';
         }   else {
-            return 'https://raw.githubusercontent.com/prymakD/MoviePocket/949a92f2aa9d518691eab7f1cad71b60654de0e6/src/main/frontend/src/images/eyeLogo.png';
+            return '/images/eyeLogo.png';
         }
     };
 

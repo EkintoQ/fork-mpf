@@ -2,7 +2,7 @@ import axios from "axios";
 import {API_BASE_URL_PROD} from './apiConfig';
 
 
-
+const BASE_URL = process.env.REACT_APP_BASE_URL
 // getUserByUsername
 export const getUser = async (username) => {
 
@@ -12,7 +12,7 @@ export const getUser = async (username) => {
 
     try {
         const response = await axios.get(
-            `${API_BASE_URL_PROD}/user/${username}`,
+            `${BASE_URL}/user/${username}`,
             options
         );
         return response.data;
@@ -31,7 +31,7 @@ export const getUsernameByAuth = async () => {
 
     try {
         const response = await axios.get(
-            `${API_BASE_URL_PROD}/user/getUsernameAut`,
+            `${BASE_URL}/user/getUsernameAut`,
             options
         );
         return response.data;
@@ -49,7 +49,7 @@ export const checkAuth = async () => {
 
     try {
         const response = await axios.get(
-            `${API_BASE_URL_PROD}/user/getAut`,
+            `${BASE_URL}/user/getAut`,
             options
         );
         return true;

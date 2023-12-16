@@ -1,0 +1,40 @@
+.actor-info-container{
+    padding-left: 12%;
+    padding-right: 12%;
+    padding-top: 3%;
+    color: var(--secondary-white);
+    font-family: var(--custom-font);
+    background-color: var(--secondary-black);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.actor-header{
+    display: flex;
+    column-gap: 5vh;
+}
+
+.actor-poster-container{
+    display: flex;
+    flex-direction: column;
+    row-gap: 2vh;
+}
+
+.actor-bio-hidden{
+    line-height: 2;
+    max-height: 40vh;
+    overflow: hidden;
+}
+
+.actor-bio-visible{
+    line-height: 2;
+}
+
+.actor-expand-btn {
+    color: var(--secondary-green);
+}
+
+.actor-no-expand-btn{
+    color: var(--secondary-red);
+}

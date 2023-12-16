@@ -1,0 +1,12 @@
+.poster {
+    min-height: 330px;
+    max-height: 330px;
+    min-width: 220px;
+    max-width: 220px;
+    border: 1px solid whitesmoke;
+    transition: border-color 0.3s ease;
+}
+
+.poster:hover {
+    border: 2px solid green;
+}

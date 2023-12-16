@@ -1,18 +1,21 @@
 import axios from "axios";
 
+
+const TMDB_URL = process.env.REACT_APP_TMDB_URL
+const TMDB_BEARER = process.env.REACT_APP_TMDB_KEY
+
+const options = {
+    method: 'GET',
+    headers: {
+        accept: 'application/json',
+        Authorization: TMDB_BEARER,
+    },
+};
+
 export const getMovieSearch = async (query) => {
-
-    const options = {
-        method: 'GET',
-        headers: {
-            accept: 'application/json',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxZGEzNWQ1OGZkMTI0OTdiMTExZTRkZDFjNGE0YzAwNCIsInN1YiI6IjY0NDUyZGMwNjUxZmNmMDYxNzliZmY5YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.expCnsMxBP9wfZab438BOkfl0VPQJftRFG7WPkSRyD0'
-        }
-    };
-
     try {
         const response = await axios.get(
-            `https://api.themoviedb.org/3/search/movie?query=${query}`,
+            `${TMDB_URL}/3/search/movie?query=${query}`,
             options
         );
         return response.data
@@ -22,18 +25,9 @@ export const getMovieSearch = async (query) => {
 };
 
 export const getMovieDetails = async (id) => {
-
-    const options = {
-        method: 'GET',
-        headers: {
-            accept: 'application/json',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxZGEzNWQ1OGZkMTI0OTdiMTExZTRkZDFjNGE0YzAwNCIsInN1YiI6IjY0NDUyZGMwNjUxZmNmMDYxNzliZmY5YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.expCnsMxBP9wfZab438BOkfl0VPQJftRFG7WPkSRyD0'
-        }
-    };
-
     try {
         const response = await axios.get(
-            `https://api.themoviedb.org/3/movie/${id}`,
+            `${TMDB_URL}/3/movie/${id}`,
             options
         );
         console.log(response)
@@ -44,18 +38,9 @@ export const getMovieDetails = async (id) => {
 };
 
 export const getMovieBackDropImage = async (id) => {
-
-    const options = {
-        method: 'GET',
-        headers: {
-            accept: 'application/json',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxZGEzNWQ1OGZkMTI0OTdiMTExZTRkZDFjNGE0YzAwNCIsInN1YiI6IjY0NDUyZGMwNjUxZmNmMDYxNzliZmY5YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.expCnsMxBP9wfZab438BOkfl0VPQJftRFG7WPkSRyD0'
-        }
-    };
-
     try {
         const response = await axios.get(
-            `https://api.themoviedb.org/3/movie/${id}/images`,
+            `${TMDB_URL}/3/movie/${id}/images`,
             options
         );
         return response.data.backdrops[0].file_path
@@ -65,18 +50,9 @@ export const getMovieBackDropImage = async (id) => {
 };
 
 export const getRandomMovie = async () => {
-
-    const options = {
-        method: 'GET',
-        headers: {
-            accept: 'application/json',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxZGEzNWQ1OGZkMTI0OTdiMTExZTRkZDFjNGE0YzAwNCIsInN1YiI6IjY0NDUyZGMwNjUxZmNmMDYxNzliZmY5YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.expCnsMxBP9wfZab438BOkfl0VPQJftRFG7WPkSRyD0'
-        }
-    };
-
     try {
         const response = await axios.get(
-            'https://api.themoviedb.org/3/movie/popular',
+            `${TMDB_URL}/3/movie/popular`,
             options
         );
         const randomIndex = Math.floor(
@@ -89,18 +65,9 @@ export const getRandomMovie = async () => {
 };
 
 export const getRandomMovieImage = async () => {
-
-    const options = {
-        method: 'GET',
-        headers: {
-            accept: 'application/json',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxZGEzNWQ1OGZkMTI0OTdiMTExZTRkZDFjNGE0YzAwNCIsInN1YiI6IjY0NDUyZGMwNjUxZmNmMDYxNzliZmY5YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.expCnsMxBP9wfZab438BOkfl0VPQJftRFG7WPkSRyD0'
-        }
-    };
-
     try {
         const response = await axios.get(
-            'https://api.themoviedb.org/3/movie/popular',
+            `${TMDB_URL}/3/movie/popular`,
             options
         );
 
@@ -116,19 +83,9 @@ export const getRandomMovieImage = async () => {
 };
 
 export const getMovieTrailer = async (id) => {
-
-    const options = {
-        method: 'GET',
-        headers: {
-            accept: 'application/json',
-            Authorization:
-                'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxZGEzNWQ1OGZkMTI0OTdiMTExZTRkZDFjNGE0YzAwNCIsInN1YiI6IjY0NDUyZGMwNjUxZmNmMDYxNzliZmY5YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.expCnsMxBP9wfZab438BOkfl0VPQJftRFG7WPkSRyD0',
-        },
-    };
-
     try {
         const response = await axios.get(
-            `https://api.themoviedb.org/3/movie/${id}/videos`,
+            `${TMDB_URL}/3/movie/${id}/videos`,
             options
         );
 
@@ -147,22 +104,24 @@ export const getMovieTrailer = async (id) => {
 };
 
 export const getUpComingMovies = async () => {
-
-    const options = {
-        method: 'GET',
-        headers: {
-            accept: 'application/json',
-            Authorization:
-                'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxZGEzNWQ1OGZkMTI0OTdiMTExZTRkZDFjNGE0YzAwNCIsInN1YiI6IjY0NDUyZGMwNjUxZmNmMDYxNzliZmY5YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.expCnsMxBP9wfZab438BOkfl0VPQJftRFG7WPkSRyD0',
-        },
-    };
-
     try {
         const response = await axios.get(
-            'https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1',
+            `${TMDB_URL}/3/movie/upcoming?language=en-US&page=1`,
             options
         );
         return response.data.results
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+export const getMovieCredits = async (id) => {
+    try {
+        const response = await axios.get(
+            `${TMDB_URL}/3/movie/${id}/credits`,
+            options
+        );
+        return response.data
     } catch (err) {
         console.log(err);
     }

@@ -2,7 +2,7 @@ import axios from "axios";
 import queryString from "query-string";
 import {API_BASE_URL_PROD} from './apiConfig';
 
-
+const BASE_URL = process.env.REACT_APP_BASE_URL
 // delMovieReview
 export const delReview = async(idReview) => {
 
@@ -12,7 +12,7 @@ export const delReview = async(idReview) => {
 
     try {
         const response = await axios.post(
-            `${API_BASE_URL_PROD}/movies/review/del`,
+            `${BASE_URL}/movies/review/del`,
             queryString.stringify(params),
             {withCredentials: true},
         )
@@ -33,7 +33,7 @@ export const postReview = async (content, idMovie, title) => {
 
     try {
         const response = await axios.post(
-            `${API_BASE_URL_PROD}/movies/review/set`,
+            `${BASE_URL}/movies/review/set`,
             queryString.stringify(params),
             {withCredentials: true},
         )
@@ -53,7 +53,7 @@ export const postReviewLike = async (idReview, like) => {
 
     try {
         const response = await axios.post(
-            `${API_BASE_URL_PROD}/movies/review/setLike`,
+            `${BASE_URL}/movies/review/setLike`,
             queryString.stringify(params),
             {withCredentials: true},
         )
@@ -72,7 +72,7 @@ export const getReviewLike = async (idReview) => {
 
     try {
         const response = await axios.get(
-            `${API_BASE_URL_PROD}/movies/review/getLike?idReview=${idReview}`,
+            `${BASE_URL}/movies/review/getLike?idReview=${idReview}`,
             options
         );
         return response.data;
@@ -92,7 +92,7 @@ export const postReviewUpdate = async (content, idReview, title) => {
 
     try {
         const response = await axios.post(
-            `${API_BASE_URL_PROD}/movies/review/up`,
+            `${BASE_URL}/movies/review/up`,
             queryString.stringify(params),
             {withCredentials: true},
         )
@@ -111,7 +111,7 @@ export const getReviewById = async (idReview) => {
 
     try {
         const response = await axios.get(
-            `${API_BASE_URL_PROD}/movies/review/get?idReview=${idReview}`,
+            `${BASE_URL}/movies/review/get?idReview=${idReview}`,
             options
         );
         return response.data;
@@ -129,7 +129,7 @@ export const getAllReview = async (idMovie) => {
 
     try {
         const response = await axios.get(
-            `${API_BASE_URL_PROD}/movies/review/getAllByMovie?idMovie=${idMovie}`,
+            `${BASE_URL}/movies/review/getAllByMovie?idMovie=${idMovie}`,
             options
         );
         return response.data;
@@ -147,7 +147,7 @@ export const getAllReviewByUser = async () => {
 
     try {
         const response = await axios.get(
-            `${API_BASE_URL_PROD}/movies/review/getAllMy`,
+            `${BASE_URL}/movies/review/getAllMy`,
             options
         );
         return response.data;

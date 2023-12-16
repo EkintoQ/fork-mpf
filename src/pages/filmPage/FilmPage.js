@@ -3,7 +3,7 @@ import {useContext, useEffect, useState} from 'react';
 import ReactPlayer from 'react-player';
 import './FilmPage.css';
 import {getAllReview} from "../../api/server/ReviewAPI";
-import {getMovieBackDropImage, getMovieDetails, getMovieTrailer} from "../../api/tmdb/MovieAPI";
+import {getMovieBackDropImage, getMovieCredits, getMovieDetails, getMovieTrailer} from "../../api/tmdb/MovieAPI";
 import WatchMovieButton from "../../components/buttons/WatchMovieButton";
 import styles from "./FilmPage.module.css";
 import FavoriteMovieButton from "../../components/buttons/FavoriteMovieButton";
@@ -13,6 +13,7 @@ import CreateReviewForm from "../../components/review/CreateReviewForm";
 import {AuthContext} from "../../App";
 import SingleReview from "../../components/review/SingleReview";
 import DislikedMovieButton from "../../components/buttons/DislikedMovieButton";
+import ActorsSlider from "./components/ActorsSlider";
 
 const FilmPage = () => {
     const {id} = useParams();
@@ -21,34 +22,18 @@ const FilmPage = () => {
     const [back, setBack] = useState([]);
     const [trailer, setTrailer] = useState('');
     const [reviews, setReviews] = useState([]);
+    const [actors, setActors] = useState([]);
 
     const isLoggedIn = useContext(AuthContext);
 
     const path = 'https://www.themoviedb.org/t/p/w220_and_h330_face';
 
-    const getMovie = async () => {
-        try {
-            const response = await getMovieDetails(id);
-            setMovie(response);
-        } catch (error) {
-            console.log(error);
-        }
-    };
 
     const getBack = async () => {
         try {
             const response = await getMovieBackDropImage(id);
             console.log(response);
             setBack(response);
-        } catch (error) {
-            console.log(error);
-        }
-    };
-
-    const getTrailer = async () => {
-        try {
-            const response = await getMovieTrailer(id);
-            setTrailer(response);
         } catch (error) {
             console.log(error);
         }
@@ -64,10 +49,11 @@ const FilmPage = () => {
     };
 
     useEffect(() => {
-        getMovie().then()
+        getMovieDetails(id).then(data => setMovie(data))
         getBack().then()
-        getTrailer().then()
+        getMovieTrailer(id).then(data => setTrailer(data))
         getReviews().then()
+        getMovieCredits(id).then(data => setActors(data.cast))
     }, []);
 
     return (
@@ -117,6 +103,12 @@ const FilmPage = () => {
                         controls={true}
                     />
                 )}
+            </div>
+            <div className="carousel-cast">
+                <h1>Cast</h1>
+                <ActorsSlider
+                    actors={actors}
+                    />
             </div>
             {isLoggedIn
                 &&

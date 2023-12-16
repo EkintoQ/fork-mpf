@@ -27,7 +27,11 @@ const LoginPage = () => {
         setLoading(true);
 
         try {
-            const response = await postLogin(email, password);
+            const params = {
+                username: email,
+                password: password,
+            };
+            const response = await postLogin(params);
             if (response) {
                 toast.success('You are successfully logged in)', {
                     position: toast.POSITION.TOP_CENTER,

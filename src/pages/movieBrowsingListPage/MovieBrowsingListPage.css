@@ -1,0 +1,13 @@
+.new-list-creator-container {
+    display: flex;
+    margin-top: 5vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.new-list-creator-header {
+    font-family: var(--custom-font);
+    color: var(--primary-yellow);
+    font-size: 24px;
+}

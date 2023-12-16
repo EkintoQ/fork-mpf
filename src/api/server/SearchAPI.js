@@ -1,7 +1,7 @@
 import axios from "axios";
 import {API_BASE_URL_PROD} from './apiConfig';
 
-
+const BASE_URL = process.env.REACT_APP_BASE_URL
 // getAllSearchedMovies
 export const getMovieInfoSearch = async (query) => {
 
@@ -11,7 +11,7 @@ export const getMovieInfoSearch = async (query) => {
 
     try {
         const response = await axios.get(
-            `${API_BASE_URL_PROD}/movies/search/${query}`,
+            `${BASE_URL}/movies/search/${query}`,
             options
         );
         return response.data;

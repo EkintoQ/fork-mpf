@@ -2,7 +2,7 @@ import axios from "axios";
 import queryString from "query-string";
 import {API_BASE_URL_PROD} from './apiConfig';
 
-
+const BASE_URL = process.env.REACT_APP_BASE_URL
 // Get all ratings for a user
 export const getAllRatingByUser = async () => {
 
@@ -12,7 +12,7 @@ export const getAllRatingByUser = async () => {
 
     try {
         const response = await axios.get(
-            `${API_BASE_URL_PROD}/movies/rating/allByUser`,
+            `${BASE_URL}/movies/rating/allByUser`,
             options
         );
         return response.data;
@@ -30,7 +30,7 @@ export const getCountMovieRating = async (idMovie) => {
 
     try {
         const response = await axios.get(
-            `${API_BASE_URL_PROD}/movies/rating/count/rating?id=${idMovie}`,
+            `${BASE_URL}/movies/rating/count/rating?id=${idMovie}`,
             options
         );
         return response.data;
@@ -48,7 +48,7 @@ export const removeRating = async (idMovie) => {
 
     try {
         const response = await axios.post(
-            `${API_BASE_URL_PROD}/movies/rating/del`,
+            `${BASE_URL}/movies/rating/del`,
             queryString.stringify(params),
             { withCredentials: true },
         );
@@ -67,7 +67,7 @@ export const getMovieRating = async (idMovie) => {
 
     try {
         const response = await axios.get(
-            `${API_BASE_URL_PROD}/movies/rating/rating?id=${idMovie}`,
+            `${BASE_URL}/movies/rating/rating?id=${idMovie}`,
             options
         );
         return response.data;
@@ -86,7 +86,7 @@ export const postMovieRating = async (idMovie, rating) => {
 
     try {
         const response = await axios.post(
-            `${API_BASE_URL_PROD}/movies/rating/set`,
+            `${BASE_URL}/movies/rating/set`,
             queryString.stringify(params),
             { withCredentials: true },
         );
