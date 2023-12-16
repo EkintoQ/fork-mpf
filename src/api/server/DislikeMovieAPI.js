@@ -1,5 +1,7 @@
 import axios from "axios";
 import queryString from "query-string";
+import {API_BASE_URL_PROD} from './apiConfig';
+
 
 const BASE_URL = process.env.REACT_APP_BASE_URL
 
@@ -12,7 +14,6 @@ export const postDislikedMovie = async (idMovie) => {
     try {
         const response = await axios.post(
             `${BASE_URL}/movies/dislike/set`,
-            queryString.stringify(params),
             { withCredentials: true },
         );
         return response.data;
