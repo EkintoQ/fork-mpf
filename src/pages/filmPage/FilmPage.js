@@ -12,7 +12,6 @@ import MoviePoster from "../../components/poster/MoviePoster";
 import CreateReviewForm from "../../components/review/CreateReviewForm";
 import {AuthContext} from "../../App";
 import SingleReview from "../../components/review/SingleReview";
-import DislikedMovieButton from "../../components/buttons/DislikedMovieButton";
 import ActorsSlider from "./components/ActorsSlider";
 
 const FilmPage = () => {
@@ -63,19 +62,15 @@ const FilmPage = () => {
                 <div className="movie-like-container">
                     <div className="like-container">
                         <WatchMovieButton
-                            idMovie={movie.id}
+                            idMovie={id}
                             className={styles.watched}
                         />
                         <FavoriteMovieButton
-                            idMovie={movie.id}
+                            idMovie={id}
                             className={styles.favorite}
                         />
                         <ToWatchMovieButton
-                            idMovie={movie.id}
-                            className={styles.favorite}
-                        />
-                        <DislikedMovieButton
-                            idMovie={movie.id}
+                            idMovie={id}
                             className={styles.favorite}
                         />
                     </div>

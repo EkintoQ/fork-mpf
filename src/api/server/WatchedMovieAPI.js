@@ -1,6 +1,5 @@
 import axios from 'axios';
 import queryString from "query-string";
-import {API_BASE_URL_PROD} from './apiConfig';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL
 // Set or delete a movie from watched list
@@ -12,7 +11,7 @@ export const postWatchedMovie = async (idMovie) => {
 
     try {
         const response = await axios.post(
-            '${BASE_URL}/movies/watched/set',
+            `${BASE_URL}/movies/watched/set`,
             queryString.stringify(params),
             { withCredentials: true }
         );
