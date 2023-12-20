@@ -1,7 +1,5 @@
 import {useParams} from "react-router-dom";
-import {getUser} from "../../api/server/UserAPI";
 import {useContext, useEffect, useState} from "react";
-import {getMovieDetails} from "../../api/tmdb/MovieAPI";
 import styles from '../filmsBrowsingPage/FilmsBrowsingPage.module.css';
 import MoviePoster from "../../components/poster/MoviePoster";
 import WatchMovieButton from "../../components/buttons/WatchMovieButton";
@@ -9,6 +7,7 @@ import FavoriteMovieButton from "../../components/buttons/FavoriteMovieButton";
 import ToWatchMovieButton from "../../components/buttons/ToWatchMovieButton";
 import "./UserFavoritePage.css";
 import {UsernameContext} from "../../App";
+import {getAllFavoriteMovie} from "../../api/server/FavoriteMovieAPI";
 
 const UserFavoritePage = () => {
     const myUsername = useContext(UsernameContext);
@@ -21,28 +20,8 @@ const UserFavoritePage = () => {
         check = true
     }
 
-    const getUserFavoriteList = async () => {
-        try {
-            const response = await getUser(username);
-            const movieList = response.likeMovie;
-            console.log(movieList);
-            const favoriteListData = await Promise.all(
-                movieList.map(async (movie) => {
-                    const favoriteMovie = await getMovieDetails(movie);
-                    console.log(favoriteMovie);
-                    return {
-                        ...favoriteMovie,
-                    };
-                })
-            )
-            setFavoriteList(favoriteListData);
-        } catch (error) {
-            console.log(error);
-        }
-    };
-
     useEffect(() => {
-        getUserFavoriteList().then()
+        getAllFavoriteMovie().then(data => setFavoriteList(data))
     }, [username])
 
     return (

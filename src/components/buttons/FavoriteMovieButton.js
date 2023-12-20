@@ -53,7 +53,7 @@ const FavoriteMovieButton = ({ idMovie, className }) => {
 };
 
 FavoriteMovieButton.propTypes = {
-    idMovie: PropTypes.number.isRequired,
+    idMovie: PropTypes.string.isRequired,
     className: PropTypes.string,
 };
 

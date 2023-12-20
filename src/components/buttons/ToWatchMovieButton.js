@@ -53,7 +53,7 @@ const ToWatchMovieButton = ({idMovie, className}) => {
 };
 
 ToWatchMovieButton.propTypes = {
-    idMovie: PropTypes.number.isRequired,
+    idMovie: PropTypes.string.isRequired,
     className: PropTypes.string,
 };
 
