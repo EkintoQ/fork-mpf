@@ -1,6 +1,5 @@
 import axios from "axios";
 import queryString from "query-string";
-import {API_BASE_URL_PROD} from './apiConfig';
 
 const BASE_URL = process.env.REACT_APP_BASE_URL
 // allUserToWatchMovies
@@ -48,7 +47,7 @@ export const getToWatch = async (idMovie) => {
 
     try {
         const response = await axios.get(
-            `${BASE_URL}/movies/towatch/get?id=${idMovie}`,
+            `${BASE_URL}/movies/towatch/get?idMovie=${idMovie}`,
             options
         );
         return response.data;
@@ -61,7 +60,7 @@ export const getToWatch = async (idMovie) => {
 export const postToWatchMovie = async (idMovie) => {
 
     const params = {
-        id: idMovie
+        idMovie: idMovie
     };
 
     try {
