@@ -3,6 +3,7 @@ import axios from "axios";
 
 const TMDB_URL = process.env.REACT_APP_TMDB_URL
 const TMDB_BEARER = process.env.REACT_APP_TMDB_KEY
+const TMDB_PICTURE = process.env.REACT_APP_TMDB_PICTURE
 
 const options = {
     method: 'GET',
@@ -43,7 +44,7 @@ export const getMovieBackDropImage = async (id) => {
             `${TMDB_URL}/3/movie/${id}/images`,
             options
         );
-        return response.data.backdrops[0].file_path
+        return TMDB_PICTURE + response.data.backdrops[0].file_path
     } catch (err) {
         console.log(err);
     }

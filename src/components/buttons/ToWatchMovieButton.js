@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './ToWatchMovieButton.module.css';
 import {getToWatch, postToWatchMovie} from '../../api/server/ToWatchMovieAPI';
 import {AuthContext} from "../../App";
+import {Tooltip} from "@mui/material";
 
 const ToWatchMovieButton = ({idMovie, className}) => {
     const [toWatch, setToWatch] = useState(false);
@@ -43,12 +44,14 @@ const ToWatchMovieButton = ({idMovie, className}) => {
     };
 
     return (
-        <img
-            src={getToWatchImage()}
-            className={!className ? styles.default : className}
-            alt="toWatch"
-            onClick={handleClick}
-        />
+        <Tooltip title="to watch" arrow>
+            <img
+                src={getToWatchImage()}
+                className={!className ? styles.default : className}
+                alt="toWatch"
+                onClick={handleClick}
+            />
+        </Tooltip>
     );
 };
 

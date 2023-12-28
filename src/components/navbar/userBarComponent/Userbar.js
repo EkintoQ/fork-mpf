@@ -1,8 +1,13 @@
 import './Userbar.css'
-import React, {useState} from "react";
-import DropdownUserComponent from "./DropdownUserComponent";
+import React, {useContext, useState} from "react";
+import DropdownUserComponent from "../dropDownUserComponent/DropdownUserComponent";
+import {UserContext} from "../../../App";
 
 const Userbar = () => {
+    const user = useContext(UserContext);
+
+    const BASE_URL= process.env.REACT_APP_BASE_URL;
+
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
     const handleDropdownToggle = () => {
@@ -12,7 +17,7 @@ const Userbar = () => {
     return(
         <div className='User'>
             <img
-                src="https://github.com/prymakD/MoviePocket/raw/d36f4f403ed1c15c50b097c93056bbabad50aa87/src/main/frontend/src/images/user.png"
+                src={`${BASE_URL}/images/${user.avatar}`}
                 alt='USER'
                 onClick={handleDropdownToggle}
             />

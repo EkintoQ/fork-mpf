@@ -46,19 +46,19 @@ const LikeReviewButton = ({idReview, className, up}) => {
     const getLikeImage = () => {
         if (up) {
             if (isHovered) {
-                return 'https://github.com/prymakD/MoviePocket/raw/4b60404ce52704d1c756c33139a4c58817bb4f6c/src/main/frontend/src/images/like_blue.png';
+                return '/images/like_blue.png';
             } else if (like === true) {
-                return 'https://github.com/prymakD/MoviePocket/raw/4b60404ce52704d1c756c33139a4c58817bb4f6c/src/main/frontend/src/images/like_logo.png';
+                return '/images/like_logo.png';
             } else {
-                return 'https://github.com/prymakD/MoviePocket/raw/4b60404ce52704d1c756c33139a4c58817bb4f6c/src/main/frontend/src/images/like_yellow.png';
+                return '/images/like_yellow.png';
             }
         } else {
             if (isHovered) {
-                return 'https://github.com/prymakD/MoviePocket/raw/4b60404ce52704d1c756c33139a4c58817bb4f6c/src/main/frontend/src/images/dislike_blue.png';
+                return '/images/dislike_blue.png';
             } else if (like === false) {
-                return 'https://github.com/prymakD/MoviePocket/raw/4b60404ce52704d1c756c33139a4c58817bb4f6c/src/main/frontend/src/images/dislike_logo.png';
+                return '/images/dislike_logo.png';
             } else {
-                return 'https://github.com/prymakD/MoviePocket/raw/4b60404ce52704d1c756c33139a4c58817bb4f6c/src/main/frontend/src/images/dislike_yellow.png';
+                return '/images/dislike_yellow.png';
             }
         }
     };

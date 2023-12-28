@@ -37,7 +37,9 @@ export const postReview = async (content, idMovie, title) => {
         const response = await axios.post(
             `${BASE_URL}/review/movie/set?${queryString.stringify(params)}`,
             data,
-            { withCredentials: true }
+            {
+                withCredentials: true,
+            }
         )
         return response.data
     } catch (err) {
