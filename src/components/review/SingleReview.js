@@ -1,32 +1,31 @@
-import React, {useContext, useEffect, useState} from 'react';
-import Userbar from "../navbar/Userbar";
+import React, {useContext} from 'react';
 import styles from "./SingleReview.module.css";
 import ReviewDeleteButton from "./ReviewDeleteButton";
-import {UsernameContext} from "../../App";
+import {UserContext} from "../../App";
 import PropTypes from "prop-types";
 import LikeReviewButton from "./LikeReviewButton";
-import {getReviewLike} from "../../api/server/ReviewAPI";
 import {Link} from "react-router-dom";
 
 const SingleReview = ({ review, updateReviews, className }) => {
-    const username = useContext(UsernameContext);
+    const user = useContext(UserContext);
+
+    const BASE_URL= process.env.REACT_APP_BASE_URL;
+
 
     return (
-        <div className={!className ? styles.singleReview : className} key={review.id}>
-            <Link to ={`/user/${review.username}`}>
+        <div className={styles.singleReview} key={review.id}>
+            <Link to ={`/user/${review.user.username}`}>
                 <img
-                    src="https://github.com/prymakD/MoviePocket/raw/d36f4f403ed1c15c50b097c93056bbabad50aa87/src/main/frontend/src/images/user.png"
+                    src={`${BASE_URL}/images/${review.user.avatar}`}
                     alt='USER'
                     style={{
-                        display: "flex",
-                        width: "5vh",
-                        height: "5vh",
+                        width: "80px",
                     }}
                 />
             </Link>
-            <div className={!className ? styles.reviewContent : className}>
+            <div className={styles.reviewContent}>
                 <h>
-                    Review by <strong className={!className ? styles.logoText : className}>{review.username}</strong>
+                    Review by <strong className={styles.logoText}>{review.user.username}</strong>
                     <p className="blue-text">Created:
                         <span
                         className="yellow-text">{review.dataCreated ? new Date(review.dataCreated).toLocaleDateString() : '0'}
@@ -38,7 +37,9 @@ const SingleReview = ({ review, updateReviews, className }) => {
             </div>
             <div className={styles.RightContainer}>
                 <div className={styles.RightTopContainer}>
-                    {username === review.username
+                    {user
+                        &&
+                        user.username === review.user.username
                         &&
                         <ReviewDeleteButton
                             idReview={review.id}

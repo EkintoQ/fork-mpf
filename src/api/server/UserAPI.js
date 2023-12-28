@@ -23,7 +23,7 @@ export const getUser = async (username) => {
 }
 
 // getUsernameByAuth
-export const getUsernameByAuth = async () => {
+export const getUserDtoByAuth = async () => {
 
     const options = {
         withCredentials: true
@@ -31,7 +31,7 @@ export const getUsernameByAuth = async () => {
 
     try {
         const response = await axios.get(
-            `${BASE_URL}/user/getUsernameAut`,
+            `${BASE_URL}/user/edit/getUserDto`,
             options
         );
         return response.data;

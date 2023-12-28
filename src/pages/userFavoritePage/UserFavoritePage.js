@@ -6,17 +6,17 @@ import WatchMovieButton from "../../components/buttons/WatchMovieButton";
 import FavoriteMovieButton from "../../components/buttons/FavoriteMovieButton";
 import ToWatchMovieButton from "../../components/buttons/ToWatchMovieButton";
 import "./UserFavoritePage.css";
-import {UsernameContext} from "../../App";
+import {UserContext} from "../../App";
 import {getAllFavoriteMovie} from "../../api/server/FavoriteMovieAPI";
 
 const UserFavoritePage = () => {
-    const myUsername = useContext(UsernameContext);
+    const user = useContext(UserContext);
     const {username} = useParams()
 
     const [favoriteList, setFavoriteList] = useState([])
 
     let check = false
-    if (myUsername === username) {
+    if (user.username === username) {
         check = true
     }
 

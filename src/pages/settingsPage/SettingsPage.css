@@ -57,9 +57,10 @@
 .button-update {
     border: 2px solid var(--primary-yellow);
     background-color: transparent;
+    color: var(--primary-red);
     width: 6vh;
     height: 3vh;
-    font-size: 12px;
+    font-size: 14px;
     border-radius: 1vh;
     display: flex;
     justify-content: center;

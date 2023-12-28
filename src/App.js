@@ -10,7 +10,7 @@ import FilmsBrowsingPage from "./pages/filmsBrowsingPage/FilmsBrowsingPage";
 import LoginPage from "./pages/loginPage/LoginPage";
 import LostPasswordPage from "./pages/lostPasswordPage/LostPasswordPage"
 import {createContext, useEffect, useState} from "react";
-import {checkAuth, getUsernameByAuth} from "./api/server/UserAPI";
+import {checkAuth, getUserDtoByAuth, getUsernameByAuth} from "./api/server/UserAPI";
 import UserPage from "./pages/userPage/UserPage";
 import UserWatchedPage from "./pages/userWatchedPage/UserWatchedPage";
 import UserFavoritePage from "./pages/userFavoritePage/UserFavoritePage";
@@ -25,16 +25,16 @@ import MovieBrowsingListPage from "./pages/movieBrowsingListPage/MovieBrowsingLi
 import {ActorPage} from "./pages/actorPage/ActorPage";
 
 export const AuthContext = createContext(null)
-export const UsernameContext = createContext(null)
+export const UserContext = createContext(null)
 const App = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(null);
-    const [username, setUsername] = useState(null);
+    const [user, setUser] = useState([]);
 
     const authenticate = async () => {
         const isAuthenticated = await checkAuth();
         setIsLoggedIn(isAuthenticated);
-        const name = await getUsernameByAuth();
-        setUsername(name);
+        const user = await getUserDtoByAuth();
+        setUser(user);
     };
 
     useEffect(() => {
@@ -49,7 +49,7 @@ const App = () => {
     return (
         <div className="App">
             <AuthContext.Provider value={isLoggedIn}>
-                <UsernameContext.Provider value={username}>
+                <UserContext.Provider value={user}>
                     <Routes>
                         <Route path='/' element={<Layout isLogged={isLoggedIn}/>}>
                             <Route index element={<Home/>}></Route>
@@ -132,7 +132,7 @@ const App = () => {
                             />
                         </Route>
                     </Routes>
-                </UsernameContext.Provider>
+                </UserContext.Provider>
             </AuthContext.Provider>
             <ToastContainer/>
         </div>

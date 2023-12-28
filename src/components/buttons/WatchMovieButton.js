@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './WatchMovieButton.module.css';
 import {getWatchedMovie, postWatchedMovie} from "../../api/server/WatchedMovieAPI";
 import {AuthContext} from "../../App";
+import {Tooltip} from "@mui/material";
 
 const WatchMovieButton = ({ idMovie, className }) => {
     const [watched, setWatched] = useState(false);
@@ -59,14 +60,16 @@ const WatchMovieButton = ({ idMovie, className }) => {
     };
 
     return (
-        <img
-            src={getWatchedImage()}
-            className={!className ? styles.default : className}
-            alt="watched"
-            onClick={handleClick}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-        />
+        <Tooltip title="watched" arrow>
+            <img
+                src={getWatchedImage()}
+                className={!className ? styles.default : className}
+                alt="watched"
+                onClick={handleClick}
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+            />
+        </Tooltip>
     );
 };
 

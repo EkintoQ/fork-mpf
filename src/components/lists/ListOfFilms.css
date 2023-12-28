@@ -1,7 +1,7 @@
 .films-browser-list {
     display: flex;
     justify-content: center;
-    align-items: start;
+    align-items: flex-start;
     flex-wrap: wrap;
     flex-direction: row;
     margin-bottom: 2vh;

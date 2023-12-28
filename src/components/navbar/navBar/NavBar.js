@@ -2,13 +2,13 @@ import './NavBar.css'
 import NavList from "../navList/NavList";
 import LogoBar from "../logoBar/LogoBar";
 import {useContext} from "react";
-import {AuthContext, UsernameContext} from "../../../App";
-import Userbar from "../Userbar";
+import {AuthContext, UserContext} from "../../../App";
+import Userbar from "../userBarComponent/Userbar";
 import NavBrandComponent from "../navBrand/NavBrandComponent";
 
 const NavBar = () => {
     const isLoggedIn = useContext(AuthContext);
-    const username = useContext(UsernameContext);
+    const user = useContext(UserContext);
     return (
         <nav className="Navbar">
             <div className="NavRow">
@@ -24,7 +24,7 @@ const NavBar = () => {
                     }
                     {isLoggedIn
                         &&
-                        <div className="Username">{username}</div>
+                        <div className="Username">{user.username}</div>
                     }
                 </div>
             </div>

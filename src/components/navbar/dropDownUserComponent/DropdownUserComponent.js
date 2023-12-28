@@ -1,15 +1,15 @@
 import {Link} from "react-router-dom";
 import React, {useContext} from "react";
 import "./DropdownUserComponent.css"
-import {UsernameContext} from "../../App";
-import LogoutComponent from "./LogoutComponent";
+import {UserContext} from "../../../App";
+import LogoutComponent from "../LogoutComponent";
 
 const DropdownUserComponent = () => {
-    const username = useContext(UsernameContext)
+    const user = useContext(UserContext)
 
     return(
         <div className="dropdown-content">
-            <Link to={`/user/${username}`}>My page</Link>
+            <Link to={`/user/${user.username}`}>My page</Link>
             <Link to={"/settings"}>Settings</Link>
             <LogoutComponent/>
         </div>
