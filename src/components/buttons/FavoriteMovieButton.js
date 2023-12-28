@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styles from './FavoriteMovieButton.module.css';
 import {getFavoriteMovie, postFavoriteMovie} from '../../api/server/FavoriteMovieAPI';
 import {AuthContext} from "../../App";
+import {Tooltip} from "@mui/material";
 
 const FavoriteMovieButton = ({ idMovie, className }) => {
     const isLoggedIn = useContext(AuthContext);
@@ -43,12 +44,14 @@ const FavoriteMovieButton = ({ idMovie, className }) => {
     }, [idMovie]);
 
     return (
-        <img
-            src={getFavoriteImage()}
-            className={!className ? styles.default : className}
-            alt="favorite"
-            onClick={handleClick}
-        />
+        <Tooltip title="favorite" arrow>
+            <img
+                src={getFavoriteImage()}
+                className={!className ? styles.default : className}
+                alt="favorite"
+                onClick={handleClick}
+            />
+        </Tooltip>
     );
 };
 

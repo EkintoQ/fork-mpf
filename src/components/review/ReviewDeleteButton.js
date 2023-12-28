@@ -25,9 +25,9 @@ const ReviewDeleteButton = ({idReview, updateReviews, className}) => {
 
     const getReviewDeleteImage = () => {
         if (!isHovered) {
-            return "https://github.com/prymakD/MoviePocket/raw/c93b14bd6de8d7960d20287b6cd87ba2d3197dcd/src/main/frontend/src/images/trash_blue.png";
+            return "/images/trash_blue.png";
         } else {
-            return 'https://github.com/prymakD/MoviePocket/raw/c93b14bd6de8d7960d20287b6cd87ba2d3197dcd/src/main/frontend/src/images/trash_logo.png';
+            return '/images/trash_logo.png';
         }
     };
 

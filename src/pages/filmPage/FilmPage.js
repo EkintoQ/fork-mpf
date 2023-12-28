@@ -1,21 +1,23 @@
 import {useParams} from 'react-router-dom';
+import {AuthContext} from "../../App";
 import {useContext, useEffect, useState} from 'react';
 import ReactPlayer from 'react-player';
 import './FilmPage.css';
+import styles from "./FilmPage.module.css";
 import {getAllReview} from "../../api/server/ReviewAPI";
 import {getMovieBackDropImage, getMovieCredits, getMovieDetails, getMovieTrailer} from "../../api/tmdb/MovieAPI";
 import WatchMovieButton from "../../components/buttons/WatchMovieButton";
-import styles from "./FilmPage.module.css";
 import FavoriteMovieButton from "../../components/buttons/FavoriteMovieButton";
 import ToWatchMovieButton from "../../components/buttons/ToWatchMovieButton";
 import MoviePoster from "../../components/poster/MoviePoster";
 import CreateReviewForm from "../../components/review/CreateReviewForm";
-import {AuthContext} from "../../App";
 import SingleReview from "../../components/review/SingleReview";
 import ActorsSlider from "./components/ActorsSlider";
 
 const FilmPage = () => {
     const {id} = useParams();
+
+    const isLoggedIn = useContext(AuthContext);
 
     const [movie, setMovie] = useState([]);
     const [back, setBack] = useState([]);
@@ -23,20 +25,6 @@ const FilmPage = () => {
     const [reviews, setReviews] = useState([]);
     const [actors, setActors] = useState([]);
 
-    const isLoggedIn = useContext(AuthContext);
-
-    const path = 'https://www.themoviedb.org/t/p/w220_and_h330_face';
-
-
-    const getBack = async () => {
-        try {
-            const response = await getMovieBackDropImage(id);
-            console.log(response);
-            setBack(response);
-        } catch (error) {
-            console.log(error);
-        }
-    };
 
     const getReviews = async () => {
         try {
@@ -49,7 +37,7 @@ const FilmPage = () => {
 
     useEffect(() => {
         getMovieDetails(id).then(data => setMovie(data))
-        getBack().then()
+        getMovieBackDropImage(id).then(data => setBack(data))
         getMovieTrailer(id).then(data => setTrailer(data))
         getReviews().then()
         getMovieCredits(id).then(data => setActors(data.cast))
@@ -57,7 +45,8 @@ const FilmPage = () => {
 
     return (
         <div className="film-info-container">
-            <div className="film-header" style={{backgroundImage: `url(${path + back})`}}></div>
+            <div className="film-header" style={{backgroundImage: `url(${back})`}}></div>
+
             <div className="film-media-container">
                 <div className="movie-like-container">
                     <div className="like-container">
@@ -99,12 +88,14 @@ const FilmPage = () => {
                     />
                 )}
             </div>
+
             <div className="carousel-cast">
                 <h1>Cast</h1>
                 <ActorsSlider
                     actors={actors}
                     />
             </div>
+
             {isLoggedIn
                 &&
                 <CreateReviewForm
@@ -112,6 +103,7 @@ const FilmPage = () => {
                     updateReviews={getReviews}
                 />
             }
+
             <div className="review-container">
                 <h2>All Reviews</h2>
                 {reviews.map((review) => (
@@ -121,6 +113,7 @@ const FilmPage = () => {
                     />
                 ))}
             </div>
+
         </div>
     );
 };

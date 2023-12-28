@@ -4,10 +4,12 @@
     margin-top: 3vh;
     display: flex;
     padding: 2vh;
+    column-gap: 1vh;
 }
 
 .reviewContent {
     margin-left: 2vh;
+    width: 90%;
 }
 
 .logoText {
