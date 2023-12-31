@@ -79,15 +79,15 @@ const FilmPage = () => {
                 </div>
             </div>
 
-            <div className="player-wrapper">
-                {trailer && (
+            {trailer && (
+                <div className="player-wrapper">
                     <ReactPlayer
                         className="react-player"
                         url={trailer}
                         controls={true}
                     />
-                )}
-            </div>
+                </div>
+            )}
 
             <div className="carousel-cast">
                 <h1>Cast</h1>
@@ -98,10 +98,12 @@ const FilmPage = () => {
 
             {isLoggedIn
                 &&
-                <CreateReviewForm
-                    movieId={movie.id}
-                    updateReviews={getReviews}
-                />
+                <div className="review-create-container">
+                    <CreateReviewForm
+                        movieId={movie.id}
+                        updateReviews={getReviews}
+                    />
+                </div>
             }
 
             <div className="review-container">

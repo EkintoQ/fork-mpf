@@ -110,7 +110,7 @@ export const postNewUsername = async (username) => {
 
     try {
         const response = await axios.post(
-            `${BASE_URL}wwww/user/edit/newUsername`,
+            `${BASE_URL}/user/edit/newUsername`,
             queryString.stringify(params),
             { withCredentials: true },
         );

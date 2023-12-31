@@ -1,14 +1,15 @@
 .singleReview {
     border: 2px solid var(--primary-yellow);
     border-radius: 5vh;
-    margin-top: 3vh;
+    margin: 1vh;
     display: flex;
     padding: 2vh;
     column-gap: 1vh;
 }
 
 .reviewContent {
-    margin-left: 2vh;
+    margin: 1vh;
+    padding: 1vh;
     width: 90%;
 }
 
