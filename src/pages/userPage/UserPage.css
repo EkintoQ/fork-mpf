@@ -29,11 +29,13 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    margin-top: 10vh;
+    margin: 5vh;
+    padding: 5vh;
 }
 
 .text-info-container {
-    margin-left: 10vh;
+    margin: 1vh;
+    padding: 1vh;
 }
 
 
@@ -41,11 +43,8 @@
     color: var(--primary-red);
 }
 
-.user-page-container {
-
-}
-
 .blue-text {
+    margin: 1vh;
     color: var(--primary-blue);
 }
 

@@ -4,6 +4,7 @@ import {getUser} from "../../api/server/UserAPI";
 import {getRandomMovie} from "../../api/tmdb/MovieAPI";
 import './UserPage.css';
 
+const TMDB_PICTURE_BACK = process.env.REACT_APP_TMDB_PICTURE_BACK
 
 const UserPage = () => {
     const {username} = useParams();
@@ -11,27 +12,9 @@ const UserPage = () => {
     const [user, setUser] = useState();
     const [backgroundImage, setBackgroundImage] = useState('');
 
-    const getUserInfo = async () => {
-        try {
-            const response = await getUser(username);
-            setUser(response);
-        } catch (error) {
-            console.log(error);
-        }
-    };
-
-    const getRandomMovieImage = async () => {
-        try {
-            const response = await getRandomMovie();
-            setBackgroundImage(`https://image.tmdb.org/t/p/original${response.backdrop_path}`);
-        } catch (error) {
-            console.log(error);
-        }
-    };
-
     useEffect(() => {
-        getUserInfo().then()
-        getRandomMovieImage().then()
+        getUser(username).then(data => setUser(data))
+        getRandomMovie().then(data => setBackgroundImage(`${TMDB_PICTURE_BACK}${data.backdrop_path}`))
     }, [])
 
     if (!user) {
