@@ -6,11 +6,10 @@ import PropTypes from "prop-types";
 import LikeReviewButton from "./LikeReviewButton";
 import {Link} from "react-router-dom";
 
+const BASE_URL= process.env.REACT_APP_BASE_URL;
+
 const SingleReview = ({ review, updateReviews, className }) => {
     const user = useContext(UserContext);
-
-    const BASE_URL= process.env.REACT_APP_BASE_URL;
-
 
     return (
         <div className={styles.singleReview} key={review.id}>

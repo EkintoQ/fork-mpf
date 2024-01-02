@@ -59,15 +59,32 @@ export const getFavoriteCountMovie = async (idMovie) => {
 }
 
 // Get all movies user's favorite list
-export const getAllFavoriteMovie = async () => {
+export const getAllLikedMovie = async (value) => {
 
     const options = {
         withCredentials: true
     }
 
+    let endpoint;
+
+    switch (value) {
+        case 'liked':
+            endpoint = '/movies/favorite/all';
+            break;
+        case 'watched':
+            endpoint = '/movies/watched/allByUser';
+            break;
+        case 'toWatch':
+            endpoint = '/movies/towatch/all';
+            break;
+        // Добавьте другие варианты, если необходимо
+        default:
+            endpoint = '/movies/favorite/all';
+    }
+
     try {
         const response = await axios.get(
-            `${BASE_URL}/movies/favorite/all`,
+            `${BASE_URL}${endpoint}`,
             options
         );
         return response.data;

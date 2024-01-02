@@ -56,21 +56,3 @@ export const getWatchedCountMovie = async (idMovie) => {
         console.log(err);
     }
 }
-
-// Get all movies watched by the user
-export const getWatchedAllByUser = async () => {
-
-    const options = {
-        withCredentials: true
-    }
-
-    try {
-        const response = await axios.get(
-            `${BASE_URL}/movies/watched/allByUser`,
-            options
-        );
-        return response.data;
-    } catch (err) {
-        console.log(err);
-    }
-}

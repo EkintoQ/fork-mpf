@@ -1,0 +1,58 @@
+.user-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    flex-direction: row;
+    max-width: 100%;
+    max-height: 100%;
+    font-family: var(--custom-font);
+}
+
+.user-bio-info{
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    max-width: 80%;
+    color: var(--primary-blue);
+}
+
+.user-row-info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.user-micro-info{
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+}
+
+.user-micro-stats{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    color: var(--primary-yellow);
+    background-color: var(--secondary-black);
+    border-radius: 3vh;
+    padding: 1vh;
+    font-family: var(--custom-font);
+}
+
+.MuiListItemText-secondary {
+    color: var(--secondary-red) !important;
+}
+
+.user-bio-text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--secondary-white);
+    font-size: 18px;
+    margin-top: 1vh;
+    font-family: var(--custom-font);
+}

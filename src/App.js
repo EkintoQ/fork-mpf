@@ -10,18 +10,14 @@ import FilmsBrowsingPage from "./pages/filmsBrowsingPage/FilmsBrowsingPage";
 import LoginPage from "./pages/loginPage/LoginPage";
 import LostPasswordPage from "./pages/lostPasswordPage/LostPasswordPage"
 import {createContext, useEffect, useState} from "react";
-import {checkAuth, getUserDtoByAuth, getUsernameByAuth} from "./api/server/UserAPI";
+import {checkAuth, getUserDtoByAuth} from "./api/server/UserAPI";
 import UserPage from "./pages/userPage/UserPage";
-import UserWatchedPage from "./pages/userWatchedPage/UserWatchedPage";
-import UserFavoritePage from "./pages/userFavoritePage/UserFavoritePage";
 import NewPasswordPage from "./pages/newPasswordPage/NewPasswordPage";
 import ActivateUserPage from "./pages/activateUserPage/ActivateUserPage";
 import AboutUsPage from "./pages/aboutUsPage/AboutUsPage";
 
 
 import {ToastContainer} from "react-bootstrap";
-import UserToWatchPage from "./pages/userToWatchPage/UserToWatchPage";
-import MovieBrowsingListPage from "./pages/movieBrowsingListPage/MovieBrowsingListPage";
 import {ActorPage} from "./pages/actorPage/ActorPage";
 
 export const AuthContext = createContext(null)
@@ -117,18 +113,6 @@ const App = () => {
                             <Route
                                 path='user/:username'
                                 element={<UserPage/>}
-                            />
-                            <Route
-                                path='user/:username/favorite'
-                                element={<UserFavoritePage/>}
-                            />
-                            <Route
-                                path='user/:username/watched'
-                                element={<UserWatchedPage/>}
-                            />
-                            <Route
-                                path='user/:username/towatch'
-                                element={<UserToWatchPage/>}
                             />
                         </Route>
                     </Routes>

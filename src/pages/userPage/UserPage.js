@@ -1,8 +1,10 @@
-import {Link, useParams} from "react-router-dom";
-import {useEffect, useState} from "react";
+import {useParams} from "react-router-dom";
+import React, {useEffect, useState} from "react";
 import {getUser} from "../../api/server/UserAPI";
 import {getRandomMovie} from "../../api/tmdb/MovieAPI";
 import './UserPage.css';
+import UserHeader from "./components/UserHeader";
+import UserTabs from "./components/UserTabs";
 
 const TMDB_PICTURE_BACK = process.env.REACT_APP_TMDB_PICTURE_BACK
 
@@ -23,30 +25,14 @@ const UserPage = () => {
     }
 
     return (
-        <div className="user-page-container"
-             style={{backgroundImage: `url(${backgroundImage})`}}>
+        <div className="user-page-container">
+            <div className="user-page-back"
+                 style={{backgroundImage: `url(${backgroundImage})`,
+                 }}>
+            </div>
             <div className="user-info-container">
-                <div className="text-info-container">
-                    <div className="username-container">
-                        <h1>{user.username}</h1>
-                    </div>
-                    <p className="blue-text">Created: <span
-                        className="yellow-text">{user.created ? new Date(user.created).toLocaleDateString() : '0'}</span>
-                    </p>
-                    <p className="blue-text">Bio: <span className="yellow-text">{user.bio || '0'}</span></p>
-                    <p className="blue-text"><Link to ={`/user/${username}/favorite`}>Total Liked Movies:</Link> <span
-                        className="yellow-text">{user.likeMovie ? user.likeMovie.length : 0}</span></p>
-                    <p className="blue-text"><Link to ={`/user/${username}/watched`}>Total Watched Movies:</Link> <span
-                        className="yellow-text">{user.watchedMovie ? user.watchedMovie.length : 0}</span></p>
-                    <p className="blue-text"><Link to ={`/user/${username}/towatch`}>Total ToWatch Movies:</Link> <span
-                        className="yellow-text">{user.toWatchMovie ? user.toWatchMovie.length : 0}</span></p>
-                    <p className="blue-text">Total Disliked Movies: <span
-                        className="yellow-text">{user.dislikeMovie ? user.dislikeMovie.length : 0}</span></p>
-                    <p className="blue-text">Total Rating: <span
-                        className="yellow-text">{user.ratingMovie ? user.ratingMovie.length : 0}</span></p>
-                    <p className="blue-text">Total Reviews: <span
-                        className="yellow-text">{user.reviewList ? user.reviewList.length : 0}</span></p>
-                </div>
+                <UserHeader user={user}/>
+                <UserTabs user={user}/>
             </div>
         </div>
     );

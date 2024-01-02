@@ -1,0 +1,29 @@
+.user-tabs{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--primary-blue);
+    width: 100%;
+    margin-top: 2vh;
+    flex-direction: column;
+}
+
+.user-tab-container{
+    background-color: var(--secondary-black);
+}
+
+.MuiTab-root{
+    color: var(--primary-yellow) !important;
+}
+
+.MuiTabs-indicator{
+    background-color: var(--secondary-red) !important;
+}
+
+.MuiTab-textColorSecondary{
+    color: var(--secondary-red) !important;
+}
+
+.Mui-selected{
+    color: var(--secondary-red) !important;
+}

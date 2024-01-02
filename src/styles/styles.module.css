@@ -11,4 +11,5 @@
     --secondary-green-hover: #45a049;
     --secondary-red: #D90368;
     --secondary-black: #080A0C;
+    --secondary-black-transparent: rgba(8, 10, 12, 0.7);
 }
