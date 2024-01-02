@@ -24,13 +24,43 @@ const AboutUsPage = () => {
                     connected to it.
                 </p>
                 <p>
-                    People will be able to rate a video and leave a short review about it.
+                    People will be able to rate a movie and leave a short review about it.
                     The target audience for our website will be people who want to connect
                     with a community around their favorite movies from different genres
                     and have a tool that will help organize their own movie collection in
                     an easy way.
                 </p>
             </div>
+            <h2 className="about-head">First steps:</h2>
+            <h4 className="about-head1">Registration</h4>
+            <div className="about-text1">
+                <p>Create your account and join the family of MoviePocket. Don't forget to Confirm your email!:)</p>
+            </div>
+            <img src="/images/RegisterPage.png" alt="Registration" className="section-image"/>
+
+            <h4 className="about-head1">Search for good...</h4>
+            <div className="about-text1">
+                <p>Discover the huge library of movies using search bar.</p>
+            </div>
+            <img src="/images/SearchPart.png" alt="Search" className="section-image"/>
+
+            <h4 className="about-head1">Assessment</h4>
+            <div className="about-text1">
+                <p>Add your movies to favorites, or include them to your watchlist to don't forget about them.</p>
+            </div>
+            <img src="/images/Assessment.png" alt="Assessment" className="section-image"/>
+
+            <div className="about-text1">
+                <p>And always keep track on the its amount.</p>
+            </div>
+            <img src="/images/Statistics.png" alt="Statistics" className="section-image"/>
+
+            <h4 className="about-head1">Reviews</h4>
+            <div className="about-text1">
+                <p>You can share your opinion with others by leaving the public reviews for the movies.</p>
+            </div>
+            <img src="/images/Reviews.png" alt="Reviews" className="section-image"/>
+            <h1 className="about-head"> </h1>
         </div>
     );
 };
