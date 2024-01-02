@@ -2,23 +2,6 @@ import axios from "axios";
 import queryString from "query-string";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL
-// allUserToWatchMovies
-export const getAllToWatch = async () => {
-
-    const options = {
-        withCredentials: true
-    }
-
-    try {
-        const response = await axios.get(
-            `${BASE_URL}/movies/towatch/all`,
-            options
-        );
-        return response.data;
-    } catch (err) {
-        console.log(err);
-    }
-}
 
 // getAllCountToWatchByIdMovie
 export const getAllCountToWatch = async (idMovie) => {

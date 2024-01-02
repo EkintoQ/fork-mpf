@@ -1,0 +1,24 @@
+.films-browser-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    flex-direction: row;
+}
+
+.film-browser-card {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.film-browser-poster {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.film-poster-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 6px;
+}
