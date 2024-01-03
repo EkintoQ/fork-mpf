@@ -2,6 +2,8 @@
     display: flex;
     width: 5vh;
     height: 5vh;
+    justify-content: center;
+    align-items: center;
 }
 
 .User:hover{
@@ -9,4 +11,30 @@
 }
 
 .User > img{
+}
+
+.list-box{
+    width: 15vh !important;
+}
+
+.list-link{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1vh;
+    color: var(--secondary-white);
+    background-color: var(--primary-black);
+}
+.list-link:hover{
+    color: var(--secondary-white);
+    background-color: var(--secondary-black-transparent);
+}
+
+.MuiBox-root{
+    background-color: var(--secondary-black-transparent);
+    height: 100%;
+}
+
+.menu-icon{
+    color: var(--secondary-red) !important;
 }

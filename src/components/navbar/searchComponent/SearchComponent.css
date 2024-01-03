@@ -2,20 +2,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
-    width: 30vh;
+    margin-top: 0.5vh !important;
+    width: 15vh;
+    height: 3vh;
+    background-color: var(--secondary-black) !important;
+    color: var(--secondary-red) !important;
+    border-color: var(--secondary-red) !important;
 }
-
-.Round {
-    width: 100%;
-    border-radius: 10px;
-    padding: 5px 15px 5px 30px;
-    background-color: var(--secondary-white);
-    font-family: var(--custom-font);
-}
-
-.Submit {
-    position: absolute;
-    left: 1vh;
-    width: 2vh;
+.Search:hover{
+    border-color: var(--secondary-red) !important;
+    box-shadow: var(--secondary-black-transparent) !important;
 }

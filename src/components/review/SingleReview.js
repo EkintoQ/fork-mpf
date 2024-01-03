@@ -14,20 +14,30 @@ const SingleReview = ({ review, updateReviews, className }) => {
     return (
         <div className={styles.singleReview} key={review.id}>
             <Link to ={`/user/${review.user.username}`}>
-                <img
-                    src={`${BASE_URL}/images/${review.user.avatar}`}
-                    alt='USER'
-                    style={{
-                        width: "80px",
-                    }}
-                />
-            </Link>
-            <div className={styles.reviewContent}>
+                {review.user.avatar ?
+                    <img
+                        src={`${BASE_URL}/images/${review.user.avatar}`}
+                        alt='USER'
+                        style={{
+                            width: "80px",
+                        }}
+                    />
+                    :
+                    <img
+                        src={`/images/user.png`}
+                        alt='USER'
+                        style={{
+                            width: "80px",
+                        }}
+                    />
+                }
+                    </Link>
+                    <div className={styles.reviewContent}>
                 <h>
                     Review by <strong className={styles.logoText}>{review.user.username}</strong>
                     <p className="blue-text">Created:
                         <span
-                        className="yellow-text">{review.dataCreated ? new Date(review.dataCreated).toLocaleDateString() : '0'}
+                            className="yellow-text">{review.dataCreated ? new Date(review.dataCreated).toLocaleDateString() : '0'}
                         </span>
                     </p>
                 </h>

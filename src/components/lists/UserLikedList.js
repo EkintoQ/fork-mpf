@@ -6,7 +6,7 @@ import WatchMovieButton from "../buttons/WatchMovieButton";
 import FavoriteMovieButton from "../buttons/FavoriteMovieButton";
 import ToWatchMovieButton from "../buttons/ToWatchMovieButton";
 import "./UserLikedList.css";
-import {getAllLikedMovie} from "../../api/server/FavoriteMovieAPI";
+import {getTabList} from "../../api/server/UserTabsService";
 
 const UserLikedList = ({user, value}) => {
     const {username} = useParams()
@@ -19,8 +19,9 @@ const UserLikedList = ({user, value}) => {
     }
 
     useEffect(() => {
-        getAllLikedMovie(value).then(data => setLikedList(data))
-    }, [username, value])
+        console.log(value);
+        getTabList(value={value}).then(data => setLikedList(data))
+    }, [value])
 
     return (
         <div className="films-browser-list">

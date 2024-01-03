@@ -3,7 +3,6 @@ import './UserTabs.css';
 import {Box, Tab, Tabs} from "@mui/material";
 import UserLikedList from "../../../components/lists/UserLikedList";
 
-
 const UserTabs = ({user}) => {
 
     const [value, setValue] = useState('liked');
@@ -14,7 +13,9 @@ const UserTabs = ({user}) => {
 
     return (
         <div className="user-tabs">
-            <Box sx={{ width: '100%', margin: '1vh' }}>
+            <Box
+                className="box-tabs"
+                sx={{ width: '100%', margin: '1vh', bgColor: 'blue' }}>
                 <Tabs
                     value={value}
                     onChange={handleChange}

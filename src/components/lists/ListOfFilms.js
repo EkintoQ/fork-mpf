@@ -1,42 +1,54 @@
-import React from "react";
-import {Link} from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {Link, useParams} from "react-router-dom";
 import "./ListOfFilms.css";
 import WatchMovieButton from "../buttons/WatchMovieButton";
 import FavoriteMovieButton from "../buttons/FavoriteMovieButton";
 import ToWatchMovieButton from "../buttons/ToWatchMovieButton";
-import Poster from "../poster/Poster";
+import {getTabList} from "../../api/server/UserTabsService";
+import styles from "../../pages/filmsBrowsingPage/FilmsBrowsingPage.module.css";
+import MoviePoster from "../poster/MoviePoster";
 
-const ListOfFilms = ({movies}) => {
+const ListOfFilms = ({user, value}) => {
+    const {username} = useParams()
 
-    const TMDB_PIC = process.env.REACT_APP_TMDB_PICTURE
+    const [lists, setLists] = useState([])
+
+    let check = false
+    if (user.username === username) {
+        check = true
+        }
+
+    useEffect(() => {
+        getTabList(value).then(data => setLists(data))
+    }, [value])
 
     return (
-        <div className="films-browser-list">
-            {movies && movies.map(movie => (
-                <div className="film-browser-card" key={movie.id}>
-                    <div className="film-browser-poster">
-                        <Poster
-                            path={TMDB_PIC + movie.poster_path}
-                            link={`/film/${movie.id}`}
-                        />
+        <div className="lists-of-films">
+            {lists && lists.map(list => (
+                <div className="list-card" key={list.id}>
+                    <div className="list-poster">
+                        <MoviePoster
+                            movie={list}
+                            className={styles.browsingPoster}
+                            responsible={true}/>
                         <div className="film-poster-buttons">
                             <WatchMovieButton
-                                idMovie={movie.id}
-
+                                idMovie={list.id}
+                                className={styles.watched}
                             />
                             <FavoriteMovieButton
-                                idMovie={movie.id}
-
+                                idMovie={list.id}
+                                className={styles.favorite}
                             />
                             <ToWatchMovieButton
-                                idMovie={movie.id}
-
+                                idMovie={list.id}
+                                className={styles.toWatch}
                             />
                         </div>
                     </div>
-                    <div className="films-browser-info">
-                        <Link to={`/film/${movie.id}`} className="films-browser-title">
-                            {movie.title}
+                    <div className="list-info">
+                        <Link to={`/film/${list.id}`} className="films-browser-title">
+                            {list.title}
                         </Link>
                     </div>
                 </div>

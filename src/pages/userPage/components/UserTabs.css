@@ -8,8 +8,13 @@
     flex-direction: column;
 }
 
+.box-tabs{
+    background-color: transparent !important;
+}
+
 .user-tab-container{
-    background-color: var(--secondary-black);
+    background-color: var(--secondary-blue);
+    border-radius: 3vh;
 }
 
 .MuiTab-root{

@@ -1,5 +1,5 @@
 import React from 'react';
-import {postLogout} from "../../api/server/AuthenticationAPI";
+import {postLogout} from "../../../api/server/AuthenticationAPI";
 import "./LogoutComponent.css"
 
 const LogoutComponent = () => {
@@ -14,7 +14,7 @@ const LogoutComponent = () => {
     };
 
     return (
-        <span className="LogOut" onClick={handleLogout}>LogOut</span>
+        <button className="LogOut" onClick={handleLogout}>LogOut</button>
     );
 };
 

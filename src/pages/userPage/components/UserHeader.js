@@ -1,10 +1,17 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import './UserHeader.css';
 import {Avatar, List, ListItemText, Tooltip} from "@mui/material";
+import {getAllUserReviews} from "../../../api/server/ReviewAPI";
 
 const BASE_URL= process.env.REACT_APP_BASE_URL;
 
 const UserHeader = ({user}) => {
+
+    const [reviews, setReviews] = useState();
+
+    useEffect(() => {
+        getAllUserReviews().then(data => setReviews(data))
+    }, [])
 
     return (
         <div className="user-header">
@@ -60,9 +67,9 @@ const UserHeader = ({user}) => {
                     <hr />
                     <ListItemText primary="To watch movies" secondary={user.toWatchMovie ? user.toWatchMovie.length : 0} />
                     <hr />
-                    <ListItemText primary="Total rating" secondary={0} />
+                    <ListItemText primary="Total rating" secondary={user.ratingMovie ? user.ratingMovie.length : 0} />
                     <hr />
-                    <ListItemText primary="Total reviews" secondary={0} />
+                    <ListItemText primary="Total reviews" secondary={reviews ? reviews : 0} />
                 </List>
             </div>
         </div>

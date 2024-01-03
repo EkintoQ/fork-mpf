@@ -1,7 +1,7 @@
 .user-header{
     display: flex;
     justify-content: space-between;
-    align-items: start;
+    align-items: flex-start;
     flex-direction: row;
     max-width: 100%;
     max-height: 100%;
@@ -11,7 +11,7 @@
 .user-bio-info{
     display: flex;
     justify-content: center;
-    align-items: start;
+    align-items: flex-start;
     flex-direction: column;
     max-width: 80%;
     color: var(--primary-blue);
@@ -26,8 +26,8 @@
 
 .user-micro-info{
     display: flex;
-    justify-content: start;
-    align-items: start;
+    justify-content: flex-start;
+    align-items: flex-start;
     flex-direction: column;
 }
 
@@ -37,7 +37,7 @@
     align-items: center;
     flex-direction: row;
     color: var(--primary-yellow);
-    background-color: var(--secondary-black);
+    background-color: var(--secondary-blue);
     border-radius: 3vh;
     padding: 1vh;
     font-family: var(--custom-font);
