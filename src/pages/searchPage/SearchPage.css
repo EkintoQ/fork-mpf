@@ -56,4 +56,6 @@
 
 .film-title {
     color: var(--primary-red);
+    width: 220px;
+    max-block-size: 2vh;
 }
