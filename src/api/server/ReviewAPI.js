@@ -142,8 +142,7 @@ export const getAllReview = async (idMovie) => {
     }
 }
 
-// getAllReviewByUser
-export const getAllReviewByUser = async () => {
+export const getAllUserReviews = async () => {
 
     const options = {
         withCredentials: true
@@ -151,7 +150,7 @@ export const getAllReviewByUser = async () => {
 
     try {
         const response = await axios.get(
-            `${BASE_URL}/movies/review/getAllMy`,
+            `${BASE_URL}/review/count/user`,
             options
         );
         return response.data;

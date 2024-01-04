@@ -1,37 +1,23 @@
 import './SearchComponent.css'
-import {useState} from "react";
-import DropdownSearchComponent from "../dropDownSearchComponent/DropdownSearchComponent";
+import {Button} from "@mui/material";
+import SearchIcon from '@mui/icons-material/Search';
+import {Link} from "react-router-dom";
+
 
 const SearchComponent = () => {
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-    const [searchText, setSearchText] = useState('');
-
-    const handleDropdownToggle = () => {
-        setIsDropdownOpen(!isDropdownOpen);
-    };
-
-    const handleSearchTextChange = (event) => {
-        setSearchText(event.target.value);
-    };
-
     return (
-        <div className="Search">
-            <input type="text"
-                   className="Round"
-                   value={searchText}
-                   onChange={handleSearchTextChange}
-            />
-            <input type="image"
-                   className="Submit"
-                   src="/images/search.png"
-                   onClick={handleDropdownToggle}
-                   alt="+"
-            />
-            {isDropdownOpen
-                &&
-                <DropdownSearchComponent
-                query={searchText}/>
-            }
+        <div>
+            <Link to="/search">
+                <Button className="Search"
+                        color="primary"
+                        size="large"
+                        variant="outlined"
+                        startIcon={<SearchIcon/>}
+                        link="/search"
+                >
+                    Search...
+                </Button>
+            </Link>
         </div>
     )
 }

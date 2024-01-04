@@ -5,6 +5,7 @@ import {useContext} from "react";
 import {AuthContext, UserContext} from "../../../App";
 import Userbar from "../userBarComponent/Userbar";
 import NavBrandComponent from "../navBrand/NavBrandComponent";
+import SearchComponent from "../searchComponent/SearchComponent";
 
 const NavBar = () => {
     const isLoggedIn = useContext(AuthContext);
@@ -18,13 +19,14 @@ const NavBar = () => {
                 </div>
                 <NavList/>
                 <div className="RightContainer">
-                    {isLoggedIn
-                        &&
-                        <Userbar/>
-                    }
+                    <SearchComponent/>
                     {isLoggedIn
                         &&
                         <div className="Username">{user.username}</div>
+                    }
+                    {isLoggedIn
+                        &&
+                        <Userbar/>
                     }
                 </div>
             </div>

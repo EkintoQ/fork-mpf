@@ -1,15 +1,16 @@
 .NavList{
-    margin: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     column-gap: 3vh;
     font-family: var(--custom-font);
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 .NavListLink{
     color: var(--primary-red);
-    font-size: 18px;
+    font-size: 20px;
     transition: opacity 0.3s ease;
 }
 
