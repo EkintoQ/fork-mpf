@@ -19,6 +19,7 @@ import AboutUsPage from "./pages/aboutUsPage/AboutUsPage";
 
 import {ToastContainer} from "react-bootstrap";
 import {ActorPage} from "./pages/actorPage/ActorPage";
+import SearchPage from "./pages/searchPage/SearchPage";
 
 export const AuthContext = createContext(null)
 export const UserContext = createContext(null)
@@ -49,7 +50,6 @@ const App = () => {
                     <Routes>
                         <Route path='/' element={<Layout isLogged={isLoggedIn}/>}>
                             <Route index element={<Home/>}></Route>
-                            <Route path='person/:id' element={<ActorPage/>}></Route>
                             {/* For not logged in */}
                             <Route
                                 path='/registration'
@@ -113,6 +113,14 @@ const App = () => {
                             <Route
                                 path='user/:username'
                                 element={<UserPage/>}
+                            />
+                            <Route
+                                path='/search'
+                                element={<SearchPage/>}
+                            />
+                            <Route
+                                path='person/:id'
+                                element={<ActorPage/>}
                             />
                         </Route>
                     </Routes>

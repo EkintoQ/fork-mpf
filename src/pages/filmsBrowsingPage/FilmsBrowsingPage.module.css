@@ -40,6 +40,10 @@
 
 }
 
-.browsingPoster:hover {
-    border: 2px solid var(--secondary-green-hover);
+.browsingPoster{
+    height: 330px;
+    width: 220px;
 }
+
+.browsingPoster:hover {
+    border: 2px solid var(--secondary-green-hover);}
