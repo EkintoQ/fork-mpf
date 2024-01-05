@@ -20,6 +20,7 @@ import AboutUsPage from "./pages/aboutUsPage/AboutUsPage";
 import {ToastContainer} from "react-bootstrap";
 import {ActorPage} from "./pages/actorPage/ActorPage";
 import SearchPage from "./pages/searchPage/SearchPage";
+import ListCreatePage from "./pages/listCreatePage/ListCreatePage";
 
 export const AuthContext = createContext(null)
 export const UserContext = createContext(null)
@@ -71,11 +72,21 @@ const App = () => {
                             />
                             {/* For logged in */}
                             <Route
-                                path='/forgotPassword'
+                                path='/settings'
                                 element={
-                                    <LostPasswordPage/>
+                                    !isLoggedIn ?
+                                        (<Navigate to="/" replace/>)
+                                        :
+                                        (<SettingsPage/>)
                                 }
                             />
+                            <Route
+                                path='/list/new'
+                                element={
+                                    <ListCreatePage/>
+                                }
+                            />
+                            {/* For everyone */}
                             <Route
                                 path='/newPassword'
                                 element={
@@ -89,15 +100,11 @@ const App = () => {
                                 }
                             />
                             <Route
-                                path='/settings'
+                                path='/forgotPassword'
                                 element={
-                                    !isLoggedIn ?
-                                        (<Navigate to="/" replace/>)
-                                        :
-                                        (<SettingsPage/>)
+                                    <LostPasswordPage/>
                                 }
                             />
-                            {/* For everyone */}
                             <Route
                                 path='films/:currentPage'
                                 element={<FilmsBrowsingPage/>}
@@ -121,6 +128,12 @@ const App = () => {
                             <Route
                                 path='person/:id'
                                 element={<ActorPage/>}
+                            />
+                            <Route
+                                path='/lists/:username/:id'
+                                element={
+                                    <ListCreatePage/>
+                                }
                             />
                         </Route>
                     </Routes>

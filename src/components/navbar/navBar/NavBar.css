@@ -20,7 +20,7 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    column-gap: 2vh;
+    column-gap: 3vh;
 }
 
 .Username {

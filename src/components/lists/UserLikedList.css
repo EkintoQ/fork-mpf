@@ -1,8 +1,13 @@
 .films-browser-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 2vh;
     flex-direction: row;
+    background-color: var(--secondary-black-light);
+    padding: 2vh;
+    border: 2px solid var(--secondary-blue);
+    border-radius: 5vh;
+    width: 100%;
 }
 
 .film-browser-card {

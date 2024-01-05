@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import './UserTabs.css';
 import {Box, Tab, Tabs} from "@mui/material";
 import UserLikedList from "../../../components/lists/UserLikedList";
+import ListOfFilms from "../../../components/lists/ListOfFilms";
 
 const UserTabs = ({user}) => {
 
@@ -28,7 +29,12 @@ const UserTabs = ({user}) => {
                     <Tab value="lists" label="Lists" />
                 </Tabs>
             </Box>
-            <UserLikedList user={user} value={value} />
+            {value !== "lists"
+                ?
+                <UserLikedList user={user} value={value} />
+                :
+                <ListOfFilms user={user} value={value} />
+            }
         </div>
     );
 }
