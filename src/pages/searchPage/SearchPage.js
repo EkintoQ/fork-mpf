@@ -4,9 +4,10 @@ import {FormControl, InputLabel, MenuItem, Select, TextField} from "@mui/materia
 import { getMovieSearch } from '../../api/tmdb/MovieAPI';
 import MoviePoster from "../../components/poster/MoviePoster";
 import styles from "../filmsBrowsingPage/FilmsBrowsingPage.module.css";
+import {Link} from "react-router-dom";
 
 const SearchPage = () => {
-    const [option, setOption] = useState('');
+    const [option, setOption] = useState('films');
     const [query, setQuery] = useState('');
     const [searchResults, setSearchResults] = useState([]);
 
@@ -39,26 +40,32 @@ const SearchPage = () => {
                 </FormControl>
                 <TextField
                     className="search-field"
-                    label="Type here what you are looking for"
+                    label="Search field"
                     variant="outlined"
                     onChange={handleChangeSearch}
                 />
             </div>
-            <div className="search-answer-container">
-                {searchResults
-                    &&
-                    option === 'films'
-                    &&
-                    searchResults.map(movie => (
-                        <div className="film-search-poster">
-                            <MoviePoster
-                                movie={movie}
-                                className={styles.browsingPoster}
-                                responsible={true}/>
-                            <p className="film-title">{movie.title}</p>
-                        </div>
-                ))}
-            </div>
+            {query ?
+                <div className="search-answer-container">
+                    {searchResults
+                        &&
+                        option === 'films'
+                        &&
+                        searchResults.map(movie => (
+                            <div className="film-search-poster">
+                                <MoviePoster
+                                    movie={movie}
+                                    className={styles.browsingPoster}
+                                    responsible={true}/>
+                                <Link to={`/film/${movie.id}`} className="film-title">{movie.title}</Link>
+                            </div>
+                    ))}
+                </div>
+                :
+                <div className="no-search">
+                    Type something in search field...
+                </div>
+            }
         </div>
     );
 };

@@ -2,7 +2,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    color: var(--primary-blue);
     width: 100%;
     margin-top: 2vh;
     flex-direction: column;
@@ -13,8 +12,9 @@
 }
 
 .user-tab-container{
-    background-color: var(--secondary-blue);
+    background-color: var(--secondary-black-light);
     border-radius: 3vh;
+    border: 1px solid var(--secondary-blue) !important;
 }
 
 .MuiTab-root{

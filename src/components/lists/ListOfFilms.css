@@ -1,55 +1,40 @@
 .lists-of-films {
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
     flex-wrap: wrap;
-    flex-direction: row;
+    flex-direction: column;
     margin-bottom: 2vh;
+    background-color: var(--secondary-black-light);
+    border: 2px solid var(--secondary-blue);
+    border-radius: 5vh;
+    padding: 2vh;
+    width: 100%;
 }
 
-.film-browser-card {
+.list-card {
     display: flex;
-    justify-content: center;
     align-items: flex-start;
+    flex-direction: row;
+    column-gap: 5vh;
+    margin: 1vh;
 }
 
-.film-browser-poster {
+.list-poster {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    position: relative;
+    width: 220px;
 }
 
-.film-poster-buttons {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    background-color: var(--secondary-blue);
-    border-radius: 3vh;
-    margin: 0.5vh;
-    padding: 0.5vh 1vh;
-}
-
-.films-browser-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
+.list-button-create{
+    background-color: var(--secondary-green);
     font-family: var(--custom-font);
-    max-width: 20vh;
-    overflow: hidden;
-    white-space: nowrap;
+    width: 15vh;
+    border-radius: 5vh;
+    height: 5vh;
+    margin: 1vh;
+    padding: 1vh;
+    color: var(--secondary-black);
 }
-
-.films-browser-title {
-    color: var(--primary-yellow);
-    font-size: 24px;
-}
-
-.films-browser-title:hover {
-    color: var(--secondary-yellow);
-}
-
-.release-date{
-    color: var(--primary-blue);
+.list-button-create:hover{
+    background-color: var(--secondary-green-hover);
 }
