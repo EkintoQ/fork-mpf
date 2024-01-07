@@ -20,9 +20,6 @@ export const getTabList = async ({username, value}) => {
         case 'toWatch':
             endpoint = '/movies/towatch/all';
             break;
-        case 'lists':
-            endpoint = `/movies/list/user/all?username=${username}`;
-            break;
         default:
             endpoint = '/movies/favorite/all';
     }

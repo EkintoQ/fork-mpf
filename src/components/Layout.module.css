@@ -1,9 +1,10 @@
 .default {
-    background-color: #000000;
+    background-color: #080A0C;
+    font-family: var(--custom-font);
 }
 
 .Layout {
-
+    font-family: var(--custom-font);
     min-height: 100vh;
     background-color: #080A0C;
     z-index: -2;

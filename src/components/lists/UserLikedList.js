@@ -21,7 +21,6 @@ const UserLikedList = ({value}) => {
     }
 
     useEffect(() => {
-        console.log(value);
         getTabList(value={value}).then(data => setLikedList(data))
     }, [value])
 

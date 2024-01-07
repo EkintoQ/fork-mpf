@@ -14,15 +14,20 @@
     align-items: center;
     justify-content: center;
     margin-top: 3vh;
+    border: 1px solid var(--secondary-blue);
+    border-radius: 3vh;
+    background-color: var(--secondary-black-gray);
 }
 
 .search-form{
     background-color: var(--secondary-yellow) !important;
     border-radius: 1vh !important;
     width: 10vw !important;
+    height: 5vh;
 }
 
 .search-select{
+    height: 5vh;
     font-family: var(--custom-font) !important;
 }
 
@@ -40,22 +45,42 @@
 .search-answer-container{
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     flex-wrap: wrap;
     flex-direction: row;
     width: 75%;
+    background-color: var(--secondary-black-gray);
+    margin: 5vh;
+    border-radius: 10vh;
+    border: 1px solid var(--secondary-blue);
 }
 
 .film-search-poster {
+    border: 1px solid var(--secondary-blue);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 3%;
+    margin: 3vh;
 }
 
 .film-title {
-    color: var(--primary-red);
+    color: var(--primary-yellow);
     width: 220px;
-    max-block-size: 2vh;
+    font-family: var(--custom-font);
+    font-size: 20px;
+}
+.film-title:hover{
+    color: var(--secondary-yellow);
+}
+
+.no-search{
+    margin-top: 10vh;
+    width: 15vw;
+    color: var(--secondary-yellow);
+    background-color: var(--secondary-black-gray);
+    font-size: 20px;
+    border-radius: 5vh;
+    text-align: center;
+    font-family: var(--custom-font);
 }
