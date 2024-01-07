@@ -8,15 +8,10 @@ import {getTabList} from "../../api/server/UserTabsService";
 import styles from "../../pages/filmsBrowsingPage/FilmsBrowsingPage.module.css";
 import MoviePoster from "../poster/MoviePoster";
 
-const ListOfFilms = ({user, value}) => {
+const ListOfFilms = ({value}) => {
     const {username} = useParams()
 
     const [lists, setLists] = useState([])
-
-    let check = false
-    if (user.username === username) {
-        check = true
-        }
 
     useEffect(() => {
         getTabList(value).then(data => setLists(data))

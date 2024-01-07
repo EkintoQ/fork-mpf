@@ -6,7 +6,7 @@ import Poster from "../../components/poster/Poster";
 import "./ActorPage.css"
 import ActorFilmsDropDownMenu from "./components/ActorFilmsDropDownMenu";
 
-const ListOfFilms = lazy(() => import('../../components/lists/ListOfFilms'));
+const ListOfFilms = lazy(() => import('../../components/lists/UserLikedList'));
 
 const ActorPage = () => {
     const {id} = useParams();
@@ -75,7 +75,7 @@ const ActorPage = () => {
                 <hr/>
                 <ActorFilmsDropDownMenu onRoleChange={handleRoleChange} onListVisibilityChange={handleListVisibilityChange} />
                 <Suspense fallback={<div>Loading...</div>}>
-                    {isListVisible && <ListOfFilms movies={selectedRole === 'cast' ? credits.cast : credits.crew} />}
+                    {/*{isListVisible && <ListOfFilms movies={selectedRole === 'cast' ? credits.cast : credits.crew} />}*/}
                 </Suspense>
             </div>
             <div className="actor-comment-section">

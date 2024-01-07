@@ -1,5 +1,5 @@
 import {useParams} from "react-router-dom";
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import styles from '../../pages/filmsBrowsingPage/FilmsBrowsingPage.module.css';
 import MoviePoster from "../poster/MoviePoster";
 import WatchMovieButton from "../buttons/WatchMovieButton";
@@ -7,8 +7,10 @@ import FavoriteMovieButton from "../buttons/FavoriteMovieButton";
 import ToWatchMovieButton from "../buttons/ToWatchMovieButton";
 import "./UserLikedList.css";
 import {getTabList} from "../../api/server/UserTabsService";
+import {UserContext} from "../../App";
 
-const UserLikedList = ({user, value}) => {
+const UserLikedList = ({value}) => {
+    const user = useContext(UserContext);
     const {username} = useParams()
 
     const [likedList, setLikedList] = useState([])
