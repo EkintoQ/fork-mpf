@@ -1,0 +1,16 @@
+.user-avatar{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin: 0.5rem;
+}
+
+.update-avatar{
+    position: absolute;
+    z-index: 1;
+}
+
+.update-avatar svg {
+    color: var(--secondary-white);
+}
