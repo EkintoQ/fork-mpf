@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from "react";
 import './UserHeader.css';
-import {Avatar, List, ListItemText, Tooltip} from "@mui/material";
+import {List, ListItemText, Tooltip} from "@mui/material";
 import {getAllUserReviews} from "../../../api/server/ReviewAPI";
-
-const BASE_URL= process.env.REACT_APP_BASE_URL;
+import UserAvatar from "./UserAvatar";
 
 const UserHeader = ({user}) => {
 
@@ -17,22 +16,7 @@ const UserHeader = ({user}) => {
         <div className="user-header">
             <div className="user-bio-info">
                 <div className="user-row-info">
-                    <div className="user-avatar">
-                        {user.avatar &&
-                            <Avatar
-                                src={`${BASE_URL}/images/${user.avatar}`}
-                                alt='USER'
-                                sx={{ width: 80, height: 70 }}
-                            />
-                        }
-                        {!user.avatar &&
-                            <Avatar
-                                src={`/images/user.png`}
-                                alt='USER'
-                                sx={{ width: 80, height: 70 }}
-                            />
-                        }
-                    </div>
+                    <UserAvatar/>
                     <div className="user-micro-info">
                         <h1 className="username-text">{user.username}</h1>
                         <Tooltip title="Date user was created" arrow>

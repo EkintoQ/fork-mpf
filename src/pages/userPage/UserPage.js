@@ -17,7 +17,7 @@ const UserPage = () => {
     useEffect(() => {
         getUser(username).then(data => setUser(data))
         getRandomMovie().then(data => setBackgroundImage(`${TMDB_PICTURE_BACK}${data.backdrop_path}`))
-    }, [])
+    }, [username])
 
     if (!user) {
         // Display loading state or a spinner while fetching user data
