@@ -16,7 +16,7 @@ const UserLikedList = ({value}) => {
     const [likedList, setLikedList] = useState([])
 
     let check = false
-    if (user.username === username) {
+    if (user && user.username === username) {
         check = true
     }
 
