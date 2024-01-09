@@ -1,14 +1,14 @@
 import {useState} from "react";
-import {delReview} from "../../api/server/ReviewAPI";
 import styles from "./ReviewDeleteButton.module.css";
 import PropTypes from "prop-types";
+import {deleteReview} from "../../api/server/reviewService/DeleteReview";
 
 const ReviewDeleteButton = ({idReview, updateReviews, className}) => {
     const [isHovered, setIsHovered] = useState(false);
 
     const handleClick = async () => {
         try {
-            await delReview(idReview);
+            await deleteReview(idReview);
             await updateReviews();
         } catch (error) {
             console.log(error);

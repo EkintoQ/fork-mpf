@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import './LoginPage.css';
-import {postLogin} from "../../api/server/AuthenticationAPI";
 import {Link} from "react-router-dom";
 import {getRandomMovieImage} from "../../api/tmdb/MovieAPI";
 import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import {Spinner} from "react-bootstrap";
+import {postLogin} from "../../api/server/authService/PostLogin";
 
 
 const LoginPage = () => {

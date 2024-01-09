@@ -1,10 +1,10 @@
 import {useParams} from "react-router-dom";
 import React, {useEffect, useState} from "react";
-import {getUser} from "../../api/server/UserAPI";
 import {getRandomMovie} from "../../api/tmdb/MovieAPI";
 import './UserPage.css';
 import UserHeader from "./components/UserHeader";
 import UserTabs from "./components/UserTabs";
+import {getUser} from "../../api/server/userService/GetUser";
 
 const TMDB_PICTURE_BACK = process.env.REACT_APP_TMDB_PICTURE_BACK
 

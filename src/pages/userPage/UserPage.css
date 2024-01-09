@@ -28,7 +28,7 @@
 }
 
 .user-info-container {
-    width: 800px;
+    width: 60%;
     background-color: var(--secondary-black-transparent);
     border-radius: 3vh;
     display: flex;

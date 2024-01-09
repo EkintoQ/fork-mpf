@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import './RegistrationPage.css';
-import {postRegistration} from '../../api/server/AuthenticationAPI';
 import {getRandomMovieImage} from '../../api/tmdb/MovieAPI';
 import {toast, ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {Link} from "react-router-dom";
 import {Spinner} from "react-bootstrap";
+import {postRegistration} from "../../api/server/authService/PostRegistration";
 
 const RegistrationPage = () => {
     const [username, setUsername] = useState('');

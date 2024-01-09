@@ -1,8 +1,9 @@
 import React, {useContext, useEffect, useState} from "react";
-import {getReviewLike, postReviewLike} from "../../api/server/ReviewAPI";
 import styles from "./LikeReviewButton.module.css";
 import PropTypes from "prop-types";
 import {AuthContext} from "../../App";
+import {getReviewLike} from "../../api/server/reviewService/GetReviewLike";
+import {postReviewLike} from "../../api/server/reviewService/PostReviewLike";
 
 const LikeReviewButton = ({idReview, className, up}) => {
     const isLoggedIn = useContext(AuthContext);

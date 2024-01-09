@@ -1,34 +1,51 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {Link, useParams} from "react-router-dom";
 import "./ListOfFilms.css";
-import {getUserLists} from "../../api/server/listAPI";
+import {getUserLists} from "../../api/server/listOfFilmsService/ListFilmService/GetUserLists";
+import {UserContext} from "../../App";
+import {getUserList} from "../../api/server/listOfFilmsService/ListFilmService/GetUserList";
+import SingleList from "./SingleList";
 
-const ListOfFilms = ({value}) => {
+const ListOfFilms = () => {
+    const user = useContext(UserContext);
     const {username} = useParams()
 
     const [lists, setLists] = useState([])
 
-    useEffect(() => {
-        getUserLists(username).then(data => setLists(data))
-    }, [value])
+    let check = false
+    if (user && user.username === username) {
+        check = true
+    }
 
+    const fetchLists = async () => {
+        const listsData = await getUserLists(username);
+        const listDetailsPromises = listsData.map(list => getUserList(list.id));
+        const listDetails = await Promise.all(listDetailsPromises);
+        return listsData.map((list, index) => {
+            return {
+                ...list,
+                movies: listDetails[index].movies,
+            };
+        });
+    };
+
+    useEffect(() => {
+        fetchLists().then(data => setLists(data));
+    }, [username]);
     return (
         <div className="lists-of-films">
-            <Link to={`/list/new`}
-                className="list-button-create"
-            >
-                Create a new list
-            </Link>
-            {lists && lists.map(list => (
-                <div className="list-card">
-                    <div className="list-info">
-                        <Link to={`/lists/${username}/${list.id}`} className="films-browser-title">
-                            <h1>{list.title}</h1>
-                        </Link>
-                        <h2>{list.content}</h2>
-                    </div>
-                </div>
-            ))}
+            {check &&
+                <Link to={`/list/new`}
+                    className="list-button-create"
+                >
+                    Create a new list
+                </Link>
+            }
+            <div className="list-of-lists">
+                {lists && lists.map(list => (
+                    <SingleList list={list}/>
+                ))}
+            </div>
         </div>
     )
 }

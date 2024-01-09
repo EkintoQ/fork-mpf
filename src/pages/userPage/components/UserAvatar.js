@@ -4,9 +4,9 @@ import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
 import "./UserAvatar.css";
 import {UserContext} from "../../../App";
 import {useParams} from "react-router-dom";
-import SetAvatar from "../../../api/server/userEditService/SetAvatar";
-import {getUser} from "../../../api/server/UserAPI";
+import setAvatar from "../../../api/server/userEditService/SetAvatar";
 import Swal from 'sweetalert2'
+import {getUser} from "../../../api/server/userService/GetUser";
 
 const BASE_URL= process.env.REACT_APP_BASE_URL;
 
@@ -23,7 +23,7 @@ const UserAvatar = () => {
         const formData = new FormData();
         formData.append('file', file);
 
-            const response = await SetAvatar(formData);
+            const response = await setAvatar(formData);
 
             if (response.status === 200) {
                 setAvatarUpdated(true);

@@ -5,8 +5,11 @@ import styles from "../../pages/filmsBrowsingPage/FilmsBrowsingPage.module.css";
 import {Button, TextField, ToggleButton, ToggleButtonGroup} from "@mui/material";
 import {getMovieSearch} from "../../api/tmdb/MovieAPI";
 import MoviePoster from "../../components/poster/MoviePoster";
-import {addMovieToUserList, getUserList, postUserList, updateUserList} from "../../api/server/listAPI";
 import {UserContext} from "../../App";
+import {postUserList} from "../../api/server/listOfFilmsService/ListFilmService/PostUserList";
+import {addMovieToList} from "../../api/server/listOfFilmsService/ListFilmService/AddMovieToList";
+import {updateUserList} from "../../api/server/listOfFilmsService/ListFilmService/UpdateUserList";
+import {getUserList} from "../../api/server/listOfFilmsService/ListFilmService/GetUserList";
 
 const ListCreatePage = () => {
     const user = useContext(UserContext);
@@ -60,7 +63,7 @@ const ListCreatePage = () => {
                 const listId = newList.id;
 
                 for (const movie of selectedMovies) {
-                    await addMovieToUserList(listId, movie.id);
+                    await addMovieToList(listId, movie.id);
                 }
 
                 setIsEditMode(true);

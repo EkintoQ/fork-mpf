@@ -10,7 +10,6 @@ import FilmsBrowsingPage from "./pages/filmsBrowsingPage/FilmsBrowsingPage";
 import LoginPage from "./pages/loginPage/LoginPage";
 import LostPasswordPage from "./pages/lostPasswordPage/LostPasswordPage"
 import {createContext, useEffect, useState} from "react";
-import {checkAuth, getUserDtoByAuth} from "./api/server/UserAPI";
 import UserPage from "./pages/userPage/UserPage";
 import NewPasswordPage from "./pages/newPasswordPage/NewPasswordPage";
 import ActivateUserPage from "./pages/activateUserPage/ActivateUserPage";
@@ -21,6 +20,8 @@ import {ToastContainer} from "react-bootstrap";
 import {ActorPage} from "./pages/actorPage/ActorPage";
 import SearchPage from "./pages/searchPage/SearchPage";
 import ListCreatePage from "./pages/listCreatePage/ListCreatePage";
+import {checkAuth} from "./api/server/userService/CheckAuth";
+import {getUserDto} from "./api/server/userEditService/GetUserDto";
 
 export const AuthContext = createContext(null)
 export const UserContext = createContext(null)
@@ -31,7 +32,7 @@ const App = () => {
     const authenticate = async () => {
         const isAuthenticated = await checkAuth();
         setIsLoggedIn(isAuthenticated);
-        const user = await getUserDtoByAuth();
+        const user = await getUserDto();
         setUser(user);
     };
 

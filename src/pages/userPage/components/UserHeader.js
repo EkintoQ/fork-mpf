@@ -1,15 +1,15 @@
 import React, {useEffect, useState} from "react";
 import './UserHeader.css';
 import {List, ListItemText, Tooltip} from "@mui/material";
-import {getAllUserReviews} from "../../../api/server/ReviewAPI";
 import UserAvatar from "./UserAvatar";
+import {getReviewMyCount} from "../../../api/server/reviewService/GetReviewMyCount";
 
 const UserHeader = ({user}) => {
 
     const [reviews, setReviews] = useState();
 
     useEffect(() => {
-        getAllUserReviews().then(data => setReviews(data))
+        getReviewMyCount().then(data => setReviews(data))
     }, [])
 
     return (
