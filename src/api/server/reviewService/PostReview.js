@@ -16,6 +16,9 @@ export const postReview = async (content, idMovie, title) => {
             `${BASE_URL}/review/movie/set?${queryString.stringify(params)}`,
             content,
             {
+                headers: {
+                    'Content-Type': 'text/plain',
+                },
                 withCredentials: true,
             }
         )
