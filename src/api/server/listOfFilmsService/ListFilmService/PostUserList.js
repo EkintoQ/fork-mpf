@@ -1,20 +1,21 @@
-import axios from "axios";
+import axios from 'axios';
 
-const BASE_URL = process.env.REACT_APP_BASE_URL
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 export const postUserList = async (title, content) => {
-    const data = {
-        content: content,
-    };
-
     try {
         const response = await axios.post(
             `${BASE_URL}/movies/list/set?title=${title}`,
-            {data},
-            {withCredentials: true}
+            content,
+            {
+                headers: {
+                    'Content-Type': 'text/plain',
+                },
+                withCredentials: true,
+            }
         );
         return response.data;
-    } catch (err) {
-        console.log(err);
+    } catch (error) {
+        console.error(error);
     }
 };
