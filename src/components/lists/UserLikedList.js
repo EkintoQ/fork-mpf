@@ -47,7 +47,7 @@ const UserLikedList = ({value}) => {
         <div className="films-browser-list">
             {likedList &&
                 likedList.map(likedMovie => (
-                <div className="film-browser-card">
+                <div className="films-browser-card">
                     <MoviePoster
                         movie={likedMovie}
                         className={styles.browsingPoster}

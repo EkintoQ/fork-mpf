@@ -43,7 +43,7 @@ const ListOfFilms = () => {
             }
             <div className="list-of-lists">
                 {lists && lists.map(list => (
-                    <SingleList list={list}/>
+                    <SingleList username={username} list={list}/>
                 ))}
             </div>
         </div>

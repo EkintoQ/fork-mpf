@@ -76,6 +76,9 @@ const ListCreatePage = () => {
 
     const handleUpdateList = async () => {
         await updateUserList(content, id, title);
+        for (const movie of selectedMovies) {
+            await addMovieToList(id, movie.id);
+        }
     };
 
     let check = false

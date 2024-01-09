@@ -3,6 +3,7 @@
     flex-wrap: wrap;
     flex-direction: column;
     row-gap: 1rem;
+    justify-content: center;
     background-color: var(--secondary-black-light);
     box-shadow: 0 0 8px var(--secondary-red);
     border-radius: 16px;
@@ -35,5 +36,7 @@
     row-gap: 1rem;
     justify-content: center;
     align-items: center;
+    padding: 1rem;
+    width: 100%;
 }
 
