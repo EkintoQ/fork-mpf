@@ -3,9 +3,9 @@ import './ActivateUserPage.css';
 import {useLocation} from 'react-router-dom';
 import {getRandomMovieImage} from "../../api/tmdb/MovieAPI";
 import {toast, ToastContainer} from "react-toastify";
-import {postActivateUser} from "../../api/server/AuthenticationAPI";
 import queryString from "query-string";
 import {Spinner} from "react-bootstrap";
+import {postActivateUser} from "../../api/server/authService/PostActivateUser";
 
 const LostPasswordPage = () => {
     const location = useLocation();

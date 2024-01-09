@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin-top: 2vh;
+    padding: 1rem;
     flex-direction: column;
 }
 
@@ -13,22 +13,30 @@
 
 .user-tab-container{
     background-color: var(--secondary-black-light);
-    border-radius: 3vh;
-    border: 1px solid var(--secondary-blue) !important;
+    border-radius: 24px;
+    box-shadow: 0 0 8px var(--secondary-red);
+}
+
+.MuiDivider-vertical {
+    background-color: var(--secondary-red);
+    height: 100%;
 }
 
 .MuiTab-root{
-    color: var(--primary-yellow) !important;
+    color: var(--secondary-yellow) !important;
+    font-family: var(--custom-font) !important;
+    transition: background-color 0.8s ease !important;
+}
+
+.MuiTab-root:hover {
+    background-color: var(--primary-red) !important;
 }
 
 .MuiTabs-indicator{
-    background-color: var(--secondary-red) !important;
-}
-
-.MuiTab-textColorSecondary{
-    color: var(--secondary-red) !important;
+    display: none !important;
 }
 
 .Mui-selected{
-    color: var(--secondary-red) !important;
+    color: var(--secondary-yellow) !important;
+    background-color: var(--primary-red) !important;
 }

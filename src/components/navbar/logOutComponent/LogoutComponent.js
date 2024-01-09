@@ -1,6 +1,6 @@
 import React from 'react';
-import {postLogout} from "../../../api/server/AuthenticationAPI";
 import "./LogoutComponent.css"
+import {postLogout} from "../../../api/server/authService/PostLogout";
 
 const LogoutComponent = () => {
     const handleLogout = async () => {

@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import './LostPasswordPage.css';
 import {getRandomMovieImage} from "../../api/tmdb/MovieAPI";
-import {postLostPasswordSetMail} from "../../api/server/LostPassAPI";
 import {toast, ToastContainer} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import {Spinner} from "react-bootstrap";
+import {postLostPasswordSetEmail} from "../../api/server/lostPassService/PostLostPasswordSetEmail";
 
 const LostPasswordPage = () => {
     const [email, setEmail] = useState('');
@@ -21,7 +21,7 @@ const LostPasswordPage = () => {
         setLoading(true);
 
         try {
-            const response = await postLostPasswordSetMail(email);
+            const response = await postLostPasswordSetEmail(email);
 
             if (response === false) {
                 toast.error('Ups... Seems like you provided wrong email. \n Please try again:)', {

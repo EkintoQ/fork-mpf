@@ -6,8 +6,11 @@ import WatchMovieButton from "../buttons/WatchMovieButton";
 import FavoriteMovieButton from "../buttons/FavoriteMovieButton";
 import ToWatchMovieButton from "../buttons/ToWatchMovieButton";
 import "./UserLikedList.css";
-import {getTabList} from "../../api/server/UserTabsService";
 import {UserContext} from "../../App";
+import SentimentDissatisfiedIcon from '@mui/icons-material/SentimentDissatisfied';
+import {getFavoriteAllMovie} from "../../api/server/listOfFilmsService/FavoriteFilmService/GetFavoriteAllMovie";
+import {getWatchedAllMovie} from "../../api/server/listOfFilmsService/WatchedFilmService/GetWatchedAllMovie";
+import {getToWatchAllMovie} from "../../api/server/listOfFilmsService/ToWatchFilmService/GetToWatchAllMovie";
 
 const UserLikedList = ({value}) => {
     const user = useContext(UserContext);
@@ -20,42 +23,59 @@ const UserLikedList = ({value}) => {
         check = true
     }
 
+    const getTabList = ({value}) => {
+        switch (value) {
+            case 'liked':
+                getFavoriteAllMovie().then(data => setLikedList(data))
+                break;
+            case 'watched':
+                getWatchedAllMovie().then(data => setLikedList(data))
+                break;
+            case 'toWatch':
+                getToWatchAllMovie().then(data => setLikedList(data))
+                break;
+            default:
+                getFavoriteAllMovie().then(data => setLikedList(data))
+        }
+    }
+
     useEffect(() => {
-        getTabList(value={value}).then(data => setLikedList(data))
+        getTabList(value={value})
     }, [value])
 
     return (
         <div className="films-browser-list">
             {likedList &&
                 likedList.map(likedMovie => (
-                <div className="film-browser-card" key={likedMovie.id}>
-                    <div className="film-browser-poster">
-                        <MoviePoster
-                            movie={likedMovie}
-                            className={styles.browsingPoster}
-                            responsible={true}/>
-                        {check
-                            &&
-                            <div className="film-poster-buttons">
-                                <WatchMovieButton
-                                    idMovie={likedMovie.id}
-                                    className={styles.watched}
-                                />
-                                <FavoriteMovieButton
-                                    idMovie={likedMovie.id}
-                                    className={styles.favorite}
-                                />
-                                <ToWatchMovieButton
-                                    idMovie={likedMovie.id}
-                                    className={styles.toWatch}
-                                />
-                            </div>
-                        }
-                    </div>
+                <div className="films-browser-card">
+                    <MoviePoster
+                        movie={likedMovie}
+                        className={styles.browsingPoster}
+                        responsible={true}/>
+                    {check
+                        &&
+                        <div className="film-poster-buttons">
+                            <WatchMovieButton
+                                idMovie={likedMovie.id}
+                                className={styles.watched}
+                            />
+                            <FavoriteMovieButton
+                                idMovie={likedMovie.id}
+                                className={styles.favorite}
+                            />
+                            <ToWatchMovieButton
+                                idMovie={likedMovie.id}
+                                className={styles.toWatch}
+                            />
+                        </div>
+                    }
                 </div>
             ))}
             {!likedList &&
-                <p>NO MOVIES</p>
+                <div className="no-movies-container">
+                    <p className="no-movies-text">Looks like this user hasn't added any movies yet.</p>
+                    <SentimentDissatisfiedIcon className="dissatisfied-icon"/>
+                </div>
             }
         </div>
     );

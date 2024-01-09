@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import './UserTabs.css';
-import {Box, Tab, Tabs} from "@mui/material";
+import {Box, Divider, Tab, Tabs} from "@mui/material";
 import UserLikedList from "../../../components/lists/UserLikedList";
 import ListOfFilms from "../../../components/lists/ListOfFilms";
 
@@ -16,17 +16,20 @@ const UserTabs = ({user}) => {
         <div className="user-tabs">
             <Box
                 className="box-tabs"
-                sx={{ width: '100%', margin: '1vh', bgColor: 'blue' }}>
+                sx={{ width: '100%', margin: '1rem' }}>
                 <Tabs
                     value={value}
                     onChange={handleChange}
                     variant="fullWidth"
                     className="user-tab-container"
                 >
-                    <Tab value="liked" label="Liked" />
-                    <Tab value="watched" label="Watched" />
-                    <Tab value="toWatch" label="To watch" />
-                    <Tab value="lists" label="Lists" />
+                    <Tab value="liked" label="Liked"/>
+                    <Divider orientation="vertical" flexItem />
+                    <Tab value="watched" label="Watched"/>
+                    <Divider orientation="vertical" flexItem />
+                    <Tab value="toWatch" label="To watch"/>
+                    <Divider orientation="vertical" flexItem />
+                    <Tab value="lists" label="Lists"/>
                 </Tabs>
             </Box>
             {value !== "lists"

@@ -1,29 +1,43 @@
 .films-browser-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 2vh;
+    gap: 1rem;
     flex-direction: row;
     background-color: var(--secondary-black-light);
-    padding: 2vh;
-    border: 2px solid var(--secondary-blue);
-    border-radius: 5vh;
+    margin: 1rem;
+    padding: 1rem;
+    box-shadow: 0 0 8px var(--secondary-red);
+    border-radius: 16px;
     width: 100%;
 }
 
-.film-browser-card {
+.films-browser-card {
     display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-}
-
-.film-browser-poster {
-    display: flex;
+    align-items: center;
     flex-direction: column;
     position: relative;
+    padding: 0.5rem;
 }
 
 .film-poster-buttons {
     display: flex;
     justify-content: flex-end;
-    gap: 6px;
+    gap: 1rem;
 }
+
+.no-movies-container{
+    display: flex;
+    justify-content: center;
+}
+
+.no-movies-text{
+    font-family: var(--custom-font);
+    font-size: 24px;
+    color: var(--secondary-yellow);
+}
+
+.dissatisfied-icon {
+    color: var(--secondary-yellow) !important;
+    font-size: 36px !important;
+}
+

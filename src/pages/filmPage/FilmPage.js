@@ -4,7 +4,6 @@ import {useContext, useEffect, useState} from 'react';
 import ReactPlayer from 'react-player';
 import './FilmPage.css';
 import styles from "./FilmPage.module.css";
-import {getAllReview} from "../../api/server/ReviewAPI";
 import {getMovieBackDropImage, getMovieCredits, getMovieDetails, getMovieTrailer} from "../../api/tmdb/MovieAPI";
 import WatchMovieButton from "../../components/buttons/WatchMovieButton";
 import FavoriteMovieButton from "../../components/buttons/FavoriteMovieButton";
@@ -13,6 +12,7 @@ import MoviePoster from "../../components/poster/MoviePoster";
 import CreateReviewForm from "../../components/review/CreateReviewForm";
 import SingleReview from "../../components/review/SingleReview";
 import ActorsSlider from "./components/ActorsSlider";
+import {getReviewAll} from "../../api/server/reviewService/GetReviewAll";
 
 const FilmPage = () => {
     const {id} = useParams();
@@ -28,7 +28,7 @@ const FilmPage = () => {
 
     const getReviews = async () => {
         try {
-            const response = await getAllReview(id);
+            const response = await getReviewAll(id);
             setReviews(response.reverse());
         } catch (error) {
             console.log(error);

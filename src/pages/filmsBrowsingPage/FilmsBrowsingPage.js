@@ -4,12 +4,12 @@ import './FilmsBrowsingPage.css'
 import WatchMovieButton from "../../components/buttons/WatchMovieButton";
 import FavoriteMovieButton from "../../components/buttons/FavoriteMovieButton";
 import styles from './FilmsBrowsingPage.module.css';
-import {getFavoriteMovie} from "../../api/server/FavoriteMovieAPI";
 import {getMovies} from "../../api/tmdb/PaginationMovieAPI";
 import Pagination from "../../components/pagination/Pagination";
 import ToWatchMovieButton from "../../components/buttons/ToWatchMovieButton";
 import MoviePoster from "../../components/poster/MoviePoster";
 import {Spinner} from "react-bootstrap";
+import {getFavoriteMovie} from "../../api/server/listOfFilmsService/FavoriteFilmService/GetFavoriteMovie";
 
 const FilmsBrowsingPage = () => {
     const {currentPage} = useParams();

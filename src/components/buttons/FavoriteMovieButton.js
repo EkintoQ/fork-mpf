@@ -1,9 +1,10 @@
 import React, {useContext, useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import styles from './FavoriteMovieButton.module.css';
-import {getFavoriteMovie, postFavoriteMovie} from '../../api/server/FavoriteMovieAPI';
 import {AuthContext} from "../../App";
 import {Tooltip} from "@mui/material";
+import {postFavoriteMovie} from "../../api/server/listOfFilmsService/FavoriteFilmService/PostFavoriteMovie";
+import {getFavoriteMovie} from "../../api/server/listOfFilmsService/FavoriteFilmService/GetFavoriteMovie";
 
 const FavoriteMovieButton = ({ idMovie, className }) => {
     const isLoggedIn = useContext(AuthContext);

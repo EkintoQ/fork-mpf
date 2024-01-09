@@ -1,26 +1,24 @@
 import React, {useEffect, useState} from 'react';
 import './SettingsPage.css';
-import {
-    deleteUser,
-    getUserDto,
-    postNewBio,
-    postNewEmail,
-    postNewPassword,
-    postNewUsername
-} from "../../api/server/SettingAPI";
 import {getRandomMovie} from "../../api/tmdb/MovieAPI";
 import {toast, ToastContainer} from "react-toastify";
-import {postLogout} from "../../api/server/AuthenticationAPI";
+import {getUserDto} from "../../api/server/userEditService/GetUserDto";
+import {setNewBio} from "../../api/server/userEditService/SetNewBio";
+import {setNewPassword} from "../../api/server/userEditService/SetNewPassword";
+import {setNewEmail} from "../../api/server/userEditService/SetNewEmail";
+import {setNewUsername} from "../../api/server/userEditService/SetNewUsername";
+import {deleteUser} from "../../api/server/userEditService/DeleteUser";
+import {postLogout} from "../../api/server/authService/PostLogout";
 
 
 const SettingsPage = () => {
     const [settings, setSettings] = useState('');
     const [bio, setBio] = useState('');
-    const [newEmail, setNewEmail] = useState('');
+    const [newEmail, setNewEmaill] = useState('');
     const [newPassword0, setNewPassword0] = useState('');
     const [newPassword1, setNewPassword1] = useState('');
     const [passwordOld, setPasswordOld] = useState('');
-    const [newUsername, setNewUsername] = useState('');
+    const [newUsername, setNewUsernamee] = useState('');
     const [passwordDeletion, setPasswordDeletion] = useState('');
     const [backgroundImage, setBackgroundImage] = useState('');
 
@@ -38,7 +36,7 @@ const SettingsPage = () => {
     };
 
     const handleEmailChange = (event) => {
-        setNewEmail(event.target.value);
+        setNewEmaill(event.target.value);
     };
 
     const handlePassword0Change = (event) => {
@@ -58,12 +56,12 @@ const SettingsPage = () => {
     };
 
     const handleUsernameChange = (event) => {
-        setNewUsername(event.target.value);
+        setNewUsernamee(event.target.value);
     };
 
     const handleUpdateBio = async () => {
         try {
-            const response = await postNewBio(bio);
+            const response = await setNewBio(bio);
             if (!response) {
                 toast.error('Something went wrong! \n Please try again)', {
                     position: toast.POSITION.TOP_CENTER,
@@ -82,7 +80,7 @@ const SettingsPage = () => {
 
     const handleUpdateEmail = async () => {
         try {
-            const response = await postNewEmail(newEmail);
+            const response = await setNewEmail(newEmail);
 
             if (!response) {
                 toast.error('Something went wrong! \n Please try again)', {
@@ -93,7 +91,7 @@ const SettingsPage = () => {
                 toast.success('Email is successfully changed)', {
                     position: toast.POSITION.TOP_CENTER,
                 });
-                setNewEmail('');
+                setNewEmaill('');
             }
         } catch (err) {
             console.error(err);
@@ -102,7 +100,7 @@ const SettingsPage = () => {
 
     const handleUpdatePassword = async () => {
         try {
-            const response = await postNewPassword(newPassword0, newPassword1, passwordOld);
+            const response = await setNewPassword(newPassword0, newPassword1, passwordOld);
 
             if (!response) {
                 toast.error('Something went wrong! \n Please try again)', {
@@ -126,7 +124,7 @@ const SettingsPage = () => {
 
     const handleUpdateUsername = async () => {
         try {
-            const response = await postNewUsername(newUsername);
+            const response = await setNewUsername(newUsername);
             if (!response) {
                 toast.error('Something went wrong! \n Please try again)', {
                     position: toast.POSITION.TOP_CENTER,
@@ -137,7 +135,7 @@ const SettingsPage = () => {
                 toast.success('Username is successfully changed)', {
                     position: toast.POSITION.TOP_CENTER,
                 });
-                setNewUsername('')
+                setNewUsernamee('')
             }
         } catch (err) {
             console.error(err);

@@ -1,9 +1,10 @@
 import React, {useContext, useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import styles from './WatchMovieButton.module.css';
-import {getWatchedMovie, postWatchedMovie} from "../../api/server/WatchedMovieAPI";
 import {AuthContext} from "../../App";
 import {Tooltip} from "@mui/material";
+import {getWatchedMovie} from "../../api/server/listOfFilmsService/WatchedFilmService/GetWatchedMovie";
+import {postWatchedMovie} from "../../api/server/listOfFilmsService/WatchedFilmService/PostWatchedMovie";
 
 const WatchMovieButton = ({ idMovie, className }) => {
     const [watched, setWatched] = useState(false);

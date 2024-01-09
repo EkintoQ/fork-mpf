@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import './NewPasswordPage.css';
 import {useLocation} from 'react-router-dom';
-import {postResetPassword} from "../../api/server/LostPassAPI";
 import {getRandomMovieImage} from "../../api/tmdb/MovieAPI";
 import queryString from "query-string";
 import {toast, ToastContainer} from "react-toastify";
 import {Spinner} from "react-bootstrap";
+import {postResetPassword} from "../../api/server/lostPassService/PostResetPassword";
 
 const LostPasswordPage = () => {
     const [password, setPassword] = useState('');

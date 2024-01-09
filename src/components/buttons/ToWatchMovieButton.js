@@ -1,9 +1,10 @@
 import React, {useContext, useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
 import styles from './ToWatchMovieButton.module.css';
-import {getToWatch, postToWatchMovie} from '../../api/server/ToWatchMovieAPI';
 import {AuthContext} from "../../App";
 import {Tooltip} from "@mui/material";
+import {getToWatchMovie} from "../../api/server/listOfFilmsService/ToWatchFilmService/GetToWatchMovie";
+import {postToWatchMovie} from "../../api/server/listOfFilmsService/ToWatchFilmService/PostToWatchMovie";
 
 const ToWatchMovieButton = ({idMovie, className}) => {
     const [toWatch, setToWatch] = useState(false);
@@ -11,7 +12,7 @@ const ToWatchMovieButton = ({idMovie, className}) => {
 
     const getToWatchMovieState = async () => {
         try {
-            const response = await getToWatch(idMovie);
+            const response = await getToWatchMovie(idMovie);
             setToWatch(response);
         } catch (error) {
             console.log(error);

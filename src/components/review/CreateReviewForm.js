@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import {postReview} from "../../api/server/ReviewAPI";
 import "./CreateReviewForm.css"
 import PropTypes from "prop-types";
+import {postReview} from "../../api/server/reviewService/PostReview";
 
 const CreateReviewForm = ({ movieId, updateReviews }) => {
 
