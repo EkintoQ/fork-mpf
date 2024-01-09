@@ -10,7 +10,6 @@ export const getUserListLike = async (idList) => {
         );
         return response.data;
     } catch (err) {
-        console.log(err);
-        return err.response
+        return false
     }
 }

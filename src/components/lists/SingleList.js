@@ -1,21 +1,30 @@
-    import React, {useEffect, useState} from 'react';
-    import {Link} from "react-router-dom";
+    import React, {useContext, useEffect, useState} from 'react';
+    import {Link, useNavigate} from "react-router-dom";
     import "./SingleList.css"
     import {Avatar} from "@mui/material";
     import {postUserListLike} from "../../api/server/listOfFilmsService/ListFilmService/PostUserListLike";
     import FavoriteIcon from '@mui/icons-material/Favorite';
     import MovieIcon from '@mui/icons-material/Movie';
     import {getUserListLike} from "../../api/server/listOfFilmsService/ListFilmService/GetUserListLike";
+    import {UserContext} from "../../App";
 
     const TMDB_PICTURE = process.env.REACT_APP_TMDB_PICTURE;
     const BASE_URL= process.env.REACT_APP_BASE_URL;
 
     const SingleList = ({list, username}) => {
+        const user = useContext(UserContext);
+
         const [likeStatus, setLikeStatus] = useState(false);
+
+        const navigate = useNavigate();
 
         const moviesWithPlaceholders = [...(list.movies || []), ...Array(4).fill('')].slice(0, 4);
 
         const handleLike = async () => {
+            if (!user) {
+                navigate('/login');
+                return;
+            }
             await postUserListLike(list.id, !likeStatus);
             setLikeStatus(!likeStatus);
         };
