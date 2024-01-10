@@ -58,7 +58,14 @@
                             />
                         </Link>
                         <Link to={`/user/${list.user.username}`} className="user-nickname">{list.user.username}</Link>
-                        <FavoriteIcon onClick={handleLike} color={likeStatus ? 'error' : ''}/>
+                        <FavoriteIcon onClick={handleLike}
+                          sx={{
+                              color: likeStatus ? 'error' : '',
+                              '&:hover': {
+                                  cursor: 'pointer',
+                              },
+                          }}
+                        />
                     </div>
                     <h2 className="list-content">{list.content}</h2>
                     <div className="list-stats">
