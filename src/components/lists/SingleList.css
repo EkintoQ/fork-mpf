@@ -27,6 +27,7 @@
 .list-movie-poster {
     margin-right: -3rem;
     width: 6rem;
+    height: 9rem;
     border: 0;
     box-shadow: 0 0 1px var(--secondary-white);
 }
