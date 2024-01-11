@@ -8,8 +8,8 @@
 .list-field{
     display: flex;
     align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    justify-content: flex-start;
+    flex-direction: row;
 }
 
 .title-field{

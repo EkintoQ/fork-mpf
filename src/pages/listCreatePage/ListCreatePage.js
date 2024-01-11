@@ -26,7 +26,9 @@ const ListCreatePage = () => {
     };
 
     const checkPermission = () => {
-        if (myUser && username === myUser.username) {
+        if (myUser && (username === myUser.username)) {
+            setPermission(true);
+        } else if (username===undefined) {
             setPermission(true);
         } else {
             setPermission(false);
@@ -43,6 +45,12 @@ const ListCreatePage = () => {
     return (
         <div className="list-create-container">
             <div className="list-inner-container">
+                {alignment === "search"
+                    ?
+                    <SearchFilmContainerList movies={selectedMovies} onSelectedMoviesChange={handleSelectedMoviesChange}/>
+                    :
+                    <MyFilmsListContainer id={id} movies={selectedMovies} permission={permission} onSelectedMoviesChange={handleSelectedMoviesChange}/>
+                }
                 {permission &&
                     <ToggleButtonGroup
                         color="primary"
@@ -54,12 +62,6 @@ const ListCreatePage = () => {
                         <ToggleButton className="toggle-button" value="main">My list</ToggleButton>
                         <ToggleButton className="toggle-button" value="search">Search</ToggleButton>
                     </ToggleButtonGroup>
-                }
-                {alignment === "search"
-                    ?
-                    <SearchFilmContainerList movies={selectedMovies} onSelectedMoviesChange={handleSelectedMoviesChange}/>
-                    :
-                    <MyFilmsListContainer id={id} movies={selectedMovies} permission={permission} onSelectedMoviesChange={handleSelectedMoviesChange}/>
                 }
             </div>
         </div>

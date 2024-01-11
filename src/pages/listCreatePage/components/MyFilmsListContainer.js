@@ -84,6 +84,7 @@ const MyFilmsListContainer = ({id, movies, onSelectedMoviesChange, permission}) 
             <div></div>
             {localPermission &&
                 <div className="list-field">
+                    <p>Create a new list</p>
                     <TextField
                         className="title-field"
                         label="Title of the list"

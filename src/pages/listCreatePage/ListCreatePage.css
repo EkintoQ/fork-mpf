@@ -11,8 +11,9 @@
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
-    background-color: var(--secondary-black-gray);
+    background: linear-gradient(171deg, rgba(20,27,34,1) 0%, rgba(45,50,56,1) 100%);
     margin: 3rem;
+    padding: 1rem;
     width: 75%;
     border-radius: 40px;
     min-height: 75vh;

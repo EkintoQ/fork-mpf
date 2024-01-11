@@ -3,7 +3,7 @@ import queryString from "query-string";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL
 
-export const DeleteMovieRating = async (idMovie) => {
+export const deleteMovieRating = async (idMovie) => {
 
     const params = {
         idMovie : idMovie

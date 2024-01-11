@@ -16,6 +16,8 @@ import {getReviewAll} from "../../api/server/reviewService/GetReviewAll";
 import {Rating} from "@mui/material";
 import {getMovieRating} from "../../api/server/ratingService/GetMovieRating";
 import {setMovieRating} from "../../api/server/ratingService/SetMovieRating";
+import {getMyMovieRating} from "../../api/server/ratingService/GetMyMovieRating";
+import {deleteMovieRating, DeleteMovieRating} from "../../api/server/ratingService/DeleteMovieRating";
 
 const FilmPage = () => {
     const {id} = useParams();
@@ -41,8 +43,14 @@ const FilmPage = () => {
     };
 
     const handleRatingChange = async(event, newValue) => {
-        setUserRating(newValue);
-        await setMovieRating(id, newValue);
+        console.log(newValue, userRating);
+        if (newValue === null){
+            await deleteMovieRating(id);
+            setUserRating(0);
+        } else {
+            await setMovieRating(id, newValue);
+            setUserRating(newValue);
+        }
     };
 
     useEffect(() => {
@@ -52,6 +60,7 @@ const FilmPage = () => {
         getReviews().then()
         getMovieCredits(id).then(data => setActors(data.cast))
         getMovieRating(id).then(data => setAVGRating(data))
+        getMyMovieRating(id).then(data => setUserRating(data))
     }, [id, userRating]);
 
     return (
@@ -76,7 +85,7 @@ const FilmPage = () => {
                     </div>
                     <div className="movie-poster-rating">
                         <MoviePoster
-                        movie={movie}
+                            movie={movie}
                         />
                         <Rating
                             className="movie-rating"
@@ -87,6 +96,11 @@ const FilmPage = () => {
                         <div className="movie-rating-number">
                             AVG: {avgRating}
                         </div>
+                        {userRating > 0 &&
+                            <div className="movie-rating-number">
+                                Your rating: {userRating}
+                            </div>
+                        }
                     </div>
                 </div>
                 <div className="film-details">
