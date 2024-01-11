@@ -38,10 +38,10 @@
     justify-content: center;
     align-items: center;
     flex-direction: row;
-    background-color: var(--secondary-black-gray);
+    background: linear-gradient(180deg, rgba(8,10,12,1) 0%, rgba(15,23,42,1) 100%);
     border-radius: 3vh;
     padding: 1vh;
-    box-shadow: 0 0 8px var(--secondary-red);
+    box-shadow: 0 0 8px var(--secondary-blue-light);
     overflow: hidden;
 }
 .user-micro-stats li {
@@ -51,7 +51,7 @@
     justify-content: center;
     list-style-type: none;
     padding: 0.5rem;
-    border-right: 1px solid var(--secondary-red);
+    border-right: 1px solid var(--secondary-blue-light);
     font-family: var(--custom-font);
     font-size: 24px;
     color: var(--primary-blue);

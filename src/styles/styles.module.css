@@ -1,10 +1,10 @@
 :root {
+    --custom-font: 'Lato';
     --primary-red: #E4416A;
     --primary-blue: #75FBE2;
     --primary-yellow: #F1B36E;
     --primary-black: #171718;
     --secondary-yellow: antiquewhite;
-    --custom-font: 'Lato';
     --secondary-blue: #0F172A;
     --secondary-blue-light: #249d8b;
     --secondary-white: #FFFCF9;
@@ -15,6 +15,6 @@
     --secondary-black-light: rgba(8,10,12,0.89);
     --secondary-black-gray: rgba(24,26,29,0.89);
     --secondary-black-transparent: rgba(8, 10, 12, 0.7);
-    --primary-gradient: linear-gradient(171deg, rgba(8,10,12,1) 0%, rgba(15,23,42,1) 100%);
-    --secondary-gradient: linear-gradient(171deg, rgba(20,27,34,1) 0%, rgba(45,50,56,1) 100%);
+    --primary-gradient: linear-gradient(180deg, rgba(8,10,12,1) 0%, rgba(15,23,42,1) 100%);
+    --secondary-gradient: linear-gradient(180deg, rgba(8,10,12,1) 0%, rgba(15,23,42,1) 50%, rgba(8,10,12,1) 100%);
 }

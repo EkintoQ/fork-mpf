@@ -26,9 +26,8 @@ const UserPage = () => {
 
     return (
         <div className="user-page-container">
-            <div className="user-page-back"
-                 style={{backgroundImage: `url(${backgroundImage})`,
-                 }}>
+            <div className="user-page-back">
+                <img className="background-img" src={backgroundImage} alt="Your Image"/>
             </div>
             <div className="user-info-container">
                 <UserHeader user={user}/>

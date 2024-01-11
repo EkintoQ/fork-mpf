@@ -3,11 +3,8 @@
     flex-wrap: wrap;
     gap: 1rem;
     flex-direction: row;
-    background-color: var(--secondary-black-light);
     margin: 1rem;
     padding: 1rem;
-    box-shadow: 0 0 8px var(--secondary-red);
-    border-radius: 16px;
     width: 100%;
 }
 
