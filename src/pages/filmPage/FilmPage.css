@@ -64,6 +64,27 @@
     border-radius: 5vh;
 }
 
+.movie-poster-rating{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.movie-rating .MuiRating-iconFilled {
+    color: gold;
+}
+
+.movie-rating .MuiRating-iconEmpty {
+    color: gray;
+}
+
+.movie-rating-number{
+    color: var(--secondary-yellow);
+    font-family: var(--custom-font);
+    font-size: 24px;
+}
+
 .film-details {
     font-size: 20px;
     width: 70vh;

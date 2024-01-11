@@ -14,17 +14,17 @@
 
 .title-field{
     background-color: var(--secondary-yellow) !important;
-    border-radius: 1vh !important;
+    border-radius: 10px !important;
     width: 20vw !important;
     font-family: var(--custom-font) !important;
 }
 
 .content-field{
     background-color: var(--secondary-yellow) !important;
-    border-radius: 1vh !important;
+    border-radius: 10px !important;
     width: 25vw !important;
     font-family: var(--custom-font) !important;
-    margin: 2vh !important;
+    margin: 1rem !important;
 }
 
 .list-search-movie{
@@ -33,8 +33,8 @@
     align-items: flex-start;
     flex-wrap: wrap;
     flex-direction: row;
-    margin: 5vh;
-    border-radius: 10vh;
+    margin: 1rem;
+    border-radius: 10px;
 }
 
 .film-search-poster{
@@ -44,7 +44,7 @@
 .remove-movie-button{
     background-color: var(--secondary-red) !important;
     color: var(--secondary-black) !important;
-    margin: 1vh !important;
+    margin: 1rem !important;
     font-family: var(--custom-font);
 }
 .remove-movie-button:hover{
@@ -54,10 +54,10 @@
 .save-list-button{
     background-color: var(--secondary-green) !important;
     color: var(--secondary-black) !important;
-    margin-bottom: 3vh !important;
+    margin: 2rem !important;
     width: 20vw;
     font-family: var(--custom-font);
-    border-radius: 5vh;
+    border-radius: 20px;
 }
 .save-list-button:hover{
     background-color: var(--secondary-green-hover) !important;
@@ -66,10 +66,10 @@
 .update-list-button{
     background-color: var(--secondary-yellow) !important;
     color: var(--secondary-black) !important;
-    margin-bottom: 3vh !important;
+    margin: 2rem !important;
     width: 20vw;
     font-family: var(--custom-font);
-    border-radius: 5vh;
+    border-radius: 20px;
 }
 .update-list-button:hover{
     background-color: var(--primary-yellow) !important;

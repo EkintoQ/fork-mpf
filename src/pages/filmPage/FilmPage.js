@@ -13,6 +13,9 @@ import CreateReviewForm from "../../components/review/CreateReviewForm";
 import SingleReview from "../../components/review/SingleReview";
 import ActorsSlider from "./components/ActorsSlider";
 import {getReviewAll} from "../../api/server/reviewService/GetReviewAll";
+import {Rating} from "@mui/material";
+import {getMovieRating} from "../../api/server/ratingService/GetMovieRating";
+import {setMovieRating} from "../../api/server/ratingService/SetMovieRating";
 
 const FilmPage = () => {
     const {id} = useParams();
@@ -24,6 +27,8 @@ const FilmPage = () => {
     const [trailer, setTrailer] = useState('');
     const [reviews, setReviews] = useState([]);
     const [actors, setActors] = useState([]);
+    const [userRating, setUserRating] = useState(0);
+    const [avgRating, setAVGRating] = useState(0);
 
 
     const getReviews = async () => {
@@ -35,13 +40,19 @@ const FilmPage = () => {
         }
     };
 
+    const handleRatingChange = async(event, newValue) => {
+        setUserRating(newValue);
+        await setMovieRating(id, newValue);
+    };
+
     useEffect(() => {
         getMovieDetails(id).then(data => setMovie(data))
         getMovieBackDropImage(id).then(data => setBack(data))
         getMovieTrailer(id).then(data => setTrailer(data))
         getReviews().then()
         getMovieCredits(id).then(data => setActors(data.cast))
-    }, []);
+        getMovieRating(id).then(data => setAVGRating(data))
+    }, [id, userRating]);
 
     return (
         <div className="film-info-container">
@@ -63,9 +74,20 @@ const FilmPage = () => {
                             className={styles.favorite}
                         />
                     </div>
-                    <MoviePoster
-                    movie={movie}
-                    />
+                    <div className="movie-poster-rating">
+                        <MoviePoster
+                        movie={movie}
+                        />
+                        <Rating
+                            className="movie-rating"
+                            value={userRating > 0 ? userRating : avgRating}
+                            max={10}
+                            onChange={handleRatingChange}
+                        />
+                        <div className="movie-rating-number">
+                            AVG: {avgRating}
+                        </div>
+                    </div>
                 </div>
                 <div className="film-details">
                     <h1>{movie.title}</h1>

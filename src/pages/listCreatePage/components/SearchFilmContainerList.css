@@ -11,7 +11,7 @@
     border-radius: 10px !important;
     width: 25vw !important;
     font-family: var(--custom-font) !important;
-    margin-top: 1rem !important;
+    margin: 1rem !important;
 }
 
 .list-search-movie{
@@ -34,7 +34,7 @@
 .add-movie-button{
     background-color: var(--secondary-green) !important;
     color: var(--secondary-black) !important;
-    margin: 1vh !important;
+    margin: 1rem !important;
     font-family: var(--custom-font);
 }
 .add-movie-button:hover{
@@ -44,7 +44,7 @@
 .remove-movie-button{
     background-color: var(--secondary-red) !important;
     color: var(--secondary-black) !important;
-    margin: 1vh !important;
+    margin: 1rem !important;
     font-family: var(--custom-font);
 }
 .remove-movie-button:hover{

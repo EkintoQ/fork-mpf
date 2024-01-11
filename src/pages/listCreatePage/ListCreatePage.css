@@ -12,9 +12,9 @@
     align-items: center;
     flex-direction: column;
     background-color: var(--secondary-black-gray);
-    margin: 5vh;
+    margin: 3rem;
     width: 75%;
-    border-radius: 10vh;
+    border-radius: 40px;
     min-height: 75vh;
 }
 
@@ -22,9 +22,9 @@
     background-color: var(--primary-yellow) !important;
     color: var(--secondary-black) !important;
     font-family: var(--custom-font) !important;
-    margin: 5vh !important;
+    margin: 2rem !important;
     width: 25vw !important;
-    height: 4vh !important;
+    height: 2rem !important;
 }
 
 .toggle-button{
