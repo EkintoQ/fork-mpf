@@ -10,7 +10,7 @@
 .user-page-back{
     position: relative;
     width: 60%;
-    height: 60vh;
+    max-height: 60vh;
     overflow: hidden;
     margin-top: 3rem;
     border-top-right-radius: 5rem;

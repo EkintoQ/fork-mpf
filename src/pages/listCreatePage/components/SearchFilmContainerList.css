@@ -2,16 +2,33 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
     flex-direction: column;
+    width: 100%;
+}
+
+.list-text-search{
+    color: var(--secondary-blue-light);
+    font-family: var(--custom-font);
+    font-size: 32px;
+    text-shadow: 0 0 16px var(--secondary-blue-light);
+}
+
+.arrow-icon{
+    color: var(--secondary-blue-light) !important;
+    font-size: 64px !important;
 }
 
 .search-list-field{
-    background-color: var(--secondary-yellow) !important;
+    background-color: var(--secondary-blue) !important;
     border-radius: 10px !important;
-    width: 25vw !important;
+    width: 50% !important;
     font-family: var(--custom-font) !important;
-    margin: 1rem !important;
+}
+.search-list-field .MuiInputBase-input {
+    color: var(--secondary-white) !important;
+}
+.search-list-field .MuiInputLabel-root {
+    color: var(--secondary-blue-light) !important;
 }
 
 .list-search-movie{
@@ -21,32 +38,58 @@
     flex-wrap: wrap;
     flex-direction: row;
     margin: 1rem;
+    border-radius: 10px;
 }
 
 .film-search-poster{
     border: none;
 }
 
-.no-search{
-    color: var(--secondary-white);
+.no-query-container{
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    max-width: 70%;
+}
+
+.no-query-text{
+    font-size: 24px;
+    font-family: var(--custom-font);
+    color: var(--secondary-blue-light);
+    text-shadow: 0 0 16px var(--secondary-blue-light);
+    width: 100%;
+    overflow: hidden;
+    margin: 1rem;
 }
 
 .add-movie-button{
-    background-color: var(--secondary-green) !important;
-    color: var(--secondary-black) !important;
-    margin: 1rem !important;
-    font-family: var(--custom-font);
+    background-color: transparent !important;
+    color: var(--secondary-green) !important;
+    font-size: 2rem !important;
+    position: absolute !important;
+    top: 0 !important;
+    right: 0 !important;
+    z-index: 1 !important;
+    margin-top: -1.5rem !important;
+    margin-right: -1.5rem !important;
 }
 .add-movie-button:hover{
-    background-color: var(--secondary-green-hover) !important;
+    background-color: transparent !important;
+    color: var(--secondary-green-hover) !important;
 }
 
 .remove-movie-button{
-    background-color: var(--secondary-red) !important;
-    color: var(--secondary-black) !important;
-    margin: 1rem !important;
-    font-family: var(--custom-font);
+    background-color: transparent !important;
+    color: var(--primary-red) !important;
+    font-size: 2rem !important;
+    position: absolute !important;
+    top: 0 !important;
+    right: 0 !important;
+    z-index: 1 !important;
+    margin-top: -1.5rem !important;
+    margin-right: -1.5rem !important;
 }
 .remove-movie-button:hover{
-    background-color: var(--primary-red) !important;
+    background-color: transparent !important;
+    color: var(--secondary-red) !important;
 }

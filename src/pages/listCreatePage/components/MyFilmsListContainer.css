@@ -3,31 +3,72 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 
 .list-field{
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.list-text-create{
+    color: var(--secondary-blue-light);
+    font-family: var(--custom-font);
+    font-size: 32px;
+    text-shadow: 0 0 16px var(--secondary-blue-light);
+}
+
+.arrow-icon{
+    color: var(--secondary-blue-light) !important;
+    font-size: 64px !important;
+}
+
+.list-inputs{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: row;
+    gap: 1rem;
+    margin: 1rem;
+    padding: 1rem;
+    width: 100%;
 }
 
 .title-field{
-    background-color: var(--secondary-yellow) !important;
+    background-color: var(--secondary-blue) !important;
     border-radius: 10px !important;
-    width: 20vw !important;
+    max-width: 15vw !important;
     font-family: var(--custom-font) !important;
+}
+.title-field .MuiInputBase-input {
+    color: var(--secondary-white) !important;
+}
+.title-field .MuiInputLabel-root {
+    color: var(--secondary-blue-light) !important;
 }
 
 .content-field{
-    background-color: var(--secondary-yellow) !important;
+    background-color: var(--secondary-blue) !important;
     border-radius: 10px !important;
-    width: 25vw !important;
+    max-width: 25vw !important;
     font-family: var(--custom-font) !important;
-    margin: 1rem !important;
+}
+.content-field .MuiInputBase-input {
+    color: var(--secondary-white) !important;
+}
+.content-field .MuiInputLabel-root {
+    color: var(--secondary-blue-light) !important;
 }
 
-.list-search-movie{
+.delete-list-icon{
+    color: var(--primary-red) !important;
+    font-size: 2rem !important;
+}
+
+.list-my-movie{
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -38,45 +79,55 @@
 }
 
 .film-search-poster{
+    position: relative;
+    display: flex;
+    flex-direction: column;
     border: none;
 }
 
 .remove-movie-button{
-    background-color: var(--secondary-red) !important;
-    color: var(--secondary-black) !important;
-    margin: 1rem !important;
-    font-family: var(--custom-font);
+    background-color: transparent !important;
+    color: var(--primary-red) !important;
+    font-size: 2rem !important;
+    position: absolute !important;
+    top: 0 !important;
+    right: 0 !important;
+    z-index: 1 !important;
+    margin-top: -1.5rem !important;
+    margin-right: -1.5rem !important;
 }
 .remove-movie-button:hover{
-    background-color: var(--primary-red) !important;
+    background-color: transparent !important;
+    color: var(--secondary-red) !important;
 }
 
 .save-list-button{
     background-color: var(--secondary-green) !important;
     color: var(--secondary-black) !important;
     margin: 2rem !important;
-    width: 20vw;
-    font-family: var(--custom-font);
-    border-radius: 20px;
+    max-width: 20vw !important;
+    font-family: var(--custom-font) !important;
+    border-radius: 20px !important;
 }
 .save-list-button:hover{
     background-color: var(--secondary-green-hover) !important;
 }
 
 .update-list-button{
-    background-color: var(--secondary-yellow) !important;
+    background-color: var(--secondary-green) !important;
     color: var(--secondary-black) !important;
     margin: 2rem !important;
-    width: 20vw;
-    font-family: var(--custom-font);
-    border-radius: 20px;
+    max-width: 20vw !important;
+    font-family: var(--custom-font) !important;
+    border-radius: 20px !important;
 }
 .update-list-button:hover{
-    background-color: var(--primary-yellow) !important;
+    background-color: var(--secondary-green-hover) !important;
 }
 
 .list-empty{
     font-size: 24px;
     font-family: var(--custom-font);
-    color: var(--primary-yellow);
+    color: var(--secondary-blue-light);
+    text-shadow: 0 0 16px var(--secondary-blue-light);
 }

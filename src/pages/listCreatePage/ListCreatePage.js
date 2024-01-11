@@ -6,6 +6,9 @@ import {UserContext} from "../../App";
 import {getUserList} from "../../api/server/listOfFilmsService/ListFilmService/GetUserList";
 import SearchFilmContainerList from "./components/SearchFilmContainerList";
 import MyFilmsListContainer from "./components/MyFilmsListContainer";
+import {getRandomMovie} from "../../api/tmdb/MovieAPI";
+
+const TMDB_PICTURE_BACK = process.env.REACT_APP_TMDB_PICTURE_BACK
 
 const ListCreatePage = () => {
     const myUser = useContext(UserContext);
@@ -16,9 +19,13 @@ const ListCreatePage = () => {
     const [alignment, setAlignment] = useState('main');
     const [permission, setPermission] = useState(false);
 
+    const [backgroundImage, setBackgroundImage] = useState('');
+
 
     const handleChange = (event, newAlignment) => {
-        setAlignment(newAlignment);
+        if (newAlignment) {
+            setAlignment(newAlignment);
+        }
     };
 
     const handleSelectedMoviesChange = (newSelectedMovies) => {
@@ -39,18 +46,16 @@ const ListCreatePage = () => {
         getUserList(id).then(data => {
             setSelectedMovies(data?.movies || selectedMovies);
         });
+        getRandomMovie().then(data => setBackgroundImage(`${TMDB_PICTURE_BACK}${data.backdrop_path}`))
         checkPermission();
     }, [id, username, myUser])
 
     return (
         <div className="list-create-container">
+            <div className="list-page-back">
+                <img className="background-img" src={backgroundImage} alt="Your Image"/>
+            </div>
             <div className="list-inner-container">
-                {alignment === "search"
-                    ?
-                    <SearchFilmContainerList movies={selectedMovies} onSelectedMoviesChange={handleSelectedMoviesChange}/>
-                    :
-                    <MyFilmsListContainer id={id} movies={selectedMovies} permission={permission} onSelectedMoviesChange={handleSelectedMoviesChange}/>
-                }
                 {permission &&
                     <ToggleButtonGroup
                         color="primary"
@@ -62,6 +67,14 @@ const ListCreatePage = () => {
                         <ToggleButton className="toggle-button" value="main">My list</ToggleButton>
                         <ToggleButton className="toggle-button" value="search">Search</ToggleButton>
                     </ToggleButtonGroup>
+                }
+                {alignment === "search"
+                    ?
+                    <SearchFilmContainerList movies={selectedMovies}
+                                             onSelectedMoviesChange={handleSelectedMoviesChange}/>
+                    :
+                    <MyFilmsListContainer id={id} movies={selectedMovies} permission={permission}
+                                          onSelectedMoviesChange={handleSelectedMoviesChange}/>
                 }
             </div>
         </div>

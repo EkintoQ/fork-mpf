@@ -1,10 +1,13 @@
 import React, {useEffect, useState} from 'react';
-import {Button, TextField} from "@mui/material";
+import { TextField} from "@mui/material";
 import MoviePoster from "../../../components/poster/MoviePoster";
 import styles from "../../filmsBrowsingPage/FilmsBrowsingPage.module.css";
 import {Link} from "react-router-dom";
 import "./SearchFilmContainerList.css"
 import {getMovieSearch} from "../../../api/tmdb/MovieAPI";
+import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
+import CancelIcon from "@mui/icons-material/Cancel";
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 const SearchFilmContainerList = ({movies, onSelectedMoviesChange}) => {
 
@@ -40,6 +43,8 @@ const SearchFilmContainerList = ({movies, onSelectedMoviesChange}) => {
 
     return (
         <div className="search-list-container">
+            <p className="list-text-search">SEARCH A FILM</p>
+            <ArrowDownwardIcon className="arrow-icon"/>
             <TextField
                 className="search-list-field"
                 label="Search field"
@@ -50,43 +55,42 @@ const SearchFilmContainerList = ({movies, onSelectedMoviesChange}) => {
                     shrink: Boolean(query),
                 }}
             />
-            <div className="list-search-movie">
-                {searchResults.length > 1
-                    ?
-                    searchResults.map(movie => (
+            {searchResults.length > 1 ?
+                <div className="list-search-movie">
+                    {searchResults.map(movie => (
                         <div className="film-search-poster">
-                            {isMovieSelected(movie) ? (
-                                <Button
+                            {isMovieSelected(movie) ?
+                                <CancelIcon
                                     className="remove-movie-button"
                                     onClick={() => handleRemoveFromSelected(movie)}
                                 >
-                                    Remove from my list
-                                </Button>
-                            ) : (
-                                <Button
+                                </CancelIcon>
+                                :
+                                <AddCircleIcon
                                     className="add-movie-button"
                                     onClick={() => handleAddToSelected(movie)}
-                                >
-                                    Add to my list
-                                </Button>
-                            )}
+                                />
+                            }
                             <MoviePoster
                                 movie={movie}
                                 className={styles.browsingPoster}
-                                responsible={true}/>
-                            <Link to={`/film/${movie.id}`} className="film-title">{movie.title}</Link>
+                                responsible={true}
+                            />
+                            <Link to={`/film/${movie.id}`} className="film-title">
+                                {movie.title}
+                            </Link>
                         </div>
-                    ))
-                    :
-                    <div className="no-search">
+                    ))}
+                </div>
+            :
+                <div className="no-query-container">
                     {!query ?
-                        <p>Type something to search</p>
+                        <p className="no-query-text">Type something to search</p>
                         :
-                        <p>There is no films like {query}</p>
+                        <p className="no-query-text">There is no films in base like {query}</p>
                     }
-                    </div>
-                }
-            </div>
+                </div>
+            }
         </div>
     );
 };

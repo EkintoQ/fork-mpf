@@ -1,12 +1,6 @@
-.default {
-    background: linear-gradient(171deg, rgba(8,10,12,1) 0%, rgba(15,23,42,1) 100%);
-    font-family: var(--custom-font);
-    min-height: 100vh;
-}
-
 .Layout {
     font-family: var(--custom-font);
     min-height: 100vh;
     background: linear-gradient(171deg, rgba(8,10,12,1) 0%, rgba(15,23,42,1) 100%);
-    z-index: -2;
+    z-index: 0;
 }

@@ -1,15 +1,23 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {Button, TextField} from "@mui/material";
 import MoviePoster from "../../../components/poster/MoviePoster";
 import styles from "../../filmsBrowsingPage/FilmsBrowsingPage.module.css";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {updateUserList} from "../../../api/server/listOfFilmsService/ListFilmService/UpdateUserList";
 import {addMovieToList} from "../../../api/server/listOfFilmsService/ListFilmService/AddMovieToList";
 import {getUserList} from "../../../api/server/listOfFilmsService/ListFilmService/GetUserList";
 import {postUserList} from "../../../api/server/listOfFilmsService/ListFilmService/PostUserList";
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import CancelIcon from '@mui/icons-material/Cancel';
+import DeleteIcon from '@mui/icons-material/Delete';
 import "./MyFilmsListContainer.css"
+import {deleteUserList} from "../../../api/server/listOfFilmsService/ListFilmService/DeleteUserList";
+import {UserContext} from "../../../App";
 
 const MyFilmsListContainer = ({id, movies, onSelectedMoviesChange, permission}) => {
+    const myUser = useContext(UserContext);
+
+    const navigate = useNavigate();
 
     const [selectedMovies, setSelectedMovies] = useState(movies);
     const [oldSelectedMovies, setOldSelectedMovies] = useState([]);
@@ -33,6 +41,11 @@ const MyFilmsListContainer = ({id, movies, onSelectedMoviesChange, permission}) 
     const handleChangeTitle = (event) => {
         setTitle(event.target.value);
     };
+
+    const handleDeleteList = async() => {
+        await deleteUserList(id);
+        navigate(`/user/${myUser.username}`)
+    }
 
     const handleUpdateList = async () => {
         const newMovies = selectedMovies.filter(movie => !oldSelectedMovies.some(oldMovie => oldMovie.id === movie.id));
@@ -60,7 +73,7 @@ const MyFilmsListContainer = ({id, movies, onSelectedMoviesChange, permission}) 
                     await addMovieToList(listId, movie.id);
                 }
 
-                setIsEditMode(true);
+                navigate(`/user/${myUser.username}`)
                 console.log('New list and movies added successfully!');
             }
         } catch (error) {
@@ -81,44 +94,76 @@ const MyFilmsListContainer = ({id, movies, onSelectedMoviesChange, permission}) 
 
     return (
         <div className="list-mine-container">
-            <div></div>
             {localPermission &&
                 <div className="list-field">
-                    <p>Create a new list</p>
-                    <TextField
-                        className="title-field"
-                        label="Title of the list"
-                        variant="outlined"
-                        onChange={handleChangeTitle}
-                        value={title}
-                        InputLabelProps={{
-                            shrink: Boolean(title),
-                        }}
-                    />
-                    <TextField
-                        className="content-field"
-                        label="Description of the list"
-                        variant="outlined"
-                        onChange={handleChangeContent}
-                        value={content}
-                        InputLabelProps={{
-                            shrink: Boolean(content),
-                        }}
-                    />
+                    {isEditMode ?
+                        <p className="list-text-create">EDIT YOUR LIST</p>
+                        :
+                        <p className="list-text-create">START A NEW LIST</p>
+                    }
+                    <ArrowDownwardIcon className="arrow-icon"/>
+                    <div className="list-inputs">
+                        <TextField
+                            className="title-field"
+                            label="Title of the list"
+                            variant="outlined"
+                            onChange={handleChangeTitle}
+                            value={title}
+                            InputLabelProps={{
+                                shrink: Boolean(title),
+                            }}
+                        />
+                        <TextField
+                            className="content-field"
+                            label="Description of the list"
+                            variant="outlined"
+                            onChange={handleChangeContent}
+                            value={content}
+                            InputLabelProps={{
+                                shrink: Boolean(content),
+                            }}
+                        />
+                        <DeleteIcon
+                            className="delete-list-icon"
+                            onClick={handleDeleteList}
+                        />
+                        {selectedMovies.length > 0 && localPermission && (
+                            isEditMode ? (
+                                <Button
+                                    className="update-list-button"
+                                    onClick={handleUpdateList}
+                                >
+                                    Update list
+                                </Button>
+                            ) : (
+                                <Button
+                                    className="save-list-button"
+                                    onClick={handleSaveNewList}
+                                >
+                                    Save new list
+                                </Button>
+                            )
+                        )}
+                    </div>
                 </div>
             }
-            <div className="list-search-movie">
+            {selectedMovies.length === 0 &&
+                (localPermission ?
+                        <p className="list-empty">ADD SOME FILMS TO YOUR LIST</p>
+                        :
+                        <p className="list-empty">LIST IS EMPTY</p>
+                )
+            }
+            <div className="list-my-movie">
                 {selectedMovies
                     &&
                     selectedMovies.map(movie => (
                         <div className="film-search-poster">
                             {localPermission &&
-                                <Button
+                                <CancelIcon
                                     className="remove-movie-button"
                                     onClick={() => handleRemoveFromSelected(movie)}
-                                >
-                                    Remove from my list
-                                </Button>
+                                />
                             }
                             <MoviePoster
                                 movie={movie}
@@ -128,30 +173,6 @@ const MyFilmsListContainer = ({id, movies, onSelectedMoviesChange, permission}) 
                         </div>
                     ))}
             </div>
-            {selectedMovies.length > 0
-                ?
-                <div>
-                    {localPermission && (
-                        isEditMode ? (
-                            <Button
-                                className="update-list-button"
-                                onClick={handleUpdateList}
-                            >
-                                Update list
-                            </Button>
-                        ) : (
-                            <Button
-                                className="save-list-button"
-                                onClick={handleSaveNewList}
-                            >
-                                Save new list
-                            </Button>
-                        )
-                    )}
-                </div>
-                :
-                <p className="list-empty">List is empty</p>
-            }
         </div>
     );
 };
