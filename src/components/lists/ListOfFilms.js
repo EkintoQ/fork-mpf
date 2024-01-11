@@ -5,12 +5,14 @@ import {getUserLists} from "../../api/server/listOfFilmsService/ListFilmService/
 import {UserContext} from "../../App";
 import {getUserList} from "../../api/server/listOfFilmsService/ListFilmService/GetUserList";
 import SingleList from "./SingleList";
+import {CircularProgress} from "@mui/material";
 
 const ListOfFilms = () => {
     const user = useContext(UserContext);
     const {username} = useParams()
 
     const [lists, setLists] = useState([])
+    const [loading, setLoading] = useState(true);
 
     let check = false
     if (user && user.username === username) {
@@ -18,9 +20,11 @@ const ListOfFilms = () => {
     }
 
     const fetchLists = async () => {
+        setLoading(true);
         const listsData = await getUserLists(username);
         const listDetailsPromises = listsData.map(list => getUserList(list.id));
         const listDetails = await Promise.all(listDetailsPromises);
+        setLoading(false);
         return listsData.map((list, index) => {
             return {
                 ...list,
@@ -32,10 +36,12 @@ const ListOfFilms = () => {
     useEffect(() => {
         fetchLists().then(data => setLists(data));
     }, [username]);
+
     return (
         <div className="lists-of-films">
+            {loading && <CircularProgress color="success"/>}
             {check &&
-                <Link to={`/list/new`}
+                <Link to={`/lists/new`}
                     className="list-button-create"
                 >
                     Create a new list

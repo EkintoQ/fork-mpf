@@ -82,7 +82,7 @@ const App = () => {
                                 }
                             />
                             <Route
-                                path='/list/new'
+                                path='/lists/new'
                                 element={
                                     <ListCreatePage/>
                                 }

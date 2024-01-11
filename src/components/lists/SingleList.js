@@ -25,7 +25,7 @@
                 navigate('/login');
                 return;
             }
-            await postUserListLike(list.id, !likeStatus);
+            await postUserListLike(list.id, true);
             setLikeStatus(!likeStatus);
         };
 
@@ -59,12 +59,7 @@
                         </Link>
                         <Link to={`/user/${list.user.username}`} className="user-nickname">{list.user.username}</Link>
                         <FavoriteIcon onClick={handleLike}
-                          sx={{
-                              color: likeStatus ? 'error' : '',
-                              '&:hover': {
-                                  cursor: 'pointer',
-                              },
-                          }}
+                                      className={`like-button ${likeStatus ? 'liked' : ''}`}
                         />
                     </div>
                     <h2 className="list-content">{list.content}</h2>

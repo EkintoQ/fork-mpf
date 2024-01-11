@@ -1,16 +1,17 @@
 import React, {useEffect, useState} from "react";
 import './UserHeader.css';
-import {List, ListItemText, Tooltip} from "@mui/material";
+import {Tooltip} from "@mui/material";
 import UserAvatar from "./UserAvatar";
-import {getReviewMyCount} from "../../../api/server/reviewService/GetReviewMyCount";
+import {useParams} from "react-router-dom";
+import {getUser} from "../../../api/server/userService/GetUser";
 
-const UserHeader = ({user}) => {
-
-    const [reviews, setReviews] = useState();
+const UserHeader = () => {
+    const {username} = useParams();
+    const [user, setUser] = useState([]);
 
     useEffect(() => {
-        getReviewMyCount().then(data => setReviews(data))
-    }, [])
+        getUser(username).then(data => setUser(data))
+    }, [username])
 
     return (
         <div className="user-header">
@@ -26,36 +27,43 @@ const UserHeader = ({user}) => {
                         </Tooltip>
                     </div>
                 </div>
-                <p className="user-bio-text">BIO</p>
-                <hr style={{ margin: '0', height: '1px', width: '100%'}}/>
-                    {user.bio &&
-                        <p className="user-bio-text">
-                            {user.bio}
-                        </p>
-                    }
-                    {!user.bio &&
-                        <p className="user-bio-text">
-                            User added no information about himself.
-                        </p>
-                    }
+                {user.bio &&
+                    <p className="user-bio-text">
+                        {user.bio}
+                    </p>
+                }
+                {!user.bio &&
+                    <p className="user-bio-text">
+                        User added no information about himself.
+                    </p>
+                }
             </div>
-            <div className="user-micro-stats">
-                <List sx={{
-                    width: '100%',
-                    maxWidth: 360,
-                    }}
-                >
-                    <ListItemText primary="Liked movies" secondary={user.likeMovie ? user.likeMovie.length : 0}/>
-                    <hr />
-                    <ListItemText primary="Watched movies" secondary={user.watchedMovie ? user.watchedMovie.length : 0}/>
-                    <hr />
-                    <ListItemText primary="To watch movies" secondary={user.toWatchMovie ? user.toWatchMovie.length : 0} />
-                    <hr />
-                    <ListItemText primary="Total rating" secondary={user.ratingMovie ? user.ratingMovie.length : 0} />
-                    <hr />
-                    <ListItemText primary="Total reviews" secondary={reviews ? reviews : 0} />
-                </List>
-            </div>
+            <ul className="user-micro-stats">
+                <li>
+                    <div>{user.likeMovie ? user.likeMovie.length : 0}</div>
+                    <div className="user-micro-stats-name">LIKED</div>
+                </li>
+                <li>
+                    <div>{user.watchedMovie ? user.watchedMovie.length : 0}</div>
+                    <div className="user-micro-stats-name">WATCHED</div>
+                </li>
+                <li>
+                    <div>{user.toWatchMovie ? user.toWatchMovie.length : 0}</div>
+                    <div className="user-micro-stats-name">TO WATCH</div>
+                </li>
+                <li>
+                    <div>{user.ratingMovie ? user.ratingMovie.length : 0}</div>
+                    <div className="user-micro-stats-name">RATED</div>
+                </li>
+                <li>
+                    <div>{user.reviews ? user.reviews.length : 0}</div>
+                    <div className="user-micro-stats-name">REVIEWED</div>
+                </li>
+                <li>
+                    <div>{user.lists ? user.lists.length : 0}</div>
+                    <div className="user-micro-stats-name">LISTS</div>
+                </li>
+            </ul>
         </div>
     );
 }

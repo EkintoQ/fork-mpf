@@ -1,0 +1,82 @@
+.list-mine-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.list-field{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.title-field{
+    background-color: var(--secondary-yellow) !important;
+    border-radius: 1vh !important;
+    width: 20vw !important;
+    font-family: var(--custom-font) !important;
+}
+
+.content-field{
+    background-color: var(--secondary-yellow) !important;
+    border-radius: 1vh !important;
+    width: 25vw !important;
+    font-family: var(--custom-font) !important;
+    margin: 2vh !important;
+}
+
+.list-search-movie{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin: 5vh;
+    border-radius: 10vh;
+}
+
+.film-search-poster{
+    border: none;
+}
+
+.remove-movie-button{
+    background-color: var(--secondary-red) !important;
+    color: var(--secondary-black) !important;
+    margin: 1vh !important;
+    font-family: var(--custom-font);
+}
+.remove-movie-button:hover{
+    background-color: var(--primary-red) !important;
+}
+
+.save-list-button{
+    background-color: var(--secondary-green) !important;
+    color: var(--secondary-black) !important;
+    margin-bottom: 3vh !important;
+    width: 20vw;
+    font-family: var(--custom-font);
+    border-radius: 5vh;
+}
+.save-list-button:hover{
+    background-color: var(--secondary-green-hover) !important;
+}
+
+.update-list-button{
+    background-color: var(--secondary-yellow) !important;
+    color: var(--secondary-black) !important;
+    margin-bottom: 3vh !important;
+    width: 20vw;
+    font-family: var(--custom-font);
+    border-radius: 5vh;
+}
+.update-list-button:hover{
+    background-color: var(--primary-yellow) !important;
+}
+
+.list-empty{
+    font-size: 24px;
+    font-family: var(--custom-font);
+    color: var(--primary-yellow);
+}
