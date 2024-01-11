@@ -31,6 +31,10 @@ const AboutUsPage = () => {
                     an easy way.
                 </p>
             </div>
+            <div className="qrcode-container">
+                We are also available on Google Play!
+                <img src="/images/qrcode.jpg" alt="qrcode"/>
+            </div>
             <h2 className="about-head">First steps:</h2>
             <h4 className="about-head1">Registration</h4>
             <div className="about-text1">

@@ -6,6 +6,18 @@
     background-color: var(--secondary-blue);
 }
 
+.qrcode-container{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    color: var(--secondary-blue-light);
+    font-family: var(--custom-font);
+    font-size: 32px;
+    margin: 1rem;
+}
+
 .about-head{
     font-family: var(--custom-font);
     padding-top: 3vh;

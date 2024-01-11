@@ -16,26 +16,32 @@
 
 .list-box{
     width: 15vh !important;
+    background: linear-gradient(270deg, rgba(8,10,12,1) 0%, rgba(15,23,42,1) 100%) !important;
+    transition: transform 0.9s ease-in-out !important;
+}
+.list-box.closed {
+    transform: translateX(100%) !important;
 }
 
 .list-link{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1vh;
-    color: var(--secondary-white);
-    background-color: var(--primary-black);
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 1vh !important;
+    color: var(--secondary-white) !important;
+    font-family: var(--custom-font) !important;
+    background: linear-gradient(270deg, rgba(8,10,12,1) 0%, rgba(15,23,42,1) 100%) !important;
+
 }
 .list-link:hover{
-    color: var(--secondary-white);
-    background-color: var(--secondary-black-transparent);
+    color: var(--secondary-white) !important;
+    background-color: var(--secondary-blue-light) !important;
 }
 
 .MuiBox-root{
-    background-color: var(--secondary-black-transparent);
     height: 100%;
 }
 
 .menu-icon{
-    color: var(--secondary-red) !important;
+    color: var(--secondary-blue-light) !important;
 }

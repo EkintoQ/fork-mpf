@@ -20,7 +20,7 @@ const Userbar = () => {
     };
 
     const list = () => (
-        <Box className="list-box">
+        <Box className={`list-box ${drawerState ? '' : 'closed'}`}>
             <List>
                 <Link to={`/user/${user.username}`} className="list-link">My page</Link>
                 <Divider/>

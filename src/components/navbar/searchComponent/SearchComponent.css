@@ -3,13 +3,14 @@
     justify-content: center;
     align-items: center;
     margin-top: 0.5vh !important;
-    width: 15vh;
-    height: 3vh;
+    max-width: 15vh !important;
+    max-height: 3vh !important;
+    font-family: var(--custom-font) !important;
     background-color: var(--secondary-black) !important;
-    color: var(--secondary-red) !important;
-    border-color: var(--secondary-red) !important;
+    color: var(--primary-blue) !important;
+    border-color: var(--primary-blue) !important;
 }
 .Search:hover{
-    border-color: var(--secondary-red) !important;
+    border-color: var(--secondary-blue-light) !important;
     box-shadow: var(--secondary-black-transparent) !important;
 }

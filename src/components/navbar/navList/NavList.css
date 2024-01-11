@@ -9,12 +9,12 @@
 }
 
 .NavListLink{
-    color: var(--primary-red);
+    color: var(--secondary-blue-light);
     font-size: 20px;
     transition: opacity 0.3s ease;
 }
 
 .NavListLink:hover{
-    color: var(--primary-red);
+    color: var(--secondary-blue-light);
     opacity: 0.8;
 }
