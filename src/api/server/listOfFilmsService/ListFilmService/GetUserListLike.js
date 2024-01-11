@@ -8,6 +8,7 @@ export const getUserListLike = async (idList) => {
             `${BASE_URL}/movies/list/like/get?idList=${idList}`,
             { withCredentials: true },
         );
+        console.log(idList,response.data);
         return response.data;
     } catch (err) {
         return false

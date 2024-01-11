@@ -11,12 +11,14 @@ import SentimentDissatisfiedIcon from '@mui/icons-material/SentimentDissatisfied
 import {getFavoriteAllMovie} from "../../api/server/listOfFilmsService/FavoriteFilmService/GetFavoriteAllMovie";
 import {getWatchedAllMovie} from "../../api/server/listOfFilmsService/WatchedFilmService/GetWatchedAllMovie";
 import {getToWatchAllMovie} from "../../api/server/listOfFilmsService/ToWatchFilmService/GetToWatchAllMovie";
+import {CircularProgress} from "@mui/material";
 
 const UserLikedList = ({value}) => {
     const user = useContext(UserContext);
     const {username} = useParams()
 
     const [likedList, setLikedList] = useState([])
+    const [loading, setLoading] = useState(true);
 
     let check = false
     if (user && user.username === username) {
@@ -24,6 +26,7 @@ const UserLikedList = ({value}) => {
     }
 
     const getTabList = ({value}) => {
+        setLoading(true);
         switch (value) {
             case 'liked':
                 getFavoriteAllMovie().then(data => setLikedList(data))
@@ -37,6 +40,7 @@ const UserLikedList = ({value}) => {
             default:
                 getFavoriteAllMovie().then(data => setLikedList(data))
         }
+        setLoading(false);
     }
 
     useEffect(() => {
@@ -45,6 +49,7 @@ const UserLikedList = ({value}) => {
 
     return (
         <div className="films-browser-list">
+            {loading && <CircularProgress color="success" />}
             {likedList &&
                 likedList.map(likedMovie => (
                 <div className="films-browser-card">
