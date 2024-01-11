@@ -5,7 +5,7 @@ import ReactPlayer from 'react-player';
 import './FilmPage.css';
 import styles from "./FilmPage.module.css";
 import {getMovieBackDropImage, getMovieCredits, getMovieDetails, getMovieTrailer} from "../../api/tmdb/MovieAPI";
-import WatchMovieButton from "../../components/buttons/WatchMovieButton";
+    import WatchMovieButton from "../../components/buttons/WatchMovieButton";
 import FavoriteMovieButton from "../../components/buttons/FavoriteMovieButton";
 import ToWatchMovieButton from "../../components/buttons/ToWatchMovieButton";
 import MoviePoster from "../../components/poster/MoviePoster";
@@ -17,7 +17,8 @@ import {Rating} from "@mui/material";
 import {getMovieRating} from "../../api/server/ratingService/GetMovieRating";
 import {setMovieRating} from "../../api/server/ratingService/SetMovieRating";
 import {getMyMovieRating} from "../../api/server/ratingService/GetMyMovieRating";
-import {deleteMovieRating, DeleteMovieRating} from "../../api/server/ratingService/DeleteMovieRating";
+import {deleteMovieRating} from "../../api/server/ratingService/DeleteMovieRating";
+import {getMovieStats} from "../../api/server/movieService/getMovieStats";
 
 const FilmPage = () => {
     const {id} = useParams();
@@ -31,6 +32,10 @@ const FilmPage = () => {
     const [actors, setActors] = useState([]);
     const [userRating, setUserRating] = useState(0);
     const [avgRating, setAVGRating] = useState(0);
+    const [favoriteCount, setFavoriteCount] = useState(0);
+    const [toWatchCount, setToWatchCount] = useState(0);
+    const [watchedCount, setWatchedCount] = useState(0);
+    const [ratedCount, setRatedCount] = useState(0);
 
 
     const getReviews = async () => {
@@ -61,6 +66,12 @@ const FilmPage = () => {
         getMovieCredits(id).then(data => setActors(data.cast))
         getMovieRating(id).then(data => setAVGRating(data))
         getMyMovieRating(id).then(data => setUserRating(data))
+        getMovieStats(id).then(data => {
+            setFavoriteCount(data.favoriteCount);
+            setToWatchCount(data.toWatchCount);
+            setWatchedCount(data.watchedCount);
+            setRatedCount(data.ratingCount);
+        })
     }, [id, userRating]);
 
     return (
@@ -70,18 +81,27 @@ const FilmPage = () => {
             <div className="film-media-container">
                 <div className="movie-like-container">
                     <div className="like-container">
-                        <WatchMovieButton
-                            idMovie={id}
-                            className={styles.watched}
-                        />
-                        <FavoriteMovieButton
-                            idMovie={id}
-                            className={styles.favorite}
-                        />
-                        <ToWatchMovieButton
-                            idMovie={id}
-                            className={styles.favorite}
-                        />
+                        <div className="button-stats">
+                            <WatchMovieButton
+                                idMovie={id}
+                                className={styles.watched}
+                            />
+                            {watchedCount}
+                        </div>
+                        <div className="button-stats">
+                            <FavoriteMovieButton
+                                idMovie={id}
+                                className={styles.favorite}
+                            />
+                            {favoriteCount}
+                        </div>
+                        <div className="button-stats">
+                            <ToWatchMovieButton
+                                idMovie={id}
+                                className={styles.favorite}
+                            />
+                            {toWatchCount}
+                        </div>
                     </div>
                     <div className="movie-poster-rating">
                         <MoviePoster
@@ -93,6 +113,9 @@ const FilmPage = () => {
                             max={10}
                             onChange={handleRatingChange}
                         />
+                        <div className="rated-count">
+                            Rated by {ratedCount} members
+                        </div>
                         <div className="movie-rating-number">
                             AVG: {avgRating}
                         </div>
